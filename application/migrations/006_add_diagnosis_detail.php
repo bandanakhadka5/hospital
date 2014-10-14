@@ -15,14 +15,17 @@ class Migration_Add_diagnosis_detail extends CI_Migration {
 			),
 			'Diagnosis' => array(
 				'type' => 'varchar',
+				'constraint'=>'250',
 				'null' => False,
 			),
 			'Doctor' => array(
-				'type' => 'datetime',
+				'type' => 'varchar',
+				'constraint'=>'250',
 				'null' => False,
 			),
 			'ConsultationType' => array(
-				'type' => 'datetime',
+				'type' => 'varchar',
+				'constraint'=>'250',
 				'null' => False,
 			),
 

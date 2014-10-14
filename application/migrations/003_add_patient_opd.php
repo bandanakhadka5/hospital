@@ -30,6 +30,7 @@ class Migration_Add_patient_opd extends CI_Migration {
 			),
 			'Doctor'=> array(
 				'type'=>'varchar',
+				'constraint'=>'250',
 				'null'=>True,
 			),
 			'Active' => array(
