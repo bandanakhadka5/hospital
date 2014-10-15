@@ -1,217 +1,271 @@
 <?php
 
-/*	include_once('Exceptions.php');*/
+include_once('Exceptions.php');
 
-	class Patient extends ActiveRecord_Base {
+class Patient extends ActiveRecord_Base {
 
-		/* Table Name */
-		static $table_name = 'hospital_patient';
+	/* Table Name */
+	static $table_name = 'hospital_patient';
+	static $primary_key = 'ID';
 
-		/* Associations */
+	/* Associations */
 
-	/*	static $has_one = array(
-			array(
-	            'member',
-	            'class_name' => 'Member',
-	            'foreign_key' => 'user_id'
-	        ),
-		);*/
+	static $has_one = array(
+		array(
+            'emergency',
+            'class_name' => 'PatientEmergency',
+            'foreign_key' => 'patient_id'
+        ),
+	);
 
-	 	/* Observers */
+    static $has_one = array(
+        array(
+            'opd',
+            'class_name' => 'PatientOPD',
+            'foreign_key' => 'patient_id'
+        ),
+    );
 
-		/* Validations */
+    static $has_one = array(
+        array(
+            'impatient',
+            'class_name' => 'PatientImpatient',
+            'foreign_key' => 'patient_id'
+        ),
+    );
 
-		/* Public functions - Setters */
 
-	    private function is_username_available($username) {
+	/* Public functions - Setters */
 
-	    	if($this->is_new_record()) {
+    public function is_pub_id_unique($PubID) {
 
-				if(self::exists(array('username' => $username))) { 
-					throw new UserUsernameExistsException('The username entered already exists.'); 
-				}
+        if($this->is_new_record()) {
+            
+            if(self::exists(array(
+                'PubID' => $PubID,
+            ))){
+                throw new PatientPubIDExistsException;
+            }
 
-	    	} else {
+        } elseif(!$this->is_new_record()) {
 
-				if(self::exists(array(
-					'conditions' => array(
-						'username = ?  and id != ?', 
-						$username, 
-						$this->id
-					)
-				))) { 
-					throw new UserUsernameExistsException('The username entered already exists.'); 
-				}
+            if(self::exists(array('conditions' => array(
+                'PubID = ? and id != ?',
+                $PubID,
+                $this->id,
+            )))){
+                throw new PatientPubIDExistsException;
+            }
+        }
 
-	    	}
+    }
 
-	    }
+    public function set_PubID($PubID) {
 
-		public function set_username($username){
+        $PubID = strtolower(trim($PubID));
 
-			$username = strtolower(trim($username));
+        if(!$PubID) {
+            throw new PatientPubIDRequiredException;
+        }
 
-			if($username == '') {
-				echo "no username entered";
-				exit;
-	            //throw new UserUsernameFieldRequiredException('The username field is required.');
-	        }
+        $this->is_pub_id_unique($PubID);
 
-			$this->is_username_available($username);
+        $this->assign_attribute('PubID', $PubID);
+    }
 
-			$this->assign_attribute('username', $username);
-		}
+    public function set_FirstName($first_name)
+	{
+        if($first_name=='')
+        {
+            throw new BlankFirstNameException("First Name Required!");              
+        }
 
-		public function set_password($password){
+    	$this->assign_attribute('FirstName',$first_name);
+    }
 
-			$password = trim($password);
+    public function set_MiddleName($middle_name)
+    {
+        $this->assign_attribute('MiddleName',$middle_name);
+    }
 
-			if($password == '') {
-				throw new UserPasswordFieldRequiredException('The password field is required.');
-			}
+    public function set_LastName($last_name)
+	{
+        if($last_name=='')
+        {
+            throw new BlankLastNameException("Last Name Required!");                
+        }
 
-			$encrypt_password = $this->encrypt_new_password($password);
-	        $this->assign_attribute('password', $encrypt_password);
-	    }
+    	$this->assign_attribute('LastName',$last_name);
+    }
 
-		/* Public functions - Getters */
+    public function set_Address($address)
+    {
+        if($address=='')
+        {
+            throw new BlankAddressException("Address field cannot be empty!");                
+        }
 
-		/* Private functions - General */
+        $this->assign_attribute('Address',$address);
+    }
 
-		/* Public functions - General */
+    public function set_Age($age)
+    {
+        if($age=='')
+        {
+            throw new BlankAgeException("Age field cannot be empty!");                
+        }
 
-	    private function encrypt_new_password($password) {
-	    	$salt = dechex(mt_rand(0, 1048576));
-			return 'sha1$'.$salt.'$'.sha1($salt.$password);
-	    }
+        $this->assign_attribute('Age',$age);
+    }
 
-	    private function encrypt_existing_password($password) {
-	    	$password_elements = explode('$', $this->password);
-	    	return $password_elements[0].'$'.$password_elements[1].'$'.sha1($password_elements[1].$password);
-	    }
+    public function set_ContactNumber($contact_number)
+    {
+        if($contact_number=='')
+        {
+            throw new BlankContactNumberException("Contact Number required!");                
+        }
 
-		private function generate_new_password_reset_key() {
-			$this->public_hashkey = sha1(rand());
-		}
+        $this->assign_attribute('ContactNumber',$contact_number);
+    }
 
-		public function is_password($password) {
-			return ($this->password == $this->encrypt_existing_password($password));
-		}
+    public function set_Sex($sex)
+	{
+        if($sex=='')
+        {
+            throw new BlankSexException("Sex field cannot be empty!");                
+        }
 
-		public function login($password) {
+    	$this->assign_attribute('Sex',$sex);
+    }
 
-			if(!$this->is_password($password)) {
-				throw new UserPasswordInvalidException('The username/password combination is not valid.');
-			}
+    public function set_DateOfBirth($date_of_birth)
+    {
+        $this->assign_attribute('DateOfBirth',$date_of_birth);
+    }
 
-			if($this->member->organisation->is_deleted) {
-	            throw new OrganisationDeletedException('This members organisation has been deleted');
-	        }
+    public function set_Email($email)
+    {
+        $this->assign_attribute('Email',$email);
+    }
 
-			if(!$this->member->organisation->is_active) {
-	            throw new OrganisationInactiveException('This members organisation is no longer active');
-	        }
+    public function set_SourceOfReferal($source_of_referal)
+    {
+        $this->assign_attribute('SourceOfReferal',$source_of_referal);
+    }
 
-			$this->last_login_at = date('Y-m-d H:i:s');
-			$this->save();
-		}
+    public function set_ContactPerson($contact_person)
+    {
+        $this->assign_attribute('ContactPerson',$contact_person);
+    }
 
-		public function force_login() {
+    public function set_RelationWithPatient($relation_with_patient)
+    {
+        $this->assign_attribute('RelationWithPatient',$relation_with_patient);
+    }
 
-			$this->last_login_at = date('Y-m-d H:i:s');
-			$this->save();
-		}
+    public function set_Informant($informant)
+    {
+        $this->assign_attribute('Informant',$informant);
+    }
 
-		public function change_password($current_password, $new_password, $new_password_confirm) {
+    /* Public functions - Getters */
 
-			if(!$this->is_password($current_password)) {
-				throw new UserPasswordInvalidException('The password entered does not match the current password.');
-			}
+    public function get_FirstName()
+	{
+    	return $this->read_attribute('FirstName');
+    }
 
-			$this->reset_password($new_password, $new_password_confirm);
-		}
+    public function get_LastName()
+	{
+    	return $this->read_attribute('LastName');
+    }
 
-		public function reset_password($new_password, $new_password_confirm) {
+    public function get_Sex()
+	{
+    	return $this->read_attribute('Sex');
+    }
 
-			if($new_password == '') {
-				throw new UserPasswordConfirmationException('Please enter a new password.');
-			}
+    public function get_Age()
+    {
+        return $this->read_attribute('Age');
+    }
 
-			if($new_password !== $new_password_confirm) {
-				throw new UserPasswordConfirmationException('The password confirmation entered does not match.');
-			}
+    public function get_Address()
+    {
+        return $this->read_attribute('Address');
+    }
 
-			$this->password = $new_password;
-			$this->public_hashkey = null;
-		}
+    public function get_ContactNumber()
+	{
+    	return $this->read_attribute('ContactNumber');
+    }
 
-		public function forget_password() {
-			$this->generate_new_password_reset_key();
-			$this->save();
-		}
+    public function get_DateOfBirth()
+    {
+        return $this->read_attribute('DateOfBirth');
+    }
 
-		/* Public static functions */
+    public function get_Email()
+    {
+        return $this->read_attribute('Email');
+    }
 
-		public static function create($params) {
+    public function get_SourceOfReferal()
+    {
+        return $this->read_attribute('SourceOfReferal');
+    }
 
-			$patient = new Patient;
+    public function get_ContactPerson()
+    {
+        return $this->read_attribute('ContactPerson');
+    }
 
-			$patient->firstname = array_key_exists('firstname', $params) ? $params['firstname'] : '';
-			$patient->middlename = array_key_exists('middlename',$params) ? $params['middlename'] : Null;
-			$patient->lastname = array_key_exists('lastname', $params) ? $params['lastname'] : '';
-			$patient->dateofbirth = array_key_exists('dateofbirth', $params) ? $params['dateofbirth'] : Null;
-			$patient->age = array_key_exists('age',$params) ? $params['age'] ? '';
-			$patient->address = array_key_exists('address',$params) ? $params['address'] : '';
-			$patient->sex = array_key_exists('sex', $params) ? $params['sex'] : '';
-			$patient->email = array_key_exists('email',$params) ? $params['email'] : Null ;
-			$patient->dateofconsultation = array_key_exists('dateofconsultation', $params) ? $params['dateofconsultation'] : '';
-			$patient->typeofconsultation = array_key_exists('type', $params) ? $params['type'] : '';
-			$patient->informant = array_key_exists('informant',$params) ? $params['informant'] : Null;
-			$patient->contactperson = array_key_exists('contact', $params) ? $params['contact'] : Null;
-			$patient->relation = array_key_exists('relation', $params) ? $params['relation'] : Null;
-			$patient->sourceofreferal = array_key_exists('source', $params) ? $params['source'] : Null;
-			$patient->contactnumber = array_key_exists('contactnumber', $params) ? $params['contactnumber'] : Null;
-			$patient->publicid;
+    public function get_RelationWithPatient()
+    {
+        return $this->read_attribute('RelationWithPatient');
+    }
 
-			return $patient;
-		}
+    public function get_Informant()
+    {
+        return $this->read_attribute('Informant');
+    }
 
-		public static function __callStatic($method, $args) {
+    public function get_LastVisitedAt()
+    {
+        return $this->read_attribute('LastVisitedAt');
+    }
 
-			if (substr($method,0,13) === 'find_valid_by') {
-				$attributes = substr($method,14);
-				$options['conditions'] = ActiveRecord\SQLBuilder::create_conditions_from_underscored_string(static::connection(),$attributes,$args,static::$alias_attribute);
+    public function get_MiddleName()
+    {
+        return $this->read_attribute('MiddleName');
+    }
 
-				$user = static::find('first',$options);
+	/* Public static functions */
 
-				self::check_user_is_valid($user);
+	public static function create($params) {
 
-				return $user;
-			}
+		$patient = new Patient;
 
-			return parent::__callStatic($method, $args);
-		}
+        $patient->PubID = sha1(rand());
+		$patient->FirstName = array_key_exists('first_name', $params) ? $params['first_name'] : '';
+		$patient->MiddleName = array_key_exists('middle_name',$params) ? $params['middle_name'] : Null;
+		$patient->LastName = array_key_exists('last_name', $params) ? $params['last_name'] : '';
+		$patient->DateOfBirth = array_key_exists('date_of_birth', $params) ? $params['date_of_birth'] : Null;
+		$patient->Age = array_key_exists('age',$params) ? $params['age'] ? '';
+		$patient->Address = array_key_exists('address',$params) ? $params['address'] : '';
+		$patient->Sex = array_key_exists('sex', $params) ? $params['sex'] : '';
+		$patient->Email = array_key_exists('email',$params) ? $params['email'] : Null ;
+		$patient->Informant = array_key_exists('informant',$params) ? $params['informant'] : Null;
+		$patient->ContactPerson = array_key_exists('contact_person', $params) ? $params['contact_person'] : Null;
+		$patient->RelationWithPatient = array_key_exists('relation_with_patient', $params) ? $params['relation_with_patient'] : Null;
+		$patient->SourceOfReferal = array_key_exists('source_of_referal', $params) ? $params['source_of_referal'] : Null;
+		$patient->ContactNumber = array_key_exists('contact_number', $params) ? $params['contact_number'] : Null;
 
-		private static function check_user_is_valid($user) {
+        $patient->activate();
 
-			if(!$user instanceOf User) {
-				throw new UserNotExistsException('The username entered does not exist');
-			}
-
-			if(!$user->member) {
-				throw new UserInvalidException('The username entered does not exist');
-			}
-
-			if($user->member->is_deleted()) {
-				throw new UserDeletedException('This user has been deleted');
-			}
-
-			if(!$user->member->is_active()) {
-				throw new UserInactiveException('This user has been deactivated');
-			}
-
-		}
-
+		return $patient;
 	}
+
+}
 
 ?>

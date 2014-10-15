@@ -1,50 +1,6 @@
 <?php 
 
-class BaseModel extends ActiveRecord\Model {
-
-	public function __construct ($attributes=array(), $guard_attributes=TRUE, $instantiating_via_find=FALSE, $new_record=TRUE) {
-		parent::__construct ($attributes, $guard_attributes, $instantiating_via_find, $new_record);
-
-		$class = get_class($this);
-		$this->_exceptions = isset($class::$exceptions) ? $class::$exceptions : array();
-	}
-
-
-	//check is the entity is active
-	public function is_active(){
-
-		
-	}
-
-	public function is_deleted(){
-
-
-	}
-
-
-	public function created_at(){
-
-
-	}
-
-	public function set_active(){
-
-
-	}
-
-	public function set_deleted(){
-
-
-	}
-
-
-}
-
-?>
-
-<?php
-
-class Model_Base extends ActiveRecord_Base {
+class BaseModel extends ActiveRecord_Base {
 
 	public function __construct ($attributes=array(), $guard_attributes=TRUE, $instantiating_via_find=FALSE, $new_record=TRUE) {
 		parent::__construct ($attributes, $guard_attributes, $instantiating_via_find, $new_record);
@@ -84,80 +40,80 @@ class Model_Base extends ActiveRecord_Base {
 	/* Public Functions */
 
 	public function is_active() {
-		return ($this->is_active) ? true : false;
+		return ($this->Active) ? true : false;
 	}
 
 	public function is_deleted() {
-		return ($this->is_deleted) ? true : false;
+		return ($this->Deleted) ? true : false;
 	}
 
 	public function is_valid() {
-		return (!$this->is_deleted() && $this->is_active()) ? true : false;
+		return (!$this->Deleted() && $this->Active()) ? true : false;
 	}
 
 	public function check_is_undeleted() {
 
-		if($this->is_deleted()) {
+		if($this->Deleted()) {
 			$this->throw_base_exception('deleted');
 		}
 	}
 
 	public function check_is_valid() {
 
-		if($this->is_deleted()) {
+		if($this->Deleted()) {
 			$this->throw_base_exception('deleted');
 		}
 
-		if(!$this->is_active()) {
+		if(!$this->Active()) {
 			$this->throw_base_exception('inactive');
 		}
 	}
 	
 	public function activate() {
 
-		if($this->is_deleted()) {
+		if($this->Deleted()) {
 			$this->throw_base_exception('deleted');
 		}
 
-		if($this->is_active()) {
+		if($this->Active()) {
 			$this->throw_base_exception('active');
 		}
 
-		$this->is_active = 1;
+		$this->Active = 1;
 		$this->save();
 	}
 
 	public function deactivate() {
 
-		if($this->is_deleted()) {
+		if($this->Deleted()) {
 			$this->throw_base_exception('deleted');
 		}
 
-		if(!$this->is_active()) {
+		if(!$this->Active()) {
 			$this->throw_base_exception('inactive');
 		}
 
-		$this->is_active = 0;
+		$this->Active = 0;
 		$this->save();
 	}
 
 	public function delete() {
 
-		if($this->is_deleted()) {
+		if($this->Deleted()) {
 			$this->throw_base_exception('deleted');
 		}
 
-		$this->is_deleted = 1;
+		$this->Deleted = 1;
 		$this->save();
 	}
 
 	public function undelete() {
 
-		if(!$this->is_deleted()) {
+		if(!$this->Deleted()) {
 			$this->throw_base_exception('not-deleted');
 		}
 
-		$this->is_deleted = 0;
+		$this->Deleted = 0;
 		$this->save();
 	}
 
@@ -221,7 +177,7 @@ class Model_Base extends ActiveRecord_Base {
 			$attributes = substr($method,18);
 
 			$options['conditions'] = ActiveRecord\SQLBuilder::create_conditions_from_underscored_string(static::connection(),$attributes,$args,static::$alias_attribute);
-			$options['conditions'][0] .= ' and is_active = 1 and is_deleted = 0';
+			$options['conditions'][0] .= ' and Active = 1 and Deleted = 0';
 
 			$model = static::find('all',$options);
 
@@ -233,7 +189,7 @@ class Model_Base extends ActiveRecord_Base {
 			$attributes = substr($method,22);
 
 			$options['conditions'] = ActiveRecord\SQLBuilder::create_conditions_from_underscored_string(static::connection(),$attributes,$args,static::$alias_attribute);
-			$options['conditions'][0] .= ' and is_deleted = 0';
+			$options['conditions'][0] .= ' and Deleted = 0';
 
 			$model = static::find('all',$options);
 
@@ -245,7 +201,7 @@ class Model_Base extends ActiveRecord_Base {
 			$attributes = substr($method,15);
 
 			$options['conditions'] = ActiveRecord\SQLBuilder::create_conditions_from_underscored_string(static::connection(),$attributes,$args,static::$alias_attribute);
-			$options['conditions'][0] .= ' and is_active = 1 and is_deleted = 0';
+			$options['conditions'][0] .= ' and Active = 1 and Deleted = 0';
 
 			return static::count($options);
 		}
@@ -255,7 +211,7 @@ class Model_Base extends ActiveRecord_Base {
 			$attributes = substr($method,19);
 
 			$options['conditions'] = ActiveRecord\SQLBuilder::create_conditions_from_underscored_string(static::connection(),$attributes,$args,static::$alias_attribute);
-			$options['conditions'][0] .= ' and is_deleted = 0';
+			$options['conditions'][0] .= ' and Deleted = 0';
 
 			return static::count($options);
 		}
