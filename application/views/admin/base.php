@@ -12,9 +12,16 @@
     <title>Signin Template for Bootstrap</title>
 
     <!-- Bootstrap core CSS -->
-    <link rel="stylesheet" type="text/css" href="<?php echo base_url('public/css/bootstrap.min.css'); ?>">
+    <!-- Bootstrap core CSS -->
+       <link href="public/css/bootstrap.min.css" rel="stylesheet">
+       <link href="public/css/bootstrap.css" rel="stylesheet">
 
-    <link rel="stylesheet" type="text/css" href="<?php echo base_url('public/custom/css/signin.css'); ?>">
+       <script src="public/js/jquery.js"></script>
+       <script src="public/js/bootstrap.min.js"></script>
+       <script type="text/javascript" src="public/js/bootstrap.js"></script>
+
+       <!-- Custom styles for this template -->
+       <link href="public/custom/css/signin.css" rel="stylesheet">
 
     <!-- Custom styles for this template -->
     <!-- <link href="public/custom/css/signin.css" rel="stylesheet"> -->
@@ -28,19 +35,8 @@
 
   <body>
 
-    <div class="container">
-
-      <form class="form-signin" role="form">
-        <h2 class="form-signin-heading">Please sign in</h2>
-        <input type="email" class="form-control" placeholder="Email address" required autofocus>
-        <input type="password" class="form-control" placeholder="Password" required>
-        <label class="checkbox">
-          <input type="checkbox" value="remember-me"> Remember me
-        </label>
-        <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
-      </form>
-
-    </div> <!-- /container -->
+    <?php start_block_marker('content') ?>
+    <?php end_block_marker() ?>
 
   </body>
 </html>
