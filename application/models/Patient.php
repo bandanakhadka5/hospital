@@ -2,7 +2,7 @@
 
 include_once('Exceptions.php');
 
-class Patient extends ActiveRecord_Base {
+class Patient extends BaseModel {
 
 	/* Table Name */
 	static $table_name = 'hospital_patient';
@@ -10,7 +10,7 @@ class Patient extends ActiveRecord_Base {
 
 	/* Associations */
 
-	static $has_one = array(
+	static $has_many = array(
 		array(
             'emergency',
             'class_name' => 'PatientEmergency',
@@ -18,7 +18,7 @@ class Patient extends ActiveRecord_Base {
         ),
 	);
 
-    static $has_one = array(
+    static $has_many = array(
         array(
             'opd',
             'class_name' => 'PatientOPD',
@@ -26,7 +26,7 @@ class Patient extends ActiveRecord_Base {
         ),
     );
 
-    static $has_one = array(
+    static $has_many = array(
         array(
             'impatient',
             'class_name' => 'PatientImpatient',
