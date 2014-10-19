@@ -18,7 +18,7 @@ class Migration_Add_patient_emergency extends CI_Migration {
 				'null' => False,
 			),
 			'CreatedAt' => array(
-				'type' => 'datetime',
+				'type' => 'timestamp',
 			),
 			'ModifiedAt' => array(
 				'type' => 'timestamp',
@@ -42,6 +42,8 @@ class Migration_Add_patient_emergency extends CI_Migration {
 		$this->dbforge->add_field($fields);
 		$this->dbforge->add_key('ID', true);
 		$this->dbforge->create_table('patient_emergency');
+
+		$this->db->query('ALTER TABLE patient_emergency MODIFY ModifiedAt TIMESTAMP ON UPDATE CURRENT_TIMESTAMP');
 
 	}
 

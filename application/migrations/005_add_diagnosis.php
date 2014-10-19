@@ -34,7 +34,7 @@ class Migration_Add_diagnosis extends CI_Migration {
 			),
 
 			'CreatedAt' => array(
-				'type' => 'datetime',
+				'type' => 'timestamp',
 			),
 			'ModifiedAt' => array(
 				'type' => 'timestamp',
@@ -54,6 +54,8 @@ class Migration_Add_diagnosis extends CI_Migration {
 		$this->dbforge->add_key('ID', true);
 		$this->dbforge->create_table('patient_diagnosis');
 
+
+		$this->db->query('ALTER TABLE patient_diagnosis MODIFY ModifiedAt TIMESTAMP ON UPDATE CURRENT_TIMESTAMP');
 	}
 
 	public function down() {

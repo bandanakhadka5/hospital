@@ -15,7 +15,7 @@ class Migration_Add_patient extends CI_Migration {
 				'constraint' => 45,
 			),
 			'CreatedAt' => array(
-				'type' => 'datetime',
+				'type' => 'timestamp',
 			),
 			'ModifiedAt' => array(
 				'type' => 'timestamp',

@@ -18,7 +18,7 @@ class Migration_Add_patient_opd extends CI_Migration {
 				'null' => False,
 			),
 			'CreatedAt' => array(
-				'type' => 'datetime',
+				'type' => 'timestamp',
 			),
 			'ModifiedAt' => array(
 				'type' => 'timestamp',
@@ -47,6 +47,8 @@ class Migration_Add_patient_opd extends CI_Migration {
 		$this->dbforge->add_field($fields);
 		$this->dbforge->add_key('ID', true);
 		$this->dbforge->create_table('patient_opd');
+
+		$this->db->query('ALTER TABLE patient_opd MODIFY ModifiedAt TIMESTAMP ON UPDATE CURRENT_TIMESTAMP');
 
 	}
 
