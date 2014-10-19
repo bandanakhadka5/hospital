@@ -14,7 +14,7 @@ class PatientOPD extends Patient {
 		array(
             'patient',
             'class_name' => 'Patient',
-            'foreign_key' => 'patient_id'
+            'foreign_key' => 'PatientID'
         ),
 	);
 
@@ -35,6 +35,11 @@ class PatientOPD extends Patient {
     	$this->assign_attribute('Doctor',$doctor);
     }
 
+    public function set_PatiendID($id)
+    {
+        $this->assign_attribute('PatientId',$id);
+    }
+
      /* Public functions - Getters */
 
     public function get_DateOfConsultation()
@@ -50,6 +55,11 @@ class PatientOPD extends Patient {
     public function get_Doctor()
 	{
     	return $this->read_attribute('Doctor');
+    }
+
+    public function get_PatientID()
+    {
+        return $this->read_attribute('PatientID');
     }
 
     /* Public static functions */

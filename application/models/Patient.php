@@ -14,7 +14,7 @@ class Patient extends BaseModel {
 		array(
             'emergency',
             'class_name' => 'PatientEmergency',
-            'foreign_key' => 'patient_id'
+            'foreign_key' => 'PatientID'
         ),
 	);
 
@@ -22,7 +22,7 @@ class Patient extends BaseModel {
         array(
             'opd',
             'class_name' => 'PatientOPD',
-            'foreign_key' => 'patient_id'
+            'foreign_key' => 'PatientID'
         ),
     );
 
@@ -30,7 +30,7 @@ class Patient extends BaseModel {
         array(
             'impatient',
             'class_name' => 'PatientImpatient',
-            'foreign_key' => 'patient_id'
+            'foreign_key' => 'PatientID'
         ),
     );
 

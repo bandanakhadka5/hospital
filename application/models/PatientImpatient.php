@@ -14,7 +14,7 @@ class PatientImpatient extends Patient {
 		array(
             'patient',
             'class_name' => 'Patient',
-            'foreign_key' => 'patient_id'
+            'foreign_key' => 'PatientID'
         ),
 	);
 
@@ -35,6 +35,11 @@ class PatientImpatient extends Patient {
     	$this->assign_attribute('DateOfDischarge',$date_of_discharge);
     }
 
+    public function set_PatiendID($id)
+    {
+        $this->assign_attribute('PatientId',$id);
+    }
+
      /* Public functions - Getters */
 
     public function get_DateOfAdmission()
@@ -50,6 +55,11 @@ class PatientImpatient extends Patient {
     public function get_DateOfDischarge()
 	{
     	return $this->read_attribute('DateOfDischarge');
+    }
+
+    public function get_PatientId()
+    {
+        return $this->read_attribute('PatientID');
     }
 
     /* Public static functions */

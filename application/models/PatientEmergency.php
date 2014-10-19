@@ -14,7 +14,7 @@ class PatientEmergency extends Patient {
 		array(
             'patient',
             'class_name' => 'Patient',
-            'foreign_key' => 'patient_id'
+            'foreign_key' => 'PatientID'
         ),
 	);
 
@@ -28,6 +28,11 @@ class PatientEmergency extends Patient {
     public function set_ChiefCompliants($chief_compliants)
 	{
     	$this->assign_attribute('ChiefCompliants',$chief_compliants);
+    }
+
+    public function set_PatiendID($id)
+    {
+        $this->assign_attribute('PatientId',$id);
     }
 
      /* Public functions - Getters */
