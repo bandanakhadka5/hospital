@@ -1,10 +1,10 @@
-<? extend('admin/base') ?>
+<?php extend('admin/base') ?>
 
-<? startblock('content') ?>
+<?php startblock('content') ?>
 
   <div class="container">
 
-    <form class="form-signin" role="form">
+    <form class="form-signin" role="form" method ="POST">
       <h2 class="form-signin-heading">Please sign in</h2>
       <input type="email" class="form-control" placeholder="Email address" required autofocus>
       <input type="password" class="form-control" placeholder="Password" required>
@@ -15,6 +15,6 @@
     </form>
 
   </div> <!-- /container -->
-<? endblock() ?>
+<?php endblock() ?>
 
-<? end_extend() ?>
+<?php end_extend() ?>
