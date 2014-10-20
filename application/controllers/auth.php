@@ -17,7 +17,7 @@ class Auth extends BaseController {
         }
 
         if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
-            return $this->loadView('admin/auth/index');
+            return $this->loadView('admin/auth/login');
         }
 
         try {
@@ -35,12 +35,11 @@ class Auth extends BaseController {
 
             $this->session->set_flashdata('alert_success', "Welcome back to BGHospital.");
 
-
-            redirect('/welcome');
+            redirect('/dashboard');
 
         } catch (Exception $e) {
             return $this->loadView(
-                'auth/login',
+                'admin/auth/login',
                 array(
                     'message' => $e->getMessage(),
                 )

@@ -13,7 +13,7 @@ class Hospital extends SessionController {
             exit();
         }
 
-       $this->loadView('admin/auth/index');
+       $this->loadView('admin/auth/login');
     }
 
 }

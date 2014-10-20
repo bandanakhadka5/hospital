@@ -1,11 +1,12 @@
 <?php
 
-/*	include_once('Exceptions.php');*/
+	include_once('Exceptions.php');
 
-	class User extends ActiveRecord_Base {
+	class User extends BaseModel {
 
 		/* Table Name */
-		static $table_name = 'hospital_user';
+		static $table_name = 'patient_user';
+		static $primary_key = 'ID';
 
 		/* Associations */
 
@@ -105,8 +106,8 @@
 				throw new UserPasswordInvalidException('The username/password combination is not valid.');
 			}
 
-			$this->last_login_at = date('Y-m-d H:i:s');
-			$this->save();
+			//$this->last_login_at = date('Y-m-d H:i:s');
+			//$this->save();
 		}
 
 		public function force_login() {
@@ -186,18 +187,6 @@
 
 			if(!$user instanceOf User) {
 				throw new UserNotExistsException('The username entered does not exist');
-			}
-
-			if(!$user->member) {
-				throw new UserInvalidException('The username entered does not exist');
-			}
-
-			if($user->member->is_deleted()) {
-				throw new UserDeletedException('This user has been deleted');
-			}
-
-			if(!$user->member->is_active()) {
-				throw new UserInactiveException('This user has been deactivated');
 			}
 
 		}

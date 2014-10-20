@@ -4,10 +4,10 @@
 
   <div class="container">
 
-    <form class="form-signin" role="form" method ="POST">
+    <form class="form-signin" role="form" method ="POST" action="auth/login">
       <h2 class="form-signin-heading">Please sign in</h2>
-      <input type="email" class="form-control" placeholder="Email address" required autofocus>
-      <input type="password" class="form-control" placeholder="Password" required>
+      <input name='username' type="text" class="form-control" placeholder="Username" required autofocus>
+      <input name='password' type="password" class="form-control" placeholder="Password" required>
       <label class="checkbox">
         <input type="checkbox" value="remember-me"> Remember me
       </label>

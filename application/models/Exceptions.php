@@ -19,7 +19,7 @@ class BlankPhoneException extends Exception
 class BlankEmailException extends Exception
 {}
 
-class InvalidOrganizationException extends Exception
+class UserNotExistsException extends Exception
 {}
 
 class BlankUserNameException extends Exception

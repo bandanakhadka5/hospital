@@ -13,8 +13,6 @@ class SessionController extends CI_Controller {
 
         if (!$this->isActiveSession()){
             return redirect('/auth/login#f=/' . $this->uri->uri_string());
-        } else {
-            redirect('/dashboard');
         }
 
     }
