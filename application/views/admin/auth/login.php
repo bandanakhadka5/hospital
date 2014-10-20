@@ -4,7 +4,7 @@
 
   <div class="container">
 
-    <form class="form-signin" role="form" method ="POST" action="auth/login">
+    <form class="form-signin" role="form" method ="POST" action="<?php echo base_url('auth/login');?>">
       <h2 class="form-signin-heading">Please sign in</h2>
       <input name='username' type="text" class="form-control" placeholder="Username" required autofocus>
       <input name='password' type="password" class="form-control" placeholder="Password" required>
