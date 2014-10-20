@@ -1,9 +1,9 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
-class Auth extends SessionController {
+class Auth extends BaseController {
 
     public function __construct(){
-        parent::__construct();
+        parent::__construct(false);
     }
 
 	public function index() {
@@ -17,7 +17,7 @@ class Auth extends SessionController {
         }
 
         if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
-            return $this->loadView('admin/auth/login');
+            return $this->loadView('admin/auth/index');
         }
 
         try {

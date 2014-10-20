@@ -13,15 +13,15 @@
 
     <!-- Bootstrap core CSS -->
     <!-- Bootstrap core CSS -->
-       <link href="public/css/bootstrap.min.css" rel="stylesheet">
-       <link href="public/css/bootstrap.css" rel="stylesheet">
+       <link href="<?php echo base_url('public/css/bootstrap.min.css');?>" rel="stylesheet">
+       <link href="<?php echo base_url('public/css/bootstrap.css');?>" rel="stylesheet">
 
-       <script src="public/js/jquery.js"></script>
-       <script src="public/js/bootstrap.min.js"></script>
-       <script type="text/javascript" src="public/js/bootstrap.js"></script>
+       <script src="<?php echo base_url('public/js/jquery.js');?>"></script>
+       <script src="<?php echo base_url('public/js/bootstrap.min.js');?>"></script>
+       <script type="text/javascript" src="<?php echo base_url('public/js/bootstrap.js');?>"></script>
 
        <!-- Custom styles for this template -->
-       <link href="public/custom/css/signin.css" rel="stylesheet">
+       <link href="<?php echo base_url('public/custom/css/signin.css')?>" rel="stylesheet">
 
     <!-- Custom styles for this template -->
     <!-- <link href="public/custom/css/signin.css" rel="stylesheet"> -->

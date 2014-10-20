@@ -3,12 +3,18 @@
     
 class SessionController extends CI_Controller {
 
-    public function __construct(){
+    function __construct($session = true, $ignoreLanguage = false){
 
         parent::__construct();
 
+        if (!$session) {
+            return true;
+        }
+
         if (!$this->isActiveSession()){
             return redirect('/auth/login#f=/' . $this->uri->uri_string());
+        } else {
+            redirect('/dashboard');
         }
 
     }
@@ -31,17 +37,31 @@ class SessionController extends CI_Controller {
     public function loadView($template, $data = array(), $return_view = false){
         $data = (array) $data;
 
-        /*$data['IsActiveSession'] = $this->isActiveSession();
-        $data['Language'] = $this->language;
-        $data['LanguageCode'] = $this->language_code;
-        $data['IsIndex'] = count($this->uri->segment_array()) < 2;
-
-        $preferred_domain = $this->input->cookie('preferred_domain');
-
-        $data['branding_organisation'] = Organisation::find_by_domain($preferred_domain);
-
-        $data = array_merge($this->getSessionData(), $data);*/
-
         return $this->load->view($template, $data, $return_view);
     }
+}
+
+class BaseController extends SessionController{
+
+    protected $current_user = null;
+
+    public function __construct($session = true) {
+        parent::__construct($session);
+
+        $this->current_user = $this->session->userdata('user_id');
+
+    }
+
+    public function load_view($template, $data = array()) {
+        $data = (array) $data;
+        $data['current_member'] = $this->current_user;
+
+        $this->loadView($template, $data);
+    }
+
+
+    private function is_active_session() {
+        return ($this->session->userdata('member_id') != '');
+    }
+
 }
