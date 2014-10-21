@@ -23,10 +23,7 @@
 	    <input name='sourceOfReferal' type="text" class="form-control" placeholder="SourceOfReferal">
 	    <input name='informant' type="text" class="form-control" placeholder="Informant">
 
-	    <button class="btn btn-lg btn-primary btn-block" type="submit">Create</button>
-	  </form>
-
-	</div> <!-- /container -->
+	    
 	
 
 

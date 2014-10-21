@@ -13,7 +13,7 @@ class PatientOPD extends BaseController {
 	    try {
 
 	        if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
-	            return $this->load_view('admin/patient/create');
+	            return $this->load_view('admin/patient/create_opd');
 	        }
 
 	        $license = License::find_valid_by_id($this->input->post('license_id'));
