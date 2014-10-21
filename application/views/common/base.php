@@ -43,7 +43,7 @@
                       <ul class="dropdown-menu">
                         <li><a href="<?php echo base_url('patientEmergency/create');?>">Emergency</a></li>
                         <li><a href="<?php echo base_url('patientOpd/create');?>">OPD</a></li>
-                        <li><a href="<?php echo base_url('patientImmpatient/create');?>">Impatient</a></li>
+                        <li><a href="<?php echo base_url('patientInpatient/create');?>">Impatient</a></li>
                       </ul>
                     </li>
                     <li><a href="#">Follow Up</a></li>
