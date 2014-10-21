@@ -9,7 +9,7 @@
     <meta name="author" content="">
     <link rel="icon" href="../../favicon.ico">
 
-    <title>Signin Template for Bootstrap</title>
+    <title>Welcome to BG Hospital</title>
 
     <!-- Bootstrap core CSS -->
     <!-- Bootstrap core CSS -->
@@ -18,7 +18,6 @@
 
        <script src="<?php echo base_url('public/js/jquery.js');?>"></script>
        <script src="<?php echo base_url('public/js/bootstrap.min.js');?>"></script>
-       <script type="text/javascript" src="<?php echo base_url('public/js/bootstrap.js');?>"></script>
 
        <!-- Custom styles for this template -->
        <link href="<?php echo base_url('public/custom/css/signin.css')?>" rel="stylesheet">

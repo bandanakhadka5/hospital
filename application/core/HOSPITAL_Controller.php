@@ -59,7 +59,7 @@ class BaseController extends SessionController{
 
 
     private function is_active_session() {
-        return ($this->session->userdata('member_id') != '');
+        return ($this->session->userdata('user_id') != '');
     }
 
 }

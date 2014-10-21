@@ -4,7 +4,9 @@ class Dashboard extends BaseController {
 
 	public function index() {
 
-		return $this->loadView('dashboard');
+		$data['users'] = User::find('all');
+
+		return $this->load_view('dashboard',$data);
 	}
 }
 
