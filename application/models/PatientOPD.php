@@ -32,6 +32,11 @@ class PatientOPD extends Patient {
 
     public function set_Doctor($doctor)
 	{
+        if($doctor == '')
+        {
+            throw new BlankDoctorException("You Must Mention The Doctor");
+            
+        }
     	$this->assign_attribute('Doctor',$doctor);
     }
 

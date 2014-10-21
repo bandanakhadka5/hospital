@@ -3,32 +3,67 @@
 <?php startblock('content') ?>
 
 <div class="container">
-	<hr>
-	<hr>
 	<div class="row-fluid">
-	<div class="span8 pull-left">
-		<h3>Users List</h3>
+	<div class="col-md-12">
+		<div class="col-md-6">
+			
 
-		<table class="table table-striped table-bordered">
-			<thead>
-				<tr>
-					<th>First Name</th>
-					<th>Last Name</th>
-					<th>Username</th>
-					<th>Email</th>
-				</tr>
-			</thead>
-			<tbody>
-				<?php foreach ($users as $user){ ?>
-					<tr>
-						<td><?=$user->firstname?></td>
-						<td><?=$user->lastname?></td>
-						<td><?=$user->username?></td>
-						<td><?=$user->email?></td>
-					</tr>
-				<?php } ?>
-			</tbody>
-		</table>
+			<h3>Today's Follow Ups</h3>
+
+			<?php if(isset($patient)) {?>
+
+			<div class="clearfix"></div>
+				<table class="table table-striped table-bordered">
+					<thead>
+						<tr>
+							<th>Full Name</th>
+							<th>PatientId</th>
+							<th>Last Visited Date</th>
+							<th>Contact Number</th>
+						</tr>
+					</thead>
+					<tbody>
+						<?php  foreach ($users as $user){ ?>
+							<tr>
+								<td><?=$user->firstname?></td>
+								<td><?=$user->lastname?></td>
+								<td><?=$user->username?></td>
+								<td><?=$user->email?></td>
+							</tr>
+						<?php } ?>
+					</tbody>
+				</table>
+				<?php }else echo "NO PATIENT"?>
+		</div>
+			
+		
+
+		<div class="col-md-6">
+
+			<h3>Patient's In Bed</h3>
+			
+				<table class="table table-striped table-bordered">
+					<thead>
+						<tr>
+							<th>Full Name</th>
+							<th>PatientId</th>
+							<th>Last Visited Date</th>
+							<th>Contact Number</th>
+						</tr>
+					</thead>
+					<tbody>
+						<?php foreach ($users as $user){ ?>
+							<tr>
+								<td><?=$user->firstname?></td>
+								<td><?=$user->lastname?></td>
+								<td><?=$user->username?></td>
+								<td><?=$user->email?></td>
+							</tr>
+						<?php } ?>
+					</tbody>
+				</table>
+		</div>			
+
 	</div>
 </div>
 

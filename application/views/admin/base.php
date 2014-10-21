@@ -34,6 +34,25 @@
 
   <body>
 
+    <div class="container">
+    
+        <div class = "message">
+            <?php if(isset($message)){ ?>
+                <div class = "alert-error">
+                    <?php echo $message;?>
+                </div>
+            <?php } ?>
+
+            <?php if($this->session->flashdata('alert_error')){ ?>
+                <div class = "alert-error">
+                    <?php echo $this->session->flashdata('alert_error');?>
+                </div>
+            <?php } ?>
+
+        </div>
+
+    </div>
+
     <?php start_block_marker('content') ?>
     <?php end_block_marker() ?>
 

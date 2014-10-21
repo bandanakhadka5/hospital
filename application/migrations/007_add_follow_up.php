@@ -25,12 +25,12 @@ class Migration_Add_follow_up extends CI_Migration {
 			'ConsultationType' => array(
 				'type' => 'varchar',
 				'constraint'=>'250',
-				'null' => False,
+				'null' => TRUE,
 			),
 
 			'TypeId' => array(
 				'type' => 'int',
-				'null'=>False,
+				'null'=>TRUE,
 			),
 
 			'CreatedAt' => array(

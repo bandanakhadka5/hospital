@@ -17,7 +17,7 @@
     <script src="<?php echo base_url('public/js/bootstrap.min.js');?>"></script>
 
     <!-- Custom styles for this template -->
-    <link href="<?php echo base_url('public/css/offcanvas.css')?>" rel="stylesheet">
+    <link href="<?php echo base_url('public/custom/css/offcanvas.css')?>" rel="stylesheet">
     </head>
 
     <body>
@@ -42,7 +42,7 @@
                       <a href="#" class="dropdown-toggle" data-toggle="dropdown">New Patient <b class="caret"></b></a>
                       <ul class="dropdown-menu">
                         <li><a href="#">Emergency</a></li>
-                        <li><a href="#">OPD</a></li>
+                        <li><a href="<?php echo base_url('patientOPD/create');?>">OPD</a></li>
                         <li><a href="#">Impatient</a></li>
                       </ul>
                     </li>
@@ -52,6 +52,25 @@
             </div><!-- /.nav-collapse -->
         </div><!--/.container -->
     </div><!-- /.navbar -->
+    
+    <div class="container">
+    
+        <div class = "message">
+            <?php if(isset($message)){ ?>
+                <div class = "alert-error">
+                    <?php echo $message;?>
+                </div>
+            <?php } ?>
+
+            <?php if($this->session->flashdata('alert_success')){ ?>
+                <div class = "alert-success">
+                    <h3><?php echo $this->session->flashdata('alert_success');?></h3>
+                </div>
+            <?php } ?>
+
+        </div>
+
+    </div>
 
     <?php start_block_marker('content') ?>
     <?php end_block_marker() ?>
