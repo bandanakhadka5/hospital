@@ -30,7 +30,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
               </button>
-              <a class="navbar-brand" href="/myhospital">BG Hospital</a>
+              <a class="navbar-brand" href="/hospital">BG Hospital</a>
             </div>
 
             <div class="collapse navbar-collapse">
