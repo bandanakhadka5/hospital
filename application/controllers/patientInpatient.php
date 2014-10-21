@@ -1,6 +1,6 @@
 <?php
 
-class PatientOpd extends BaseController {
+class PatientInpatient extends BaseController {
 
 	public function index() {
 
@@ -13,7 +13,7 @@ class PatientOpd extends BaseController {
 	    try {
 
 	        if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
-	            return $this->load_view('admin/patient/create_opd');
+	            return $this->load_view('admin/patient/create_inpatient');
 	        }
 
 	        $license = License::find_valid_by_id($this->input->post('license_id'));

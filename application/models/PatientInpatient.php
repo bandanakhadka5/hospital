@@ -2,7 +2,7 @@
 
 include_once('Exceptions.php');
 
-class PatientImpatient extends Patient {
+class PatientInpatient extends Patient {
 
 	/* Table Name */
 	static $table_name = 'patient_impatient';
@@ -66,19 +66,19 @@ class PatientImpatient extends Patient {
 
     public static function create($params) {
 
-    	$patient_impatient = new PatientImpatient;
+    	$patient_inpatient = new PatientInpatient;
 
-		$patient_impatient->DateOfAdmission = array_key_exists('date_of_admission', $params) ? $params['date_of_consultation'] : '';
-		$patient_impatient->DateOfProcedure = array_key_exists('date_of_procedure', $params) ? $params['date_of_procedure'] : '';
-		$patient_impatient->DateOfDischarge = array_key_exists('date_of_discharge', $params) ? $params['date_of_discharge'] : '';
-		$patient_impatient->activate();
+		$patient_inpatient->DateOfAdmission = array_key_exists('date_of_admission', $params) ? $params['date_of_consultation'] : '';
+		$patient_inpatient->DateOfProcedure = array_key_exists('date_of_procedure', $params) ? $params['date_of_procedure'] : '';
+		$patient_inpatient->DateOfDischarge = array_key_exists('date_of_discharge', $params) ? $params['date_of_discharge'] : '';
+		$patient_inpatient->activate();
 
 		$patient = Patient::create($params);
 		$patient->save();
 
-		$patient_impatient->PatientID = $patient->ID;
+		$patient_inpatient->PatientID = $patient->ID;
 
-		return $patient_impatient;
+		return $patient_inpatient;
 		
     }
 }

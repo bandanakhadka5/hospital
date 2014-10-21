@@ -3,14 +3,14 @@
 <?php startblock('content') ?>
 	
 	<form class="form" role="form" method ="POST" action="<?php echo base_url('patient/create');?>">
+
 	<?php get_extended_block();?>
 
-	<input name='doctor' type="text" class="form-control" placeholder="Doctor">
+	<input name='admissionDate' type="date" class="form-control" placeholder="Admission Date">
 
-	<input name='complaints' type="text" class="form-control" placeholder="ChiefComplaints">
-	<textarea name 'complaints'></textarea>
+	<input name='procedureDate' type="date" class="form-control" placeholder="Date Of Procedure">
 
-	<input name='email' type="email" class="form-control" placeholder="Email">
+	<input name='dischargeDate' type="date" class="form-control" placeholder="Date Of Discharge">
 
     <button class="btn btn-lg btn-primary btn-block" type="submit">Create</button>
   </form>

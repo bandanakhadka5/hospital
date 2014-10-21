@@ -4,7 +4,7 @@
 
 	<div class="container">
 
-	  <form class="form" role="form" method ="POST" action="<?php echo base_url('patient/create');?>">
+	  
 	    <h2>Add New Patient</h2>
 	    <input name='firstName' type="text" class="form-control" placeholder="FirstName" required autofocus>
 	    <input name='middleName' type="text" class="form-control" placeholder="MiddleName">
