@@ -3,7 +3,7 @@
 <?php startblock('content') ?>
 
 		<div style="text-align:center"><h2>Add New  OPD Patient</h2></div>
-		<form class="form" role="form" method ="POST" action="<?php echo base_url('patient/create');?>">
+		<form class="form" role="form" method ="POST" action="<?php echo base_url('patient_opd/create');?>">
 			<?php get_extended_block();?>
 
 			<div class="form-group" style="width:80%;">

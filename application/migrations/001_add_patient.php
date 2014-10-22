@@ -56,7 +56,6 @@ class Migration_Add_patient extends CI_Migration {
 
 			'DateOfBirth' => array(
 				'type' => 'datetime',
-				'null' => False,
 			),
 			'Email' => array(
 				'type' => 'varchar',

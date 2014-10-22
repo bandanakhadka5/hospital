@@ -41,9 +41,9 @@
                     <li class="dropdown">
                       <a href="#" class="dropdown-toggle" data-toggle="dropdown">New Patient <b class="caret"></b></a>
                       <ul class="dropdown-menu">
-                        <li><a href="<?php echo base_url('patientEmergency/create');?>">Emergency</a></li>
-                        <li><a href="<?php echo base_url('patientOpd/create');?>">OPD</a></li>
-                        <li><a href="<?php echo base_url('patientInpatient/create');?>">Inpatient</a></li>
+                        <li><a href="<?php echo base_url('patient_Emergency/create');?>">Emergency</a></li>
+                        <li><a href="<?php echo base_url('patient_Opd/create');?>">OPD</a></li>
+                        <li><a href="<?php echo base_url('patient_Inpatient/create');?>">Inpatient</a></li>
                       </ul>
                     </li>
                     <li><a href="#">Follow Up</a></li>

@@ -16,23 +16,19 @@ class Patient extends BaseModel {
             'class_name' => 'PatientEmergency',
             'foreign_key' => 'PatientID'
         ),
-	);
-
-    static $has_many = array(
         array(
             'opd',
             'class_name' => 'PatientOPD',
             'foreign_key' => 'PatientID'
         ),
-    );
 
-    static $has_many = array(
         array(
-            'impatient',
-            'class_name' => 'PatientImpatient',
+            'inpatient',
+            'class_name' => 'PatientInpatient',
             'foreign_key' => 'PatientID'
         ),
-    );
+	);
+
 
 
 	/* Public functions - Setters */
@@ -120,10 +116,10 @@ class Patient extends BaseModel {
 
     public function set_ContactNumber($contact_number)
     {
-        if($contact_number=='')
+        /*if($contact_number=='')
         {
             throw new BlankContactNumberException("Contact Number required!");                
-        }
+        }*/
 
         $this->assign_attribute('ContactNumber',$contact_number);
     }
@@ -251,7 +247,7 @@ class Patient extends BaseModel {
 		$patient->MiddleName = array_key_exists('middle_name',$params) ? $params['middle_name'] : Null;
 		$patient->LastName = array_key_exists('last_name', $params) ? $params['last_name'] : '';
 		$patient->DateOfBirth = array_key_exists('date_of_birth', $params) ? $params['date_of_birth'] : Null;
-		$patient->Age = array_key_exists('age',$params) ? $params['age'] ? '';
+		$patient->Age = array_key_exists('age',$params) ? $params['age'] : '';
 		$patient->Address = array_key_exists('address',$params) ? $params['address'] : '';
 		$patient->Sex = array_key_exists('sex', $params) ? $params['sex'] : '';
 		$patient->Email = array_key_exists('email',$params) ? $params['email'] : Null ;
@@ -261,7 +257,7 @@ class Patient extends BaseModel {
 		$patient->SourceOfReferal = array_key_exists('source_of_referal', $params) ? $params['source_of_referal'] : Null;
 		$patient->ContactNumber = array_key_exists('contact_number', $params) ? $params['contact_number'] : Null;
 
-        $patient->activate();
+        //$patient->activate();
 
 		return $patient;
 	}

@@ -1,6 +1,6 @@
-<?php
+<?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
-class PatientInpatient extends BaseController {
+class Patient_Emergency extends BaseController {
 
 	public function index() {
 
@@ -13,7 +13,7 @@ class PatientInpatient extends BaseController {
 	    try {
 
 	        if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
-	            return $this->load_view('admin/patient/create_inpatient');
+	            return $this->load_view('admin/patient/create_emergency');
 	        }
 
 	        $license = License::find_valid_by_id($this->input->post('license_id'));
