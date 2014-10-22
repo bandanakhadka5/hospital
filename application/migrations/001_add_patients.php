@@ -2,116 +2,127 @@
 
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Migration_Add_patient extends CI_Migration {
+class Migration_Add_patients extends CI_Migration {
 
 	public function up() {
+
 		$fields = array(
-			'ID' => array(
+
+			'id' => array(
 				'type' => 'int',
 				'auto_increment' => true,
 			),
-			'PubID' => array(
+			'pub_id' => array(
 				'type' => 'varchar',
 				'constraint' => 45,
 			),
-			'CreatedAt' => array(
-				'type' => 'timestamp',
-			),
-			'ModifiedAt' => array(
-				'type' => 'timestamp',
-			),
 
-			'FirstName' => array(
+			'first_name' => array(
 				'type' => 'varchar',
 				'constraint' => 45,
 				'null' => False,
 			),
 
-			'MiddleName' => array(
+			'middle_name' => array(
 				'type' => 'varchar',
 				'constraint' => 45,
 				'null' => True,
 			),
-			'LastName' => array(
+			'last_name' => array(
 				'type' => 'varchar',
 				'constraint' => 45,
 				'null' => False,
 			),
 
-			'Age' => array(
+			'age' => array(
 				'type' => 'int',
 				'constraint' => 45,
 				'null' => False,
 			),
-			'Sex' => array(
+			'sex' => array(
 				'type' => 'boolean',				
 				'null' => False,
 			),
 
-			'Address' => array(
+			'address' => array(
 				'type' => 'varchar',
 				'constraint' => 45,
 				'null' => True,
 			),
 
-			'DateOfBirth' => array(
+			'date_of_birth' => array(
 				'type' => 'datetime',
 			),
-			'Email' => array(
+
+			'email' => array(
 				'type' => 'varchar',
 				'constraint' => 256,
 				'null' => true,
 			),
 			
-			'SourceOfReferal' => array(
+			'source_of_referal' => array(
 				'type' => 'varchar',
 				'constraint' => 45,
 				'null' => True,
 			),
-			'ContactPerson' => array(
+
+			'contact_person' => array(
 				'type' => 'varchar',
 				'constraint' => 45,
 				'null' => True,
 			),
-			'RelationWithPatient' => array(
+
+			'relation_with_patient' => array(
 				'type' => 'varchar',
 				'constraint' => 45,
 				'null' => True,
 			),
-			'ContactNumber' => array(
+
+			'contact_number' => array(
 				'type'=> 'varchar',
 				'constraint' => 45,
 				'null'=> True,
 			),
-			'Informant' => array(
+
+			'informant' => array(
 				'type' => 'varchar',
 				'constraint' => 45,
 				'null' => True,
 			),
-			'LastVisitedAt' => array(
+
+			'last_visited_at' => array(
 				'type' => 'datetime',
 				'null' => true,
 			),
-			'Active' => array(
+
+			'active' => array(
 				'type' => 'boolean',
 				'default' => True,
 			),
 
-			'Deleted' => array(
+			'deleted' => array(
 				'type'=>'boolean',
 				'default'=> 0,
+			),
+
+			'created_at' => array(
+				'type' => 'timestamp',
+			),
+
+			'modified_at' => array(
+				'type' => 'timestamp',
 			),
 		);
 
 		$this->dbforge->add_field($fields);
-		$this->dbforge->add_key('ID', true);
-		$this->dbforge->create_table('hospital_patient');
+		$this->dbforge->add_key('id', true);
+		$this->dbforge->create_table('patients');
 
-		$this->db->query('ALTER TABLE hospital_patient MODIFY ModifiedAt TIMESTAMP ON UPDATE CURRENT_TIMESTAMP');
+		$this->db->query('ALTER TABLE patients MODIFY modified_at TIMESTAMP ON UPDATE CURRENT_TIMESTAMP');
 	}
 
 	public function down() {
-		$this->dbforge->drop_table('hospital_patient');
+		$this->dbforge->drop_table('patients');
 	}
 
 }

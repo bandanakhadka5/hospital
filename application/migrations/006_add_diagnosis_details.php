@@ -2,66 +2,74 @@
 
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Migration_Add_diagnosis_detail extends CI_Migration {
+class Migration_Add_diagnosis_details extends CI_Migration {
 
 	public function up() {
+
 		$fields = array(
-			'ID' => array(
+		
+			'id' => array(
 				'type' => 'int',
 				'auto_increment' => true,
 			),
-			'DiagnosisID' => array(
+
+			'diagnosis_id' => array(
 				'type' => 'int',
 			),
-			'Diagnosis' => array(
-				'type' => 'varchar',
-				'constraint'=>'250',
-				'null' => False,
-			),
-			'Doctor' => array(
-				'type' => 'varchar',
-				'constraint'=>'250',
-				'null' => False,
-			),
-			'ConsultationType' => array(
+
+			'diagnosis' => array(
 				'type' => 'varchar',
 				'constraint'=>'250',
 				'null' => False,
 			),
 
-			'TypeId' => array(
+			'doctor' => array(
+				'type' => 'varchar',
+				'constraint'=>'250',
+				'null' => False,
+			),
+
+			'consultation_type' => array(
+				'type' => 'varchar',
+				'constraint'=>'250',
+				'null' => False,
+			),
+
+			'type_id' => array(
 				'type' => 'int',
 				'null'=>False,
 			),
 
-			'CreatedAt' => array(
-				'type' => 'timestamp',
-			),
-			'ModifiedAt' => array(
-				'type' => 'timestamp',
-			),
-			'Active' => array(
+			'active' => array(
 				'type' => 'boolean',
 				'default' => 1,
 			),
 
-			'Deleted' => array(
+			'deleted' => array(
 				'type'=>'boolean',
 				'default'=> 0,
+			),
+
+			'created_at' => array(
+				'type' => 'timestamp',
+			),
+
+			'modified_at' => array(
+				'type' => 'timestamp',
 			),
 		);
 
 		$this->dbforge->add_field($fields);
-		$this->dbforge->add_key('ID', true);
-		$this->dbforge->create_table('patient_diagnosis_detail');
+		$this->dbforge->add_key('id', true);
+		$this->dbforge->create_table('diagnosis_details');
 
-		$this->db->query('ALTER TABLE patient_diagnosis_detail MODIFY ModifiedAt TIMESTAMP ON UPDATE CURRENT_TIMESTAMP');
+		$this->db->query('ALTER TABLE diagnosis_details MODIFY modified_at TIMESTAMP ON UPDATE CURRENT_TIMESTAMP');
 
 	}
 
 	public function down() {
 
-		$this->dbforge->drop_table('patient_diagnosis_detail');
+		$this->dbforge->drop_table('diagnosis_details');
 
 	}
 }
