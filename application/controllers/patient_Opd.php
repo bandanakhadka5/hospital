@@ -18,9 +18,9 @@ class Patient_Opd extends BaseController {
 
 	        $params = $this->input->post();
 
-	        $patient = Patient::create($params);
+	        $patient_opd = PatientOPD::create($params);
 
-	        $patient->save();
+	        $patient_opd->save();
 
 	        $this->session->set_flashdata(
 	        	'alert_success', 
@@ -40,7 +40,6 @@ class Patient_Opd extends BaseController {
 	            
 	        }
 	}
-
 }
 
 ?>

@@ -1,7 +1,6 @@
 <?php
 
-class PatientSearch extends Search {
-
+class PatientInpatientSearch extends Search {
 
 	public function __construct() {
 
@@ -22,11 +21,11 @@ class PatientSearch extends Search {
 		if(isset($options->search) && $options->search !== '') {
 
 			$condition_string .= "and (
-				".Patient::$table_name.".PubID LIKE ?
-					or ".Patient::$table_name.".FirstName LIKE ?
-					or ".Patient::$table_name.".LastName LIKE ?
-					or ".Patient::$table_name.".MiddleName LIKE ?
-					or ".Patient::$table_name.".Address LIKE ?
+				".Patient::$table_name.".pub_id LIKE ?
+					or ".Patient::$table_name.".first_name LIKE ?
+					or ".Patient::$table_name.".last_name LIKE ?
+					or ".Patient::$table_name.".middle_name LIKE ?
+					or ".Patient::$table_name.".address LIKE ?
 			)";
 			
 			array_push($conditions, '%'.$options->search.'%');

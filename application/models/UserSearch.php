@@ -2,7 +2,6 @@
 
 class UserSearch extends Search {
 
-
 	public function __construct() {
 
 		parent::__construct();
@@ -23,7 +22,7 @@ class UserSearch extends Search {
 
 			$condition_string .= "and (
 				".User::$table_name.".username LIKE ?
-					or ".User::$table_name.".firstname LIKE ?
+					or ".User::$table_name.".first_name LIKE ?
 			)";
 			
 			array_push($conditions, '%'.$options->search.'%');

@@ -9,21 +9,21 @@
 			<div class="form-group" style="width:80%;">
 				
 			    <label for="email">Email</label>
-			    <input type="email" class="form-control" id="email" placeholder="Enter Email">
+			    <input name="email" type="email" class="form-control" id="email" placeholder="Enter Email">
 
 			</div>
 
 			<div class="form-group" style="width:80%;">
 				
 			    <label for="Doctor">Doctor</label>
-			    <input type="text" class="form-control" id="doctor" placeholder="Enter Doctor's Name">
+			    <input name="doctor" type="text" class="form-control" id="doctor" placeholder="Enter Doctor's Name">
 
 			</div>
 
 			<div class="form-group" style="width:80%;">
 				
 			    <label for="Complaints">Complaints</label>
-			    <input type="text" class="form-control" id="complaints" placeholder="Enter Complaints">
+			    <input name="chief_compliants" type="text" class="form-control" id="complaints" placeholder="Enter Complaints">
 
 			</div>
 

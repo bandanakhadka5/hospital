@@ -39,18 +39,18 @@ class Dashboard extends BaseController {
             $order_by_direction = 'desc';
         }
 
-        if(array_key_exists('search_term', $_GET)) {
+        if(array_key_exists('search', $_GET)) {
 
-            $search_term = $_GET['search_term'];
+            $search = $_GET['search'];
         }
         else {
-            $search_term = null;
+            $search = null;
         }
 
         $user_search = new UserSearch();
         $user_search ->set_order($order_by_field, $order_by_direction)
                      ->set_page($page)
-                     ->set_search_term($search_term)
+                     ->set_search_term($search)
                      ->execute();
 
 		return $this->load_view('test', array('users' => $user_search));

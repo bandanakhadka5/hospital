@@ -40,80 +40,80 @@ class BaseModel extends ActiveRecord_Base {
 	/* Public Functions */
 
 	public function is_active() {
-		return ($this->Active) ? true : false;
+		return ($this->active) ? true : false;
 	}
 
 	public function is_deleted() {
-		return ($this->Deleted) ? true : false;
+		return ($this->deleted) ? true : false;
 	}
 
 	public function is_valid() {
-		return (!$this->Deleted() && $this->Active()) ? true : false;
+		return (!$this->is_deleted() && $this->is_active()) ? true : false;
 	}
 
 	public function check_is_undeleted() {
 
-		if($this->Deleted()) {
+		if($this->is_deleted()) {
 			$this->throw_base_exception('deleted');
 		}
 	}
 
 	public function check_is_valid() {
 
-		if($this->Deleted()) {
+		if($this->is_deleted()) {
 			$this->throw_base_exception('deleted');
 		}
 
-		if(!$this->Active()) {
+		if(!$this->is_active()) {
 			$this->throw_base_exception('inactive');
 		}
 	}
 	
 	public function activate() {
 
-		if($this->Deleted()) {
+		if($this->is_deleted()) {
 			$this->throw_base_exception('deleted');
 		}
 
-		if($this->Active()) {
+		if($this->is_active()) {
 			$this->throw_base_exception('active');
 		}
 
-		$this->Active = 1;
+		$this->active = 1;
 		$this->save();
 	}
 
 	public function deactivate() {
 
-		if($this->Deleted()) {
+		if($this->is_deleted()) {
 			$this->throw_base_exception('deleted');
 		}
 
-		if(!$this->Active()) {
+		if(!$this->is_active()) {
 			$this->throw_base_exception('inactive');
 		}
 
-		$this->Active = 0;
+		$this->active = 0;
 		$this->save();
 	}
 
 	public function delete() {
 
-		if($this->Deleted()) {
+		if($this->is_deleted()) {
 			$this->throw_base_exception('deleted');
 		}
 
-		$this->Deleted = 1;
+		$this->deleted = 1;
 		$this->save();
 	}
 
 	public function undelete() {
 
-		if(!$this->Deleted()) {
+		if(!$this->is_deleted()) {
 			$this->throw_base_exception('not-deleted');
 		}
 
-		$this->Deleted = 0;
+		$this->deleted = 0;
 		$this->save();
 	}
 
@@ -177,7 +177,7 @@ class BaseModel extends ActiveRecord_Base {
 			$attributes = substr($method,18);
 
 			$options['conditions'] = ActiveRecord\SQLBuilder::create_conditions_from_underscored_string(static::connection(),$attributes,$args,static::$alias_attribute);
-			$options['conditions'][0] .= ' and Active = 1 and Deleted = 0';
+			$options['conditions'][0] .= ' and active = 1 and deleted = 0';
 
 			$model = static::find('all',$options);
 
@@ -189,7 +189,7 @@ class BaseModel extends ActiveRecord_Base {
 			$attributes = substr($method,22);
 
 			$options['conditions'] = ActiveRecord\SQLBuilder::create_conditions_from_underscored_string(static::connection(),$attributes,$args,static::$alias_attribute);
-			$options['conditions'][0] .= ' and Deleted = 0';
+			$options['conditions'][0] .= ' and deleted = 0';
 
 			$model = static::find('all',$options);
 
@@ -201,7 +201,7 @@ class BaseModel extends ActiveRecord_Base {
 			$attributes = substr($method,15);
 
 			$options['conditions'] = ActiveRecord\SQLBuilder::create_conditions_from_underscored_string(static::connection(),$attributes,$args,static::$alias_attribute);
-			$options['conditions'][0] .= ' and Active = 1 and Deleted = 0';
+			$options['conditions'][0] .= ' and active = 1 and deleted = 0';
 
 			return static::count($options);
 		}
@@ -211,7 +211,7 @@ class BaseModel extends ActiveRecord_Base {
 			$attributes = substr($method,19);
 
 			$options['conditions'] = ActiveRecord\SQLBuilder::create_conditions_from_underscored_string(static::connection(),$attributes,$args,static::$alias_attribute);
-			$options['conditions'][0] .= ' and Deleted = 0';
+			$options['conditions'][0] .= ' and deleted = 0';
 
 			return static::count($options);
 		}

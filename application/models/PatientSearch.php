@@ -2,7 +2,6 @@
 
 class PatientSearch extends Search {
 
-
 	public function __construct() {
 
 		parent::__construct();
@@ -11,9 +10,9 @@ class PatientSearch extends Search {
 	protected function build_joins() {
 
 		return array(
-				'LEFT JOIN patient_emergency emergency ON (hospital_patient.ID = emergency.PatientID)',
-				'LEFT JOIN patient_opd opd ON (hospital_patient.ID = opd.PatientID)',
-				'LEFT JOIN patient_impatient inpatient ON (hospital_patient.ID = inpatient.PatientID)',
+				'LEFT JOIN patients_emergency emergency ON (patient.id = emergency.patient_id)',
+				'LEFT JOIN patients_opd opd ON (patient.id = opd.patient_id)',
+				'LEFT JOIN patients_inpatient inpatient ON (patient.id = inpatient.patient_id)',
 			);
 	}
 
@@ -26,11 +25,11 @@ class PatientSearch extends Search {
 		if(isset($options->search) && $options->search !== '') {
 
 			$condition_string .= "and (
-				".Patient::$table_name.".PubID LIKE ?
-					or ".Patient::$table_name.".FirstName LIKE ?
-					or ".Patient::$table_name.".LastName LIKE ?
-					or ".Patient::$table_name.".MiddleName LIKE ?
-					or ".Patient::$table_name.".Address LIKE ?
+				".Patient::$table_name.".pub_id LIKE ?
+					or ".Patient::$table_name.".first_name LIKE ?
+					or ".Patient::$table_name.".last_name LIKE ?
+					or ".Patient::$table_name.".middle_name LIKE ?
+					or ".Patient::$table_name.".address LIKE ?
 			)";
 			
 			array_push($conditions, '%'.$options->search.'%');

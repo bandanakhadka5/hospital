@@ -5,8 +5,7 @@ include_once('Exceptions.php');
 class Patient extends BaseModel {
 
 	/* Table Name */
-	static $table_name = 'hospital_patient';
-	static $primary_key = 'ID';
+	static $table_name = 'patients';
 
 	/* Associations */
 
@@ -14,31 +13,29 @@ class Patient extends BaseModel {
 		array(
             'emergency',
             'class_name' => 'PatientEmergency',
-            'foreign_key' => 'PatientID'
+            'foreign_key' => 'patient_id'
         ),
         array(
             'opd',
             'class_name' => 'PatientOPD',
-            'foreign_key' => 'PatientID'
+            'foreign_key' => 'patient_id'
         ),
 
         array(
             'inpatient',
             'class_name' => 'PatientInpatient',
-            'foreign_key' => 'PatientID'
+            'foreign_key' => 'patient_id'
         ),
 	);
 
-
-
 	/* Public functions - Setters */
 
-    public function is_pub_id_unique($PubID) {
+    public function is_pub_id_unique($pub_id) {
 
         if($this->is_new_record()) {
             
             if(self::exists(array(
-                'PubID' => $PubID,
+                'pub_id' => $pub_id,
             ))){
                 throw new PatientPubIDExistsException;
             }
@@ -46,7 +43,7 @@ class Patient extends BaseModel {
         } elseif(!$this->is_new_record()) {
 
             if(self::exists(array('conditions' => array(
-                'PubID = ? and id != ?',
+                'pub_id = ? and id != ?',
                 $PubID,
                 $this->id,
             )))){
@@ -56,184 +53,184 @@ class Patient extends BaseModel {
 
     }
 
-    public function set_PubID($PubID) {
+    public function set_pub_id($pub_id) {
 
-        $PubID = strtolower(trim($PubID));
+        $pub_id = strtolower(trim($pub_id));
 
-        if(!$PubID) {
+        if(!$pub_id) {
             throw new PatientPubIDRequiredException;
         }
 
-        $this->is_pub_id_unique($PubID);
+        $this->is_pub_id_unique($pub_id);
 
-        $this->assign_attribute('PubID', $PubID);
+        $this->assign_attribute('pub_id', $pub_id);
     }
 
-    public function set_FirstName($first_name)
+    public function set_first_name($first_name)
 	{
         if($first_name=='')
         {
             throw new BlankFirstNameException("First Name Required!");              
         }
 
-    	$this->assign_attribute('FirstName',$first_name);
+    	$this->assign_attribute('first_name',$first_name);
     }
 
-    public function set_MiddleName($middle_name)
+    public function set_middle_name($middle_name)
     {
-        $this->assign_attribute('MiddleName',$middle_name);
+        $this->assign_attribute('middle_name',$middle_name);
     }
 
-    public function set_LastName($last_name)
+    public function set_last_name($last_name)
 	{
         if($last_name=='')
         {
             throw new BlankLastNameException("Last Name Required!");                
         }
 
-    	$this->assign_attribute('LastName',$last_name);
+    	$this->assign_attribute('last_name',$last_name);
     }
 
-    public function set_Address($address)
+    public function set_address($address)
     {
         if($address=='')
         {
             throw new BlankAddressException("Address field cannot be empty!");                
         }
 
-        $this->assign_attribute('Address',$address);
+        $this->assign_attribute('address',$address);
     }
 
-    public function set_Age($age)
+    public function set_age($age)
     {
         if($age=='')
         {
             throw new BlankAgeException("Age field cannot be empty!");                
         }
 
-        $this->assign_attribute('Age',$age);
+        $this->assign_attribute('age',$age);
     }
 
-    public function set_ContactNumber($contact_number)
+    public function set_contact_number($contact_number)
     {
         /*if($contact_number=='')
         {
             throw new BlankContactNumberException("Contact Number required!");                
         }*/
 
-        $this->assign_attribute('ContactNumber',$contact_number);
+        $this->assign_attribute('contact_number',$contact_number);
     }
 
-    public function set_Sex($sex)
+    public function set_sex($sex)
 	{
         if($sex=='')
         {
             throw new BlankSexException("Sex field cannot be empty!");                
         }
 
-    	$this->assign_attribute('Sex',$sex);
+    	$this->assign_attribute('sex',$sex);
     }
 
-    public function set_DateOfBirth($date_of_birth)
+    public function set_date_of_birth($date_of_birth)
     {
-        $this->assign_attribute('DateOfBirth',$date_of_birth);
+        $this->assign_attribute('date_of_birth',$date_of_birth);
     }
 
-    public function set_Email($email)
+    public function set_email($email)
     {
-        $this->assign_attribute('Email',$email);
+        $this->assign_attribute('email',$email);
     }
 
-    public function set_SourceOfReferal($source_of_referal)
+    public function set_source_of_referal($source_of_referal)
     {
-        $this->assign_attribute('SourceOfReferal',$source_of_referal);
+        $this->assign_attribute('source_of_referal',$source_of_referal);
     }
 
-    public function set_ContactPerson($contact_person)
+    public function set_contact_person($contact_person)
     {
-        $this->assign_attribute('ContactPerson',$contact_person);
+        $this->assign_attribute('contact_person',$contact_person);
     }
 
-    public function set_RelationWithPatient($relation_with_patient)
+    public function set_relation_with_patient($relation_with_patient)
     {
-        $this->assign_attribute('RelationWithPatient',$relation_with_patient);
+        $this->assign_attribute('relation_with_patient',$relation_with_patient);
     }
 
-    public function set_Informant($informant)
+    public function set_informant($informant)
     {
-        $this->assign_attribute('Informant',$informant);
+        $this->assign_attribute('informant',$informant);
     }
 
     /* Public functions - Getters */
 
-    public function get_FirstName()
+    public function get_first_name()
 	{
-    	return $this->read_attribute('FirstName');
+    	return $this->read_attribute('first_name');
     }
 
-    public function get_LastName()
+    public function get_middle_name()
+    {
+        return $this->read_attribute('middle_name');
+    }
+
+    public function get_last_name()
 	{
-    	return $this->read_attribute('LastName');
+    	return $this->read_attribute('last_name');
     }
 
-    public function get_Sex()
+    public function get_sex()
 	{
-    	return $this->read_attribute('Sex');
+    	return $this->read_attribute('sex');
     }
 
-    public function get_Age()
+    public function get_age()
     {
-        return $this->read_attribute('Age');
+        return $this->read_attribute('age');
     }
 
-    public function get_Address()
+    public function get_address()
     {
-        return $this->read_attribute('Address');
+        return $this->read_attribute('address');
     }
 
-    public function get_ContactNumber()
+    public function get_contact_number()
 	{
-    	return $this->read_attribute('ContactNumber');
+    	return $this->read_attribute('contact_number');
     }
 
-    public function get_DateOfBirth()
+    public function get_date_of_birth()
     {
-        return $this->read_attribute('DateOfBirth');
+        return $this->read_attribute('date_of_birth');
     }
 
-    public function get_Email()
+    public function get_email()
     {
-        return $this->read_attribute('Email');
+        return $this->read_attribute('email');
     }
 
-    public function get_SourceOfReferal()
+    public function get_source_of_referal()
     {
-        return $this->read_attribute('SourceOfReferal');
+        return $this->read_attribute('source_of_referal');
     }
 
-    public function get_ContactPerson()
+    public function get_contact_person()
     {
-        return $this->read_attribute('ContactPerson');
+        return $this->read_attribute('contact_person');
     }
 
-    public function get_RelationWithPatient()
+    public function get_relation_with_patient()
     {
-        return $this->read_attribute('RelationWithPatient');
+        return $this->read_attribute('relation_with_patient');
     }
 
-    public function get_Informant()
+    public function get_informant()
     {
-        return $this->read_attribute('Informant');
+        return $this->read_attribute('informant');
     }
 
-    public function get_LastVisitedAt()
+    public function get_last_visited_at()
     {
-        return $this->read_attribute('LastVisitedAt');
-    }
-
-    public function get_MiddleName()
-    {
-        return $this->read_attribute('MiddleName');
+        return $this->read_attribute('last_visited_at');
     }
 
 	/* Public static functions */
@@ -242,22 +239,22 @@ class Patient extends BaseModel {
 
 		$patient = new Patient;
 
-        $patient->PubID = sha1(rand());
-		$patient->FirstName = array_key_exists('first_name', $params) ? $params['first_name'] : '';
-		$patient->MiddleName = array_key_exists('middle_name',$params) ? $params['middle_name'] : Null;
-		$patient->LastName = array_key_exists('last_name', $params) ? $params['last_name'] : '';
-		$patient->DateOfBirth = array_key_exists('date_of_birth', $params) ? $params['date_of_birth'] : Null;
-		$patient->Age = array_key_exists('age',$params) ? $params['age'] : '';
-		$patient->Address = array_key_exists('address',$params) ? $params['address'] : '';
-		$patient->Sex = array_key_exists('sex', $params) ? $params['sex'] : '';
-		$patient->Email = array_key_exists('email',$params) ? $params['email'] : Null ;
-		$patient->Informant = array_key_exists('informant',$params) ? $params['informant'] : Null;
-		$patient->ContactPerson = array_key_exists('contact_person', $params) ? $params['contact_person'] : Null;
-		$patient->RelationWithPatient = array_key_exists('relation_with_patient', $params) ? $params['relation_with_patient'] : Null;
-		$patient->SourceOfReferal = array_key_exists('source_of_referal', $params) ? $params['source_of_referal'] : Null;
-		$patient->ContactNumber = array_key_exists('contact_number', $params) ? $params['contact_number'] : Null;
+        $patient->pub_id = sha1(rand());
+		$patient->first_name = array_key_exists('first_name', $params) ? $params['first_name'] : '';
+		$patient->middle_name = array_key_exists('middle_name',$params) ? $params['middle_name'] : Null;
+		$patient->last_name = array_key_exists('last_name', $params) ? $params['last_name'] : '';
+		$patient->date_of_birth = array_key_exists('date_of_birth', $params) ? $params['date_of_birth'] : Null;
+		$patient->age = array_key_exists('age',$params) ? $params['age'] : '';
+		$patient->address = array_key_exists('address',$params) ? $params['address'] : '';
+		$patient->sex = array_key_exists('sex', $params) ? $params['sex'] : '';
+		$patient->email = array_key_exists('email',$params) ? $params['email'] : Null ;
+		$patient->informant = array_key_exists('informant',$params) ? $params['informant'] : Null;
+		$patient->contact_person = array_key_exists('contact_person', $params) ? $params['contact_person'] : Null;
+		$patient->relation_with_patient = array_key_exists('relation_with_patient', $params) ? $params['relation_with_patient'] : Null;
+		$patient->source_of_referal = array_key_exists('source_of_referal', $params) ? $params['source_of_referal'] : Null;
+		$patient->contact_number = array_key_exists('contact_number', $params) ? $params['contact_number'] : Null;
 
-        //$patient->activate();
+        $patient->activate();
 
 		return $patient;
 	}
