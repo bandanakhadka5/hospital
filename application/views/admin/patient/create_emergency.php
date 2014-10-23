@@ -47,7 +47,7 @@
 	    		<div class="form-group" style="width:80%;">
 	    			
 	    		    <label for="Public Id">Public Id</label>
-	    		    <input type="text" class="form-control" onclick="reset();" id="public_id" placeholder="Enter PublicId Of Patient">
+	    		    <input type="text" class="form-control" id="publicid" placeholder="Enter PublicId Of Patient">
 
 	    		</div>
 
@@ -56,7 +56,7 @@
 	      </div>
 	      <div class="modal-footer">
 	   
-	        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+	        <button type="button" id="close_modal" class="btn btn-default" data-dismiss="modal">Close</button>
 	        <button type="button" onclick="fill_form();" class="btn btn-primary">Submit</button>
 	      </div>
 	    </div>
@@ -66,7 +66,7 @@
 	<div class="row">
 		<div class="col-md-12">
 			<div class="col-md-9 col-md-offset-2">
-				<button id="submit" class="btn btn-lg btn-primary btn-block" type="submit" >Create</button>
+				<button id="submit" class="btn btn-lg btn-primary btn-block" >Create</button>
 			</div>
 		
 		</div>
@@ -89,44 +89,49 @@
 
 	function fill_form(){
 		
-		var public_id = document.getElementById('public_id');
-		if (public_id =='') {
+		var pubid = document.getElementById('publicid').value;
+		if (pubid == '') {
 
 			document.getElementById('message').innerHTML = '<h5 style="color:red">Sorry! Please Enter Valid Public Id</h5>';
+
 		}else{
 
 			document.getElementById('message').innerHTML = "<h5 style='color:green;margin-left:2%;'>Finding Patient .....</h5>";
-
-			var xmlhttp;
-			var response; 
 			
-			if (window.XMLHttpRequest) {// code for IE7+, Firefox, Chrome, Opera, Safari
-			    xmlhttp=new XMLHttpRequest();
-			}
-			else {// code for IE6, IE5
-			    xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
-			}
+				$.ajax({
+					type: "GET",
+			
+					url: "<?php echo base_url('patients/ajax_return_patient')?>"+"?pubid="+pubid,
+					success: function(result){// result is in json 
 
-			xmlhttp.onreadystatechange=function() {
-			    
-			    if (xmlhttp.readyState==4 && xmlhttp.status==200) {
-			        
-			        response = xmlhttp.responseText;
+			           var patient = JSON.parse(result);
 
-			        if(response == '1') {
+			           document.getElementById('firstname').value = patient['first_name'];
+			           document.getElementById('middlename').value = patient['middle_name'];
+			           document.getElementById('lastname').value = patient['last_name'];
+			           document.getElementById('age').value = patient['age'];
+			           document.getElementById('address').value = patient['address'];
+			           document.getElementById('dateofbirth').value = patient['date_of_birth'];
+			           document.getElementById('email').value = patient['email'];
+			           document.getElementById('source').value = patient['source_of_referal'];
+			           document.getElementById('informant').value = patient['informant'];
+			           document.getElementById('sex').value = patient['sex'];
+			           //document.getElementById('contact_person').value = patient['contact_person'];
+			           alert('aaaaa');
+			           document.getElementById('message').innerHTML = " ";
+			           //$("#close_modal").trigger('click');
 
-			            document.forms["memberValidationForm"].submit();
-			        } 
-			         else {
-			            document.getElementById('invalid_code').innerHTML = "<h5 style='color:red;margin-left:2%;'> Invalid Code </h5>";
-			        }
-			    }
-			}
 
-			xmlhttp.open("GET","/en/verify/mobile/ajax_verify_auth_code/?code="+code, true);
-			xmlhttp.send();
+					},
+					// Generic Ajax Error for webapp
+					error: function (xhr, ajaxOptions, thrownError){
+
+						alert(thrownError);
+					}
+				});
+
+
 		}
-
 
 
 	}

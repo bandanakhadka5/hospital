@@ -75,7 +75,7 @@ class PatientOPD extends Patient {
 		$patient_opd->date_of_consultation = array_key_exists('date_of_consultation', $params) ? $params['date_of_consultation'] : '';
 		$patient_opd->chief_compliants = array_key_exists('chief_compliants', $params) ? $params['chief_compliants'] : '';
 		$patient_opd->doctor = array_key_exists('doctor', $params) ? $params['doctor'] : '';
-		$patient_opd->activate();
+		//$patient_opd->activate();
 
 		$patient = Patient::create($params);
 		$patient->save();

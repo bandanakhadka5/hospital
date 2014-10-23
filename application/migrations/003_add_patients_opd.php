@@ -19,6 +19,7 @@ class Migration_Add_patients_opd extends CI_Migration {
 
 			'date_of_consultation' => array(
 				'type' => 'datetime',
+				'null' => True,
 			),
 
 			'chief_compliants'=> array(

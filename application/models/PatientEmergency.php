@@ -54,7 +54,7 @@ class PatientEmergency extends Patient {
 
 		$patient_emergency->date_of_consultation = array_key_exists('date_of_consultation', $params) ? $params['date_of_consultation'] : '';
 		$patient_emergency->chief_compliants = array_key_exists('chief_compliants', $params) ? $params['chief_compliants'] : '';
-		$patient_emergency->activate();
+		//$patient_emergency->activate();
 
 		$patient = Patient::create($params);
 		$patient->save();

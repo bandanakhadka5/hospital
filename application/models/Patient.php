@@ -239,7 +239,7 @@ class Patient extends BaseModel {
 
 		$patient = new Patient;
 
-        $patient->pub_id = sha1(rand());
+        $patient->pub_id = mt_rand(1000000,9999999);
 		$patient->first_name = array_key_exists('first_name', $params) ? $params['first_name'] : '';
 		$patient->middle_name = array_key_exists('middle_name',$params) ? $params['middle_name'] : Null;
 		$patient->last_name = array_key_exists('last_name', $params) ? $params['last_name'] : '';
@@ -254,7 +254,7 @@ class Patient extends BaseModel {
 		$patient->source_of_referal = array_key_exists('source_of_referal', $params) ? $params['source_of_referal'] : Null;
 		$patient->contact_number = array_key_exists('contact_number', $params) ? $params['contact_number'] : Null;
 
-        $patient->activate();
+        //$patient->activate();
 
 		return $patient;
 	}
