@@ -28,7 +28,7 @@ class Dashboard extends BaseController {
             $order_by_field = $_GET['order_by_field'];
         }
         else {
-            $order_by_field = 'CreatedAt';
+            $order_by_field = 'created_at';
         }
 
         if(array_key_exists('order_by_direction', $_GET)) {

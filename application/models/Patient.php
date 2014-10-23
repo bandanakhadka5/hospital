@@ -254,7 +254,8 @@ class Patient extends BaseModel {
 		$patient->source_of_referal = array_key_exists('source_of_referal', $params) ? $params['source_of_referal'] : Null;
 		$patient->contact_number = array_key_exists('contact_number', $params) ? $params['contact_number'] : Null;
 
-        //$patient->activate();
+        $patient->active = 1;
+        $patient->deleted = 0;
 
 		return $patient;
 	}
