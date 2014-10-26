@@ -7,7 +7,6 @@
 	<div class="col-md-12">
 		<div class="col-md-6">
 			
-
 			<h3>Today's Follow Ups</h3>
 
 			<?php if(isset($patient)) {?>
@@ -59,7 +58,13 @@
 								<td><?=$patient_in_bed->patient->last_name?></td>
 								<td><?=$patient_in_bed->patient->address?></td>
 								<td><?=$patient_in_bed->patient->age?></td>
-								<td><?php if($patient_in_bed->patient->sex == 0) echo "Male"; else echo "Female";?></td>
+								<td>
+									<?php
+									if($patient_in_bed->patient->sex == 0) 
+										echo "Male";
+									else echo "Female";
+									?>
+								</td>
 							</tr>
 						<?php } ?>
 					</tbody>

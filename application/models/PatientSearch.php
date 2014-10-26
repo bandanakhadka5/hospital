@@ -10,9 +10,9 @@ class PatientSearch extends Search {
 	protected function build_joins() {
 
 		return array(
-				'LEFT JOIN patients_emergency emergency ON (patient.id = emergency.patient_id)',
-				'LEFT JOIN patients_opd opd ON (patient.id = opd.patient_id)',
-				'LEFT JOIN patients_inpatient inpatient ON (patient.id = inpatient.patient_id)',
+				'LEFT JOIN patients_emergency emergency ON (patients.id = emergency.patient_id)',
+				'LEFT JOIN patients_opd opd ON (patients.id = opd.patient_id)',
+				'LEFT JOIN patients_inpatient inpatient ON (patients.id = inpatient.patient_id)',
 			);
 	}
 

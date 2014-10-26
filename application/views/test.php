@@ -65,15 +65,11 @@ $this->bspaginator->config($config);
 					<div class="span9">
 						<h3>Users List</h3>
 						<?php if($users->get_total_rows() > 0){ ?>
+
+							<div class="table-container">
 							<table class="table table-striped table-bordered">
-								<thead>
-									<tr>
-										<th>First Name</th>
-										<th>Last Name</th>
-										<th>Username</th>
-										<th>Email</th>
-									</tr>
-								</thead>
+
+								<?=$this->bspaginator->table_header()?>
 								<tbody>
 									<?php foreach ($users as $user){ ?>
 										<tr>
@@ -85,6 +81,7 @@ $this->bspaginator->config($config);
 									<?php } ?>
 								</tbody>
 							</table>
+							</div>
 						<?php } else { ?>
 							<div class="well" style="text-align:center; padding:100px 0;">
 								<p style="font-size:24px;">No Users found.</p>
