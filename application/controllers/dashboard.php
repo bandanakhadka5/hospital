@@ -4,7 +4,7 @@ class Dashboard extends BaseController {
 
 	public function index() {
 
-		$data['users'] = User::find('all');
+		$data['patients_in_bed'] = PatientInpatient::find('all');
 
 		return $this->load_view('dashboard',$data);
 	}

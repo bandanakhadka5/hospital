@@ -21,6 +21,10 @@ class PatientOPD extends Patient {
 
     public function set_date_of_consultation($date_of_consultation)
 	{
+        if($date_of_consultation == '' || $date_of_consultation === NULL) {
+            throw new Exception("Please Enter Date of Consultation");
+        }
+        
     	$this->assign_attribute('date_of_consultation',$date_of_consultation);
     }
 

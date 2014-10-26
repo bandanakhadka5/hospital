@@ -2,28 +2,28 @@
 
 <?php startblock('content') ?>
 	<div style="text-align:center"><h2>Add New InPatient</h2></div>
-	<form class="form" role="form" method ="POST" action="<?php echo base_url('patient/create');?>">
+	<form class="form" role="form" method ="POST" action="<?php echo base_url('patient_inpatient/create');?>">
 
 	<?php get_extended_block();?>
 
 	<div class="form-group" style="width:80%;">
 
 	    <label for="AdmissionDate">Admission Date</label>
-	    <input type="date" class="form-control" id="admissiondate" placeholder="Enter Date">
+	    <input name="date_of_admission" type="date" class="form-control" id="admissiondate" placeholder="Enter Date">
 
 	</div>
 
 	<div class="form-group" style="width:80%;">
 
 	    <label for="ProcedureDate">ProcedureDate</label>
-	    <input type="date" class="form-control" id="proceduredate" placeholder="Enter Date">
+	    <input name="date_of_procedure" type="date" class="form-control" id="proceduredate" placeholder="Enter Date">
 
 	</div>
 
 	<div class="form-group" style="width:80%;">
 
 	    <label for="DischargeDate">DischargeDate</label>
-	    <input type="date" class="form-control" id="dischargedate" placeholder="Enter Date">
+	    <input type="date" name="date_of_discharge" class="form-control" id="dischargedate" placeholder="Enter Date">
 
 	</div>
 

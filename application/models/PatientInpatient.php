@@ -67,7 +67,7 @@ class PatientInpatient extends Patient {
 
     	$patient_inpatient = new PatientInpatient;
 
-		$patient_inpatient->date_of_admission = array_key_exists('date_of_admission', $params) ? $params['date_of_consultation'] : '';
+		$patient_inpatient->date_of_admission = array_key_exists('date_of_admission', $params) ? $params['date_of_admission'] : '';
 		$patient_inpatient->date_of_procedure = array_key_exists('date_of_procedure', $params) ? $params['date_of_procedure'] : '';
 		$patient_inpatient->date_of_discharge = array_key_exists('date_of_discharge', $params) ? $params['date_of_discharge'] : '';
 		$patient_inpatient->active = 1;

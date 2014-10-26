@@ -9,21 +9,21 @@
 			</button>
 		</h1></div>
 		
-		<form class="form" role="form" method ="POST" action="<?php echo base_url('patient/create');?>">
+		<form class="form" role="form" method ="POST" action="<?php echo base_url('patient_emergency/create');?>">
 
 		<?php get_extended_block();?>
 
 		<div class="form-group" style="width:80%;">
 
 		    <label for="ConsultationDate">ConsultationDate</label>
-		    <input type="date" class="form-control" id="consultationdate" placeholder="Enter Date">
+		    <input type="date" name="date_of_consultation" class="form-control" id="consultationdate" placeholder="Enter Date">
 
 		</div>
 
 		<div class="form-group" style="width:80%;">
 			
 		    <label for="Complaints">Complaints</label>
-		    <input type="text" class="form-control" id="complaints" placeholder="Enter Complaints">
+		    <input type="text" name="chief_compliants" class="form-control" id="complaints" placeholder="Enter Complaints">
 
 		</div>
 
@@ -47,7 +47,7 @@
 	    		<div class="form-group" style="width:80%;">
 	    			
 	    		    <label for="Public Id">Public Id</label>
-	    		    <input type="text" class="form-control" id="publicid" placeholder="Enter PublicId Of Patient">
+	    		    <input type="text" class="form-control" id="publicid" placeholder="Enter Public ID Of Patient">
 
 	    		</div>
 
@@ -102,27 +102,32 @@
 					type: "GET",
 			
 					url: "<?php echo base_url('patients/ajax_return_patient')?>"+"?pubid="+pubid,
-					success: function(result){// result is in json 
+					success: function(result){// result is in json
 
 			           var patient = JSON.parse(result);
 
-			           document.getElementById('firstname').value = patient['first_name'];
-			           document.getElementById('middlename').value = patient['middle_name'];
-			           document.getElementById('lastname').value = patient['last_name'];
-			           document.getElementById('age').value = patient['age'];
-			           document.getElementById('address').value = patient['address'];
-			           document.getElementById('dateofbirth').value = patient['date_of_birth'];
-			           document.getElementById('email').value = patient['email'];
-			           document.getElementById('source').value = patient['source_of_referal'];
-			           document.getElementById('informant').value = patient['informant'];
-			           document.getElementById('sex').value = patient['sex'];
-			           //document.getElementById('contact_person').value = patient['contact_person'];
-			           alert('aaaaa');
-			           document.getElementById('message').innerHTML = " ";
-			           //$("#close_modal").trigger('click');
+			           if(patient['error'] != '') {
+			           	document.getElementById('message').innerHTML = "<h5 style='color:red;margin-left:2%;'>" + patient['error'] + "</h5>";
+			           }
 
+			           else {
 
+				           document.getElementById('firstname').value = patient['first_name'];
+				           document.getElementById('middlename').value = patient['middle_name'];
+				           document.getElementById('lastname').value = patient['last_name'];
+				           document.getElementById('age').value = patient['age'];
+				           document.getElementById('address').value = patient['address'];
+				           document.getElementById('dateofbirth').value = patient['date_of_birth'];
+				           document.getElementById('source').value = patient['source_of_referal'];
+				           document.getElementById('informant').value = patient['informant'];
+				           document.getElementById('sex').value = patient['sex'];
+
+				           document.getElementById('message').innerHTML = " ";
+
+				           $("#close_modal").trigger('click');
+				       }
 					},
+
 					// Generic Ajax Error for webapp
 					error: function (xhr, ajaxOptions, thrownError){
 

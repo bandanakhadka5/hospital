@@ -39,8 +39,12 @@
 			    <div class="form-group" style="width:80%;">
 			    	
 			        <label for="Sex">Sex</label>
-			        <input type="text" name="sex" class="form-control" id="sex" placeholder="Enter Sex">
-
+			        <select name="sex" id="sex" class="form-control">
+			        	<option value="">Please Select One</option>
+			        	<option value="0">Male</option>
+			        	<option value="1">Female</option>
+			        </select>
+			        
 			    </div>
 
 			    <div class="form-group" style="width:80%;">

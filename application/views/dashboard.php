@@ -45,19 +45,21 @@
 				<table class="table table-striped table-bordered">
 					<thead>
 						<tr>
-							<th>Full Name</th>
-							<th>PatientId</th>
-							<th>Last Visited Date</th>
-							<th>Contact Number</th>
+							<th>First Name</th>
+							<th>Last Name</th>
+							<th>Address</th>
+							<th>Age</th>
+							<th>sex</th>
 						</tr>
 					</thead>
 					<tbody>
-						<?php foreach ($users as $user){ ?>
+						<?php foreach ($patients_in_bed as $patient_in_bed){ ?>
 							<tr>
-								<td><?=$user->first_name?></td>
-								<td><?=$user->last_name?></td>
-								<td><?=$user->username?></td>
-								<td><?=$user->email?></td>
+								<td><?=$patient_in_bed->patient->first_name?></td>
+								<td><?=$patient_in_bed->patient->last_name?></td>
+								<td><?=$patient_in_bed->patient->address?></td>
+								<td><?=$patient_in_bed->patient->age?></td>
+								<td><?php if($patient_in_bed->patient->sex == 0) echo "Male"; else echo "Female";?></td>
 							</tr>
 						<?php } ?>
 					</tbody>

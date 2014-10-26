@@ -9,60 +9,39 @@ class Patient_Inpatient extends BaseController {
 		return $this->load_view('dashboard',$data);
 	}
 
-	public function create() {          
+	public function create() {
+
 	    try {
 
 	        if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
 	            return $this->load_view('admin/patient/create_inpatient');
 	        }
 
-	        $license = License::find_valid_by_id($this->input->post('license_id'));
+	        $params = $this->input->post();
 
-	        $member = Member::find_valid_by_id_and_organisation_id(
-	        	$this->input->post('member_id'),
-	        	$this->current_member->organisation_id
-	        );
+	        $patient_inpatient = PatientInpatient::create($params);
 
-	        $enrolment_standard = EnrolmentStandard::create(array(
-	                'license' => $license, 
-	                'member' => $member,
-	            ));
-
-	        if($this->input->post('send_mail') == "1") {
-
-	            if($member->has_email()) {
-
-		            Email::push(array(
-		                'type' => 'enrolment-alert',
-		                'from' => 'invitations@academyhq.com',
-		                'to' => $member->email,
-		                'subject' => lang('emailer.cont.process.alert', $enrolment_standard->enrolment->course->name),
-		                'body' => nl2br($this->load->view(
-		                    'emails/enrolments/alert', 
-		                    array('enrolment' => $enrolment_standard->enrolment), 
-		                    true
-		                )),
-		            ));
-	        	}
-	        }
+	        $patient_inpatient->save();
 
 	        $this->session->set_flashdata(
 	        	'alert_success', 
-	        	"Enrolment in Course '".$enrolment_standard->enrolment->course->name."' was successfully created."
+	        	"Patient was successfully created."
 	        );
 
-	        redirect(lang_url('/enrolments/'));
+	        redirect(lang_url('/dashboard/'));
 
-	    } catch(Exception $e){
+	    }
 
-	             return $this->load_view(
-	                'enrolments/create',
-	                array(
-	                    'message'=>$e->getMessage(),
-	                )
-	            );
-	            
-	        }
+	    catch(Exception $e) {
+
+            return $this->load_view(
+                'admin/patient/create_inpatient',
+                array(
+                    'message'=>$e->getMessage(),
+                )
+            );
+            
+        }
 	}
 
 }

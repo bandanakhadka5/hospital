@@ -14,6 +14,13 @@
 			</div>
 
 			<div class="form-group" style="width:80%;">
+
+			    <label for="ConsultationDate">ConsultationDate</label>
+			    <input type="date" name="date_of_consultation" class="form-control" id="consultationdate" placeholder="Enter Date">
+
+			</div>
+
+			<div class="form-group" style="width:80%;">
 				
 			    <label for="Doctor">Doctor</label>
 			    <input name="doctor" type="text" class="form-control" id="doctor" placeholder="Enter Doctor's Name">

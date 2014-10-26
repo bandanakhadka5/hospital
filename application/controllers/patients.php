@@ -10,7 +10,22 @@ class Patients extends BaseController {
 
 		$public_id = $this->input->get('pubid');
 
-		$patient = Patient::find_by_pub_id($public_id);
+		try {
+
+			$patient = Patient::find_by_pub_id($public_id);
+
+			if(!$patient) {
+				throw new Exception("Data not found. Please enter correct Public ID.");
+			}
+		}
+
+		catch(Exception $e) {
+
+			$data = array('error' => $e->getMessage());
+
+			echo json_encode($data);
+			return;
+		}
 
 		$data = array(
 					'first_name'=>$patient->first_name,
@@ -25,7 +40,8 @@ class Patients extends BaseController {
 					'contact_person'=> $patient->contact_person,
 					'relation_with_patient'=>$patient->relation_with_patient,
 					'source_of_referal'=>$patient->source_of_referal,
-					'contact_number'=>$patient->contact_number
+					'contact_number'=>$patient->contact_number,
+					'error' => ''
 				);
 
 /*		$data = array(
@@ -44,15 +60,10 @@ class Patients extends BaseController {
 					'contact_number'=>isset($patient->contact_number) ? $patient->contact_number :'',
 				);*/
 
+		//print_r($data); exit();
+
 		echo json_encode($data);
-
-		
-
-
-
-	}
-
-	
+	}	
 }
 
 ?>
