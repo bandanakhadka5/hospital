@@ -2,7 +2,13 @@
 
 <?php startblock('content') ?>
 
-		<div style="text-align:center"><h2>Add New  OPD Patient</h2></div>
+		<div style="text-align:center">
+			<h1>Add New  OPD Patient
+				<button class="btn btn-success btn-lg" onclick="clear_form_fields();" data-toggle="modal" data-target="#myModal">
+				  Existing Patient
+				</button>
+			</h1>
+		</div>
 		<form class="form" role="form" method ="POST" action="<?php echo base_url('patient_opd/create');?>">
 			<?php get_extended_block();?>
 

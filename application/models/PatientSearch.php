@@ -34,6 +34,9 @@ class PatientSearch extends Search {
 			
 			array_push($conditions, '%'.$options->search.'%');
         	array_push($conditions, '%'.$options->search.'%');
+        	array_push($conditions, '%'.$options->search.'%');
+        	array_push($conditions, '%'.$options->search.'%');
+        	array_push($conditions, '%'.$options->search.'%');
 		}
 
 		$conditions[0] = $condition_string;
@@ -60,6 +63,8 @@ class PatientSearch extends Search {
 			'limit' => $this->get_page_size(),
 			'offset' => $this->build_offset(),
 		);
+
+		//print_r($query);exit;
 
 		parent::execute(new Patient, $query);
 	}
