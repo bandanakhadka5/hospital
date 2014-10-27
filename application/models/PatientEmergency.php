@@ -58,13 +58,22 @@ class PatientEmergency extends Patient {
 
 		$patient_emergency->date_of_consultation = array_key_exists('date_of_consultation', $params) ? $params['date_of_consultation'] : '';
 		$patient_emergency->chief_compliants = array_key_exists('chief_compliants', $params) ? $params['chief_compliants'] : '';
+
 		$patient_emergency->active = 1;
         $patient_emergency->deleted = 0;
+        if(array_key_exists('old_record_id', $params) && $params['old_record_id'] != ""){
+            
+            $patient_emergency->patient_id = $params['old_record_id'];
 
-		$patient = Patient::create($params);
-		$patient->save();
 
-		$patient_emergency->patient_id = $patient->id;
+        } else {
+
+            $patient = Patient::create($params);
+            $patient->save();
+
+            $patient_emergency->patient_id = $patient->id;
+        }
+		
 
 		return $patient_emergency;
 		

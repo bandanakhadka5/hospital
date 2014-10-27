@@ -4,7 +4,7 @@
 
 		<div style="text-align:center"><h1>Add New Emergency Patient
 			<!-- Button trigger modal -->
-			<button class="btn btn-success btn-lg" data-toggle="modal" data-target="#myModal">
+			<button class="btn btn-success btn-lg" onclick="clear_form_fields();" data-toggle="modal" data-target="#myModal">
 			  Existing Patient
 			</button>
 		</h1></div>
@@ -27,6 +27,8 @@
 
 		</div>
 
+		<input type="hidden" id="old_record_id" name="old_record_id" value="">
+
 	  </form>
 
 
@@ -48,7 +50,7 @@
 	    			
 	    		    <label for="Public Id">Public Id</label>
 	    		    <input type="text" class="form-control" id="publicid" placeholder="Enter Public ID Of Patient">
-
+	    		    
 	    		</div>
 
 	    		<div id="message"></div>
@@ -80,12 +82,44 @@
 
 <script type="text/javascript">
 
+	function clear_form_fields() {
+
+		
+
+		document.getElementById('firstname').readOnly = false;
+		document.getElementById('middlename').readOnly = false;
+		document.getElementById('lastname').readOnly = false;
+		document.getElementById('age').readOnly = false;
+		document.getElementById('address').readOnly = false;
+		document.getElementById('dateofbirth').readOnly = false;
+		document.getElementById('source').readOnly = false;
+		document.getElementById('informant').readOnly = false;
+		document.getElementById('sex').readOnly = false;
+
+		//set the attribute to true for existing record
+		document.getElementById('old_record_id').value = " ";
+
+		document.getElementById('firstname').value = "";
+       	document.getElementById('middlename').value = "";
+       	document.getElementById('lastname').value = "";
+       	document.getElementById('age').value ="";
+       	document.getElementById('address').value = "";
+       	document.getElementById('dateofbirth').value = "";
+       	document.getElementById('source').value = "";
+       	document.getElementById('informant').value = "";
+       	document.getElementById('sex').value = "";
+
+	}
 
 	function reset() {
 
 	    document.getElementById('message').innerHTML = "";
 	    
 	}
+
+	$( "#publicid" ).focus(function() {
+	  	document.getElementById('message').innerHTML = "";
+	});
 
 	function fill_form(){
 		
@@ -122,16 +156,33 @@
 				           document.getElementById('informant').value = patient['informant'];
 				           document.getElementById('sex').value = patient['sex'];
 
+				           //set the oldrecord id for existing record
+				           document.getElementById('old_record_id').value = patient['old_record_id'];
+
 				           document.getElementById('message').innerHTML = " ";
 
 				           $("#close_modal").trigger('click');
+
+				           document.getElementById('firstname').readOnly = true;
+				           document.getElementById('middlename').readOnly = true;
+				           document.getElementById('lastname').readOnly = true;
+				           document.getElementById('age').readOnly = true;
+				           document.getElementById('address').readOnly = true;
+				           document.getElementById('dateofbirth').readOnly = true;
+				           document.getElementById('source').readOnly = true;
+				           document.getElementById('informant').readOnly = true;
+				           document.getElementById('sex').readOnly = true;
+
+				         
+
+
 				       }
 					},
 
 					// Generic Ajax Error for webapp
 					error: function (xhr, ajaxOptions, thrownError){
 
-						alert(thrownError);
+						 $("#close_modal").trigger('click');
 					}
 				});
 

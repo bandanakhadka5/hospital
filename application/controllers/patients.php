@@ -28,6 +28,7 @@ class Patients extends BaseController {
 		}
 
 		$data = array(
+					'old_record_id'=> $patient->id,
 					'first_name'=>$patient->first_name,
 					'last_name'=>$patient->last_name,
 					'middle_name'=>$patient->middle_name,
