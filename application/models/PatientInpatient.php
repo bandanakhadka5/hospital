@@ -70,13 +70,22 @@ class PatientInpatient extends Patient {
 		$patient_inpatient->date_of_admission = array_key_exists('date_of_admission', $params) ? $params['date_of_admission'] : '';
 		$patient_inpatient->date_of_procedure = array_key_exists('date_of_procedure', $params) ? $params['date_of_procedure'] : '';
 		$patient_inpatient->date_of_discharge = array_key_exists('date_of_discharge', $params) ? $params['date_of_discharge'] : '';
-		$patient_inpatient->active = 1;
+		
+        $patient_inpatient->active = 1;
         $patient_inpatient->deleted = 0;
 
-		$patient = Patient::create($params);
-		$patient->save();
+        if(array_key_exists('old_record_id', $params) && $params['old_record_id'] != "") {            
+            
+            $patient_inpatient->patient_id = $params['old_record_id'];
+        }
 
-		$patient_inpatient->patient_id = $patient->id;
+        else {
+
+            $patient = Patient::create($params);
+            $patient->save();
+
+            $patient_inpatient->patient_id = $patient->id;
+        }
 
 		return $patient_inpatient;
 		
