@@ -26,6 +26,12 @@ class Patient extends BaseModel {
             'class_name' => 'PatientInpatient',
             'foreign_key' => 'patient_id'
         ),
+
+        array(
+            'follow_up',
+            'class_name' => 'FollowUp',
+            'foreign_key' => 'patient_id'
+        ),
 	);
 
 	/* Public functions - Setters */

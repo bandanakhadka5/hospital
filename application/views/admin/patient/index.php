@@ -107,11 +107,22 @@ $this->bspaginator->config($config);
 							        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
 							        <h4 class="modal-title" id="myModalLabel">Enter PubId Of Patient</h4>
 							      </div>
+
+							      <form class="form" role="form" method ="POST" action="<?php echo base_url('follow_up/create');?>">
 							      <div class="modal-body">
 							    		<div class="form-group" style="width:80%;">
-							    			
+
 							    		    <label for="Public Id">Public Id</label>
-							    		    <input type="text" class="form-control" id="publicid" placeholder="Enter Public ID Of Patient">
+							    		    <input type="text" class="form-control" name="pub_id" id="publicid" placeholder="Enter Public ID Of Patient">
+
+							    		    <label for="Doctor">Doctor</label>
+							    		    <input type="text" class="form-control" name="doctor" id="doctor" placeholder="Enter Doctor's Name">
+
+							    		    <label for="Consultation Type">Consultation Type</label>
+							    		    <input type="text" class="form-control" name="consultation_type" id="consultation_type" placeholder="Enter Consultation Type">
+
+							    		    <label for="Follow Up Date">Follow Up Date</label>
+							    		    <input type="date" class="form-control" name="follow_up_date" id="follow_up_date" placeholder="Enter Date">
 							    		    
 							    		</div>
 
@@ -121,8 +132,9 @@ $this->bspaginator->config($config);
 							      <div class="modal-footer">
 							   
 							        <button type="button" id="close_modal" class="btn btn-default" data-dismiss="modal">Close</button>
-							        <button type="button" class="btn btn-primary">Submit</button>
+							        <button type="submit" class="btn btn-primary">Add Follow Up</button>
 							      </div>
+							    </form>	
 						</div>
 						<?php } else { ?>
 							<div class="well" style="text-align:center; padding:100px 0;">
@@ -145,9 +157,10 @@ $this->bspaginator->config($config);
 <?php end_extend() ?>
 
 <script type="text/javascript">
-
+`
 	function pass_pub_id(pub_id) {
 
-
+		document.getElementById('publicid').value = pub_id;
+		document.getElementById('publicid').readonly = true;
 	}
 </script>

@@ -19,6 +19,11 @@ class FollowUp extends BaseModel {
 
     /* Public functions - Setters */
 
+    public function set_doctor($doctor)
+    {
+        $this->assign_attribute('doctor', $doctor);
+    }
+
     public function set_consultation_type($type)
 	{
     	$this->assign_attribute('consultation_type',$type);
@@ -49,6 +54,11 @@ class FollowUp extends BaseModel {
 
      /* Public functions - Getters */
 
+     public function get_doctor()
+     {
+        return $this->read_attribute('doctor');
+     }
+
     public function get_consultation_type()
     {
         return $this->read_attribute('consultation_type');
@@ -75,12 +85,14 @@ class FollowUp extends BaseModel {
 
     	$follow_up = new FollowUp;
 
+        $follow_up->doctor = array_key_exists('doctor', $params) ? $params['doctor'] : NULL;
 		$follow_up->consultation_type = array_key_exists('consultation_type', $params) ? $params['consultation_type'] : NULL;
 		$follow_up->type_id = array_key_exists('type_id', $params) ? $params['type_id'] : NULL;
         $follow_up->patient_id = array_key_exists('patient_id', $params) ? $params['patient_id'] : '';
-
         $follow_up->follow_up_date = array_key_exists('follow_up_date', $params) ? $params['follow_up_date'] : '';
-		$follow_up->activate();
+		
+        $follow_up->active = 1;
+        $follow_up->deleted = 0;
 
 		return $follow_up;
 		
