@@ -7,8 +7,8 @@ class Search implements ArrayAccess, Iterator {
 	private $field = 'id';
 	private $direction = 'ASC';
 	private $page = null;
-	private $is_deleted = null;
-	private $is_active = null;
+	private $deleted = null;
+	private $active = null;
 
 	private $pointer = 0;
 
@@ -65,21 +65,21 @@ class Search implements ArrayAccess, Iterator {
 		return $this;
 	}
 
-	public function set_is_deleted($is_deleted = null) {
+	public function set_deleted($deleted = null) {
 
-		if(!is_null($is_deleted)) {
+		if(!is_null($deleted)) {
 
-			$this->is_deleted = $is_deleted;
+			$this->deleted = $deleted;
 		}
 
 		return $this;
 	}
 
-	public function set_is_active($is_active = null) {
+	public function set_active($active = null) {
 
-		if(!is_null($is_active)) {
+		if(!is_null($active)) {
 
-			$this->is_active = $is_active;
+			$this->active = $active;
 		}
 
 		return $this;
@@ -175,19 +175,19 @@ class Search implements ArrayAccess, Iterator {
 		}
 	}
 
-	public function get_is_deleted() {
+	public function get_deleted() {
 
-		if(!is_null($this->is_deleted)) {
+		if(!is_null($this->deleted)) {
 
-			return $this->is_deleted;
+			return $this->deleted;
 		}
 	}
 
-	public function get_is_active() {
+	public function get_active() {
 
-		if(!is_null($this->is_active)) {
+		if(!is_null($this->active)) {
 
-			return $this->is_active;
+			return $this->active;
 		}
 	}
 
@@ -213,14 +213,14 @@ class Search implements ArrayAccess, Iterator {
 
 		$options = (object) array();
 
-		if(!is_null($this->is_active)) {
+		if(!is_null($this->active)) {
 
-			$options->is_active = $this->is_active;
+			$options->active = $this->active;
 		}
 
-		if(!is_null($this->is_deleted)) {
+		if(!is_null($this->deleted)) {
 
-			$options->is_deleted = $this->is_deleted;
+			$options->deleted = $this->deleted;
 		}
 
 		if(!is_null($this->search_term)) {
@@ -236,16 +236,16 @@ class Search implements ArrayAccess, Iterator {
 		$conditions = array();
         $condition_string = '1=1 ';
 
-		if (isset($options->is_active)) {
+		if (isset($options->active)) {
 
-			$condition_string .= 'and '.$table_name.'.is_active = ? ';
-			array_push($conditions, $options->is_active);
+			$condition_string .= 'and '.$table_name.'.active = ? ';
+			array_push($conditions, $options->active);
 		}
 
-		if (isset($options->is_deleted)) {
+		if (isset($options->deleted)) {
 
-			$condition_string .= 'and '.$table_name.'.is_deleted = ? ';
-			array_push($conditions, $options->is_deleted);
+			$condition_string .= 'and '.$table_name.'.deleted = ? ';
+			array_push($conditions, $options->deleted);
 		}
 
 		array_unshift($conditions, $condition_string);

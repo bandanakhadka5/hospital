@@ -64,8 +64,6 @@ class PatientSearch extends Search {
 			'offset' => $this->build_offset(),
 		);
 
-		//print_r($query);exit;
-
 		parent::execute(new Patient, $query);
 	}
 }

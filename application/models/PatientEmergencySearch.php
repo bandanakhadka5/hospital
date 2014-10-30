@@ -30,6 +30,9 @@ class PatientEmergencySearch extends Search {
 			
 			array_push($conditions, '%'.$options->search.'%');
         	array_push($conditions, '%'.$options->search.'%');
+        	array_push($conditions, '%'.$options->search.'%');
+        	array_push($conditions, '%'.$options->search.'%');
+        	array_push($conditions, '%'.$options->search.'%');
 		}
 
 		$conditions[0] = $condition_string;
