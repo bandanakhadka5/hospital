@@ -57,7 +57,7 @@
     
         <div class = "message">
             <?php if(isset($message)){ ?>
-                <div class = "alert-error">
+                <div class = "alert-success">
                     <?php echo $message;?>
                 </div>
             <?php } ?>

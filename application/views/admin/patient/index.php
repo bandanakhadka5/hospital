@@ -39,7 +39,7 @@ $this->bspaginator->config($config);
 				<h5 style="margin-left:5px;">Showing result<?=($patients->get_total_rows() == 1) ? '' : 's'?> <?=($patients->get_page_size() > $patients->get_total_rows()) ? $patients->get_total_rows() : ($patients->get_page_size() * ($patients->get_current_page() - 1) + 1) .' - '. ($patients->get_page_size() * ($patients->get_current_page() - 1) + $patients->get_row_per_current_page())?> of <?=number_format($patients->get_total_rows())?></h5>
 			</div>
 
-			<div class="pull-right" style="margin-top: 5px;">
+			<div class="pager pull-right" style="margin-top: 5px;">
 				<?=$this->bspaginator->pagination_links()?>
 			</div>
 
@@ -92,11 +92,37 @@ $this->bspaginator->config($config);
 											<td><?=$patient->address?></td>
 											<td><?=$patient->contact_number?></td>
 											<td><?=$patient->last_visited_at?></td>
-											<td><a>Add Follow up</a></td>
+											<td><button class="btn btn-success btn-sm" onclick="pass_pub_id('<?=$patient->pub_id;?>');" data-toggle="modal" data-target="#myModal">
+												  Add Followup
+												</button></td>
 										</tr>
 									<?php } ?>
 								</tbody>
 							</table>
+							<!-- Modal -->
+							<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+							  <div class="modal-dialog">
+							    <div class="modal-content">
+							      <div class="modal-header">
+							        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+							        <h4 class="modal-title" id="myModalLabel">Enter PubId Of Patient</h4>
+							      </div>
+							      <div class="modal-body">
+							    		<div class="form-group" style="width:80%;">
+							    			
+							    		    <label for="Public Id">Public Id</label>
+							    		    <input type="text" class="form-control" id="publicid" placeholder="Enter Public ID Of Patient">
+							    		    
+							    		</div>
+
+							    		<div id="message"></div>
+
+							      </div>
+							      <div class="modal-footer">
+							   
+							        <button type="button" id="close_modal" class="btn btn-default" data-dismiss="modal">Close</button>
+							        <button type="button" class="btn btn-primary">Submit</button>
+							      </div>
 						</div>
 						<?php } else { ?>
 							<div class="well" style="text-align:center; padding:100px 0;">
@@ -112,6 +138,16 @@ $this->bspaginator->config($config);
 
 </div>
 
+
+
 <?php endblock() ?>
 
 <?php end_extend() ?>
+
+<script type="text/javascript">
+
+	function pass_pub_id(pub_id) {
+
+
+	}
+</script>
