@@ -157,10 +157,10 @@ $this->bspaginator->config($config);
 <?php end_extend() ?>
 
 <script type="text/javascript">
-`
+
 	function pass_pub_id(pub_id) {
 
 		document.getElementById('publicid').value = pub_id;
-		document.getElementById('publicid').readonly = true;
+		document.getElementById('publicid').readOnly = true;
 	}
 </script>

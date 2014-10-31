@@ -60,7 +60,7 @@ class Follow_up extends BaseController {
 	        }
 
 	        $params = $this->input->post();
-	        print_r($params); exit();
+	        
 	        $patient = Patient::find_by_pub_id($params['pub_id']);
 	        $params['patient_id'] = $patient->id;
 	        $existing_follow_up = FollowUp::find_by_patient_id_and_active($patient->id,1);
