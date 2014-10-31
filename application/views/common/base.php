@@ -36,7 +36,14 @@
             <div class="collapse navbar-collapse">
                 <ul class="nav navbar-nav">
                     <li class="active"><a href="/hospital">Home</a></li>
-                    <li><a href="#">Doctors</a></li>
+                    <li class="dropdown">
+                      <a href="#" class="dropdown-toggle" data-toggle="dropdown">Show Patients <b class="caret"></b></a>
+                      <ul class="dropdown-menu">
+                        <li><a href="<?php echo base_url('patient_Emergency');?>">Emergency</a></li>
+                        <li><a href="<?php echo base_url('patient_Opd');?>">OPD</a></li>
+                        <li><a href="<?php echo base_url('patient_Inpatient');?>">Inpatient</a></li>
+                      </ul>
+                    </li>
                     <li><a href="<?php echo base_url('patients') ?>">Patients</a></li>
                     <li class="dropdown">
                       <a href="#" class="dropdown-toggle" data-toggle="dropdown">New Patient <b class="caret"></b></a>

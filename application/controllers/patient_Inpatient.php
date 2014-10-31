@@ -86,6 +86,11 @@ class Patient_Inpatient extends BaseController {
         }
 	}
 
+	public function discharge_patient(){
+
+		
+	}
+
 }
 
 ?>

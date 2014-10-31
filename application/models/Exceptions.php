@@ -54,4 +54,9 @@ class BlankPatientIdException extends Exception
 class BlankDoctorException extends Exception
 {}
 
+//patient discharged exception
+
+class PatientDischargedException extends Exception
+{}
+
 ?>

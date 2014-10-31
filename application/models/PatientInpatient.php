@@ -61,6 +61,21 @@ class PatientInpatient extends Patient {
         return $this->read_attribute('patient_id');
     }
 
+
+    //check patient discharged
+
+    public function discharge($Inpatient){
+
+        if($Inpatient->deleted){
+
+            throw new PatientDischargedException("The patient has already been discharged", 1);
+            
+        }
+
+        $Inpatient->delete();
+
+    }
+
     /* Public static functions */
 
     public static function create($params) {
