@@ -60,8 +60,17 @@ class Follow_up extends BaseController {
 	        }
 
 	        $params = $this->input->post();
+
+	        if($params['pub_id'] == '') {
+	        	throw new Exception("Public ID is required.");	        	
+	        }
 	        
 	        $patient = Patient::find_by_pub_id($params['pub_id']);
+
+	        if(!$patient) {
+	        	throw new Exception("Patient with the provided Public ID not found. Please enter a valid Public ID of patient.");     	
+	        }
+
 	        $params['patient_id'] = $patient->id;
 	        $existing_follow_up = FollowUp::find_by_patient_id_and_active($patient->id,1);
 
@@ -79,18 +88,13 @@ class Follow_up extends BaseController {
 	        	"Follow Up was added successfully."
 	        );
 
-	        redirect(lang_url('/patients/'));
+	        redirect(lang_url('/follow_up/'));
 	    }
 
 	    catch(Exception $e) {
 
-	    	return $this->load_view(
-	                'admin/patient/index',
-	                array(
-	                    'message'=>$e->getMessage(),
-	                )
-	            );
+	    	$this->session->set_flashdata('alert_error', $e->getMessage());
+	    	redirect(lang_url('/follow_up'));
 	    }
 	}
-
 }

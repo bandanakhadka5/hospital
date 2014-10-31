@@ -42,9 +42,7 @@ $this->bspaginator->config($config);
 				<?=$this->bspaginator->pagination_links()?>
 			</div>
 
-			<br/><br/><br/>
-
-			<br/><br/>
+			<br/>
 	</div>
 
 	<br/>

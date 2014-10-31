@@ -2,12 +2,12 @@
 
 <?php startblock('content') ?>
 
-		<div style="text-align:center"><h1>Add New Emergency Patient
+		<div style="text-align:center"><h3>Add New Emergency Patient
 			<!-- Button trigger modal -->
 			<button class="btn btn-success btn-lg" onclick="clear_form_fields();" data-toggle="modal" data-target="#myModal">
 			  Existing Patient
 			</button>
-		</h1></div>
+		</h3></div>
 		
 		<form class="form" role="form" method ="POST" action="<?php echo base_url('patient_emergency/create');?>">
 

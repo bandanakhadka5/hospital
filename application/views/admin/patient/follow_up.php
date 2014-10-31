@@ -46,12 +46,8 @@ $this->bspaginator->config($config);
 				<?=$this->bspaginator->pagination_links()?>
 			</div>
 
-			<br/><br/><br/>
-
-			<br/><br/>
+			<br/>
 	</div>
-
-	<br/>
 
 	<div class="row-fluid" style="margin-top:90px;">
 
@@ -66,8 +62,11 @@ $this->bspaginator->config($config);
 						<br/><br/>
 						
 						<button type="submit" class="btn btn-success" style="width:20%;align:left;"><i class="icon-search icon-white"></i>Search</button>
-						
+						<br/><br/>
 					</form>
+
+					<button class="btn btn-success btn-lg" onclick="clear_form_fields();" data-toggle="modal" data-target="#myModal">Add Follow Up</button>
+					
 					<hr>
 					<div class="span9">
 						<?php if($follow_ups->get_total_rows() > 0){ ?>
@@ -116,7 +115,44 @@ $this->bspaginator->config($config);
 
 </div>
 
+<!-- Modal -->
+	<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+	  <div class="modal-dialog">
+	    <div class="modal-content">
+	      <div class="modal-header">
+	        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+	        <h4 class="modal-title" id="myModalLabel">Enter PubId Of Patient</h4>
+	      </div>
 
+	      <form class="form" role="form" method ="POST" action="<?php echo base_url('follow_up/create');?>">
+	      <div class="modal-body">
+	    		<div class="form-group" style="width:80%;">
+
+	    		    <label for="Public Id">Public Id</label>
+	    		    <input type="text" class="form-control" name="pub_id" id="publicid" placeholder="Enter Public ID Of Patient" autofocus>
+
+	    		    <label for="Doctor">Doctor</label>
+	    		    <input type="text" class="form-control" name="doctor" id="doctor" placeholder="Enter Doctor's Name">
+
+	    		    <label for="Consultation Type">Consultation Type</label>
+	    		    <input type="text" class="form-control" name="consultation_type" id="consultation_type" placeholder="Enter Consultation Type">
+
+	    		    <label for="Follow Up Date">Follow Up Date</label>
+	    		    <input type="date" class="form-control" name="follow_up_date" id="follow_up_date" placeholder="Enter Date">
+	    		    
+	    		</div>
+
+	    		<div id="message"></div>
+
+	      </div>
+	      <div class="modal-footer">
+	   
+	        <button type="button" id="close_modal" class="btn btn-default" data-dismiss="modal">Close</button>
+	        <button type="submit" class="btn btn-primary">Add Follow Up</button>
+	      </div>
+	    </form>	
+	</div>
+</div>
 
 <?php endblock() ?>
 

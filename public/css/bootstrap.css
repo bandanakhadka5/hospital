@@ -4650,6 +4650,19 @@ a.thumbnail.active {
 .alert-success .alert-link {
   color: #2b542c;
 }
+
+.alert-error {
+  color: #3c763d;
+  background-color: #fbe4e4;
+  border-color: #f9abab;
+}
+.alert-error hr {
+  border-top-color: #f9abab;
+}
+.alert-error .alert-link {
+  color: #f9abab;
+}
+
 .alert-info {
   color: #31708f;
   background-color: #d9edf7;

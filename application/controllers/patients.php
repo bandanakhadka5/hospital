@@ -110,7 +110,45 @@ class Patients extends BaseController {
 		//print_r($data); exit();
 
 		echo json_encode($data);
-	}	
+	}
+
+	public function add_follow_up() {
+
+		try {
+
+	        if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
+	            redirect(lang_url('/patients/'));
+	        }
+
+	        $params = $this->input->post();
+	        
+	        $patient = Patient::find_by_pub_id($params['pub_id']);
+	        $params['patient_id'] = $patient->id;
+	        $existing_follow_up = FollowUp::find_by_patient_id_and_active($patient->id,1);
+
+	        if($existing_follow_up) {
+
+	        	$existing_follow_up->deactivate();
+	        }
+
+	        $follow_up = FollowUp::create($params);
+
+	        $follow_up->save();
+
+	        $this->session->set_flashdata(
+	        	'alert_success', 
+	        	"Follow Up was added successfully."
+	        );
+
+	        redirect(lang_url('/patients/'));
+	    }
+
+	    catch(Exception $e) {
+
+	    	$this->session->set_flashdata('alert_error', $e->getMessage());
+	    	redirect(lang_url('/patients'));
+	    }
+	} 
 }
 
 ?>

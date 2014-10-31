@@ -21,11 +21,19 @@ class FollowUp extends BaseModel {
 
     public function set_doctor($doctor)
     {
+        if($doctor == '') {
+            throw new Exception("Doctor's name is required.");            
+        }
+
         $this->assign_attribute('doctor', $doctor);
     }
 
     public function set_consultation_type($type)
 	{
+        if($type == '') {
+            throw new Exception("Consultation Type is required.");            
+        }
+
     	$this->assign_attribute('consultation_type',$type);
     }
 

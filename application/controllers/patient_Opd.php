@@ -70,18 +70,15 @@ class Patient_Opd extends BaseController {
 	        	"Patient was successfully created."
 	        );
 
-	        redirect(lang_url('/dashboard/'));
+	        redirect(lang_url('/patient_opd/'));
 
-	    } catch(Exception $e){
+	    }
 
-	             return $this->load_view(
-	                'admin/patient/create_opd',
-	                array(
-	                    'message'=>$e->getMessage(),
-	                )
-	            );
-	            
-	        }
+	    catch(Exception $e) {
+	    	
+	    	$this->session->set_flashdata('alert_error', $e->getMessage());
+            redirect(lang_url('/patient_opd/create'));        
+	    }
 	}
 }
 

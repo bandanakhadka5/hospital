@@ -77,6 +77,12 @@
                 </div>
             <?php } ?>
 
+            <?php if($this->session->flashdata('alert_error')){ ?>
+                <div class = "alert-error">
+                    <h3><?php echo $this->session->flashdata('alert_error');?></h3>
+                </div>
+            <?php } ?>
+
         </div>
 
     </div>

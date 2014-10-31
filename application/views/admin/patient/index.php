@@ -43,9 +43,7 @@ $this->bspaginator->config($config);
 				<?=$this->bspaginator->pagination_links()?>
 			</div>
 
-			<br/><br/><br/>
-
-			<br/><br/>
+			<br/>
 	</div>
 
 	<br/>
@@ -108,7 +106,7 @@ $this->bspaginator->config($config);
 							        <h4 class="modal-title" id="myModalLabel">Enter PubId Of Patient</h4>
 							      </div>
 
-							      <form class="form" role="form" method ="POST" action="<?php echo base_url('follow_up/create');?>">
+							      <form class="form" role="form" method ="POST" action="<?php echo base_url('patients/add_follow_up');?>">
 							      <div class="modal-body">
 							    		<div class="form-group" style="width:80%;">
 
