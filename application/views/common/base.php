@@ -46,7 +46,7 @@
                         <li><a href="<?php echo base_url('patient_Inpatient/create');?>">Inpatient</a></li>
                       </ul>
                     </li>
-                    <li><a href="#">Follow Up</a></li>
+                    <li><a href="<?php echo base_url('follow_up') ?>">Follow Up</a></li>
                     <li><a href="<?php echo base_url('auth/logout');?>">Sign Out</a></li>
                 </ul>
             </div><!-- /.nav-collapse -->
