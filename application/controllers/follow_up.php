@@ -42,7 +42,7 @@ class Follow_up extends BaseController {
 
         if(array_key_exists('date_from', $_GET)) {
 
-            $date_from = $_GET['date_from'];
+            $date_from = ($_GET['date_from'] != '') ? $_GET['date_from'] : null;
         }
         else {
             $date_from = null;
@@ -50,7 +50,7 @@ class Follow_up extends BaseController {
 
         if(array_key_exists('date_to', $_GET)) {
 
-            $date_to = $_GET['date_to'];
+            $date_to = ($_GET['date_to'] != '') ? $_GET['date_to'] : null;
         }
         else {
             $date_to = null;
