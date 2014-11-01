@@ -87,23 +87,52 @@ class FollowUp extends BaseModel {
         return $this->read_attribute('follow_up_date');
     }
 
+
+    /*Private functions*/
+
+    private function find_patient($pub_id) {
+
+        $patient = Patient::find_by_pub_id($pub_id);
+
+        if(!$patient) {
+            throw new Exception("Patient with the provided Public ID not found. Please enter a valid Public ID of patient.");       
+        }
+
+        return $patient->id;
+    }
+
+    private function check_existing_follow_up($patient_id) {
+
+        $existing_follow_up = self::find_by_patient_id_and_active($patient_id,1);
+
+        if($existing_follow_up) {
+            $existing_follow_up->deactivate();
+        }
+
+        return;
+    }
+
     /* Public static functions */
 
     public static function create($params) {
 
     	$follow_up = new FollowUp;
 
+        $pub_id = array_key_exists('pub_id', $params) ? $params['pub_id'] : NULL;
+        $patient_id = self::find_patient($pub_id);
+
+        $follow_up->patient_id = $patient_id;
         $follow_up->doctor = array_key_exists('doctor', $params) ? $params['doctor'] : NULL;
 		$follow_up->consultation_type = array_key_exists('consultation_type', $params) ? $params['consultation_type'] : NULL;
 		$follow_up->type_id = array_key_exists('type_id', $params) ? $params['type_id'] : NULL;
-        $follow_up->patient_id = array_key_exists('patient_id', $params) ? $params['patient_id'] : '';
         $follow_up->follow_up_date = array_key_exists('follow_up_date', $params) ? $params['follow_up_date'] : '';
 		
         $follow_up->active = 1;
         $follow_up->deleted = 0;
 
+        self::check_existing_follow_up($patient_id);
+
 		return $follow_up;
 		
     }
-
 }

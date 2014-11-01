@@ -61,24 +61,6 @@ class Follow_up extends BaseController {
 
 	        $params = $this->input->post();
 
-	        if($params['pub_id'] == '') {
-	        	throw new Exception("Public ID is required.");	        	
-	        }
-	        
-	        $patient = Patient::find_by_pub_id($params['pub_id']);
-
-	        if(!$patient) {
-	        	throw new Exception("Patient with the provided Public ID not found. Please enter a valid Public ID of patient.");     	
-	        }
-
-	        $params['patient_id'] = $patient->id;
-	        $existing_follow_up = FollowUp::find_by_patient_id_and_active($patient->id,1);
-
-	        if($existing_follow_up) {
-
-	        	$existing_follow_up->deactivate();
-	        }
-
 	        $follow_up = FollowUp::create($params);
 
 	        $follow_up->save();

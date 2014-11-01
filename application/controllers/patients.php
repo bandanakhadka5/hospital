@@ -121,15 +121,6 @@ class Patients extends BaseController {
 	        }
 
 	        $params = $this->input->post();
-	        
-	        $patient = Patient::find_by_pub_id($params['pub_id']);
-	        $params['patient_id'] = $patient->id;
-	        $existing_follow_up = FollowUp::find_by_patient_id_and_active($patient->id,1);
-
-	        if($existing_follow_up) {
-
-	        	$existing_follow_up->deactivate();
-	        }
 
 	        $follow_up = FollowUp::create($params);
 
