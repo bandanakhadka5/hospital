@@ -40,10 +40,28 @@ class Follow_up extends BaseController {
             $search = null;
         }
 
+        if(array_key_exists('date_from', $_GET)) {
+
+            $date_from = $_GET['date_from'];
+        }
+        else {
+            $date_from = null;
+        }
+
+        if(array_key_exists('date_to', $_GET)) {
+
+            $date_to = $_GET['date_to'];
+        }
+        else {
+            $date_to = null;
+        }
+
         $follow_up_search = new FollowUpSearch();
         $follow_up_search ->set_order($order_by_field, $order_by_direction)
                           ->set_page($page)
                           ->set_search_term($search)
+                          ->set_date_from($date_from)
+                          ->set_date_to($date_to)
                           ->execute();
 
 		$data['follow_ups'] = $follow_up_search;

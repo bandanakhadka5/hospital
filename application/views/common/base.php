@@ -54,6 +54,7 @@
                       </ul>
                     </li>
                     <li><a href="<?php echo base_url('follow_up') ?>">Follow Up</a></li>
+                    <li><a href="<?php echo base_url('diagnosis') ?>">Add Diagnosis</a></li>
                     <li><a href="<?php echo base_url('auth/logout');?>">Sign Out</a></li>
                 </ul>
                 <div style="color:white;text-align:right;padding-top:7px;">Welcome <?=$this->session->userdata('user_name')?>!</div>

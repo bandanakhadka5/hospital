@@ -2,9 +2,44 @@
 
 class FollowUpSearch extends Search {
 
+	protected $date_from = null;
+	protected $date_to = null;
+
 	public function __construct() {
 
 		parent::__construct();
+	}
+
+	public function set_date_from($date_from = null) {
+
+		if(!is_null($date_from)) {
+
+			$date_from = urldecode($date_from);
+			$this->date_from = trim($date_from);
+		}
+
+		return $this;
+	}
+
+	public function set_date_to($date_to = null) {
+
+		if(!is_null($date_to)) {
+
+			$date_to = urldecode($date_to);
+			$this->date_to = trim($date_to);
+		}
+
+		return $this;
+	}
+
+	public function get_date_from() {
+
+		return $this->date_from;
+	}
+
+	public function get_date_to() {
+
+		return $this->date_to;
 	}
 
 	protected function build_joins() {
@@ -17,6 +52,18 @@ class FollowUpSearch extends Search {
 		$conditions = parent::build_conditions($options, FollowUp::$table_name);
 
 		$condition_string = $conditions[0];
+
+		if(isset($options->from)) {
+
+			$condition_string .= 'and '.FollowUp::$table_name.'.follow_up_date >= ? ';
+			array_push($conditions, $options->from);
+		}
+
+		if(isset($options->to)) {
+
+			$condition_string .= 'and '.FollowUp::$table_name.'.follow_up_date <= ? ';
+			array_push($conditions, $options->to.' 23:59:59');
+		}
 
 		if(isset($options->search) && $options->search !== '') {
 
@@ -45,6 +92,16 @@ class FollowUpSearch extends Search {
 	protected function build_options() {
 
 		$options = parent::build_options();
+
+		if(!is_null($this->date_from)) {
+
+			$options->from = $this->date_from;
+		}
+
+		if(!is_null($this->date_to)) {
+
+			$options->to = $this->date_to;
+		}
 
 		return $options;
 	}

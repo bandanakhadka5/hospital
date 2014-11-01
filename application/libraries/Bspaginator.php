@@ -20,6 +20,8 @@ class Bspaginator {
 
 	/* Search */
 	var $search = '';
+	var $date_from = '';
+	var $date_to = '';
 
 	public function config($options = array()){
 		if (count($options) > 0) {
@@ -48,6 +50,14 @@ class Bspaginator {
 			}
 			if($this->search == '') {
 				$html .= "<a href='$this->base_url/?page=".$this->cur_page."&order_by_field=".$val."&order_by_direction=".$direction;
+			}
+
+			if($this->date_from != '') {
+				$html .= "&date_from=".$this->date_from;;
+			}
+
+			if($this->date_to != '') {
+				$html .= "&date_to=".$this->date_to;;
 			}
 
 			$html .= "'>$key";
@@ -148,6 +158,14 @@ class Bspaginator {
 		}
 		if($this->search == '') {
 			$link .= "<a href='".$this->base_url."/?page=".$page_num."&order_by_field=".$this->order_by_field."&order_by_direction=".$this->order_by_direction;
+		}
+
+		if($this->date_from != '') {
+			$link .= "&date_from=".$this->date_from;
+		}
+
+		if($this->date_to != '') {
+			$link .= "&date_to=".$this->date_to;
 		}
 
 		$link .= "'>".$link_text."</a>";

@@ -23,6 +23,8 @@ $config = array(
     'order_by_field' => $follow_ups->get_field(),
     'order_by_direction' => $follow_ups->get_direction(),
     'search' => $follow_ups->get_search_term(),
+    'date_from' => $follow_ups->get_date_from(),
+    'date_to' => $follow_ups->get_date_to(),
     'total_rows' => $follow_ups->get_total_rows(),
     'per_page' => $follow_ups->get_page_size(),
 );
@@ -57,9 +59,13 @@ $this->bspaginator->config($config);
 
 					<form name="search-patient" action="<?php echo base_url('follow_up/index');?>">
 						
-						<input style="width:20%;align:left;" name="search" type="text" value="<?=$follow_ups->get_search_term() ? $follow_ups->get_search_term() : ''?>" placeholder="Type search term..." autofocus>
+						<input style="width:20%;align:left;" class="form-control" name="search" type="text" value="<?=$follow_ups->get_search_term() ? $follow_ups->get_search_term() : ''?>" placeholder="Type search term..." autofocus>
+						<label for="datefrom">Date From</label>
+						<input style="width:20%;align:left;" class="form-control" name="date_from" type="date" value="<?=$follow_ups->get_date_from() ? $follow_ups->get_date_from() : ''?>">
+						<label for="dateto">Date To</label>
+						<input style="width:20%;align:left;" class="form-control" name="date_to" type="date" value="<?=$follow_ups->get_date_to() ? $follow_ups->get_date_to() : ''?>">
 
-						<br/><br/>
+						<br/>
 						
 						<button type="submit" class="btn btn-success" style="width:20%;align:left;"><i class="icon-search icon-white"></i>Search</button>
 						<br/><br/>
