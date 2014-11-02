@@ -84,8 +84,8 @@ $this->bspaginator->config($config);
 											<td><?=$patient->contact_number?></td>
 											<td><?=$patient_emergency->created_at?></td>
 											<td><?=$patient_emergency->chief_compliants?>
-											<td><button class="btn btn-success btn-sm" onclick="pass_pub_id('<?=$patient->pub_id;?>');" data-toggle="modal" data-target="#myModal">
-												  View Diagnosis
+											<td><button class="btn btn-success btn-sm" onclick="pass_pub_id_and_type_id('<?=$patient->pub_id;?>','<?=$patient_emergency->id;?>');" data-toggle="modal" data-target="#myModal">
+												  Add Diagnosis
 												</button></td>
 										</tr>
 									<?php } }?>
@@ -107,8 +107,66 @@ $this->bspaginator->config($config);
 
 </div>
 
+	<!-- Modal -->
+	<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+	  <div class="modal-dialog">
+	    <div class="modal-content">
+	      <div class="modal-header">
+	        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+	        <h4 class="modal-title" id="myModalLabel">Add Diagnosis</h4>
+	      </div>
+	      <form class="form" role="form" method ="POST" action="<?php echo base_url('diagnosis/create');?>">
+		      <div class="modal-body">
+		    		<div class="form-group" style="width:80%;">
+		    			
+		    		    <label for="Public Id">Public Id</label>
+		    		    <input type="text" name="pub_id" class="form-control" id="publicid" placeholder="Enter Public ID Of Patient">
+
+		    		    <label for="Doctor">Doctor</label>
+		    		    <input type="text" name="doctor" class="form-control" id="doctor" placeholder="Enter Name Of Doctor">
+
+		    		    <label for="Consultation Type">Consultation Type</label>
+		    		    <input type="text" name="consultation_type" class="form-control" id="consultation_type" value="Emergency" readonly>
+
+		    		    
+
+		    		    <label for="Diagnosis">Diagnosis</label>
+		    		    <textarea class="form-control" rows="5" name="diagnosis"  id="diagnosis"></textarea>
+
+		    		    
+		    		    <label for="TypeId"></label>
+		    		    <input type="hidden" name="type_id" id="type_id" value="">
+		    		    
+		    		</div>
+
+		    		<div id="message"></div>
+
+		      </div>
+		      <div class="modal-footer">
+		   
+		        <button type="button" id="close_modal" class="btn btn-default" data-dismiss="modal">Close</button>
+		        <button type="submit" class="btn btn-primary">Submit</button>
+		      </div>
+	  		</form>
+	    </div>
+	  </div>
+	</div>
+
 
 
 <?php endblock() ?>
 
 <?php end_extend() ?>
+
+<script type="text/javascript">
+
+	function pass_pub_id_and_type_id(pub_id,type_id){
+
+		document.getElementById('publicid').value = pub_id;
+		document.getElementById('publicid').readOnly = true;
+
+		document.getElementById('type_id').value = type_id;
+		document.getElementById('type_id').readOnly = true;
+	}
+
+</script>
