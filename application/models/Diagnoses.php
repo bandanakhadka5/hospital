@@ -98,8 +98,13 @@ class Diagnoses extends BaseModel {
         $type_patient = $model_name::all(array('conditions' => array('patient_id = ?', $patient->id),'order' => 'created_at desc', 'limit' => 1));
 
 
+        if(empty($type_patient)){
+            
+            throw new Exception("Please register Patient to Respective Department");
+            
+        }
         foreach ($type_patient as $patient) {
-           return $type_patient->id; 
+           return $patient->id; 
         }
 
         
