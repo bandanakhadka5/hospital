@@ -154,7 +154,12 @@ $this->bspaginator->config($config);
 	    		    <input type="text" class="form-control" name="doctor" id="doctor" placeholder="Enter Doctor's Name">
 
 	    		    <label for="Consultation Type">Consultation Type</label>
-	    		    <input type="text" class="form-control" name="consultation_type" id="consultation_type" placeholder="Enter Consultation Type">
+	    		    <select class="form-control" name="consultation_type">
+			          	<option value="">Select Consultation Type</option>
+			            <option value="Emergency">Emergency</option>
+			            <option value="Inpatient">Inpatient</option>
+			            <option value="OPD">OPD</option>
+			        </select>
 
 	    		    <label for="Follow Up Date">Follow Up Date</label>
 	    		    <input type="date" class="form-control" name="follow_up_date" id="follow_up_date" placeholder="Enter Date">

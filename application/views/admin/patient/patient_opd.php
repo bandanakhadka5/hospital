@@ -56,9 +56,9 @@ $this->bspaginator->config($config);
 
 					<form name="search-patient" action="<?php echo base_url('patient_Opd');?>">
 						
-						<input style="width:20%;align:left;" name="search" type="text" value="<?=$patients_opd->get_search_term() ? $patients_opd->get_search_term() : ''?>" placeholder="Type search term..." autofocus>
+						<input style="width:20%;align:left;" class="form-control" name="search" type="text" value="<?=$patients_opd->get_search_term() ? $patients_opd->get_search_term() : ''?>" placeholder="Type search term..." autofocus>
 
-						<br/><br/>
+						<br/>
 						
 						<button type="submit" class="btn btn-success" style="width:20%;align:left;"><i class="icon-search icon-white"></i>Search</button>
 						
@@ -83,7 +83,7 @@ $this->bspaginator->config($config);
 											<td><?=$patient->age?></td>			
 											<td><?=$patient->address?></td>
 											<td><?=$patient->contact_number?></td>
-											<td><?=$patient_opd->created_at?></td>
+											<td><?php echo date('Y-m-d H:i:s',strtotime($patient_opd->created_at));?></td>
 											<td><?=$patient_opd->chief_compliants?>
 											<td><?=$patient_opd->doctor?>
 											</td>

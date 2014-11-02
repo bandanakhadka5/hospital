@@ -61,22 +61,24 @@ class PatientEmergency extends Patient {
 
 		$patient_emergency->active = 1;
         $patient_emergency->deleted = 0;
+
         if(array_key_exists('old_record_id', $params) && $params['old_record_id'] != ""){
             
             $patient_emergency->patient_id = $params['old_record_id'];
 
+            $patient = Patient::find_by_id($params['old_record_id']);
+            $patient->last_visited_at = date('Y-m-d H:i:s');
+            $patient->save();
+        }
 
-        } else {
+        else {
 
             $patient = Patient::create($params);
             $patient->save();
 
             $patient_emergency->patient_id = $patient->id;
-        }
-		
+        }		
 
-		return $patient_emergency;
-		
+		return $patient_emergency;		
     }
-
 }

@@ -2,9 +2,27 @@
 
 class PatientSearch extends Search {
 
+	protected $diagnosis = null;
+
 	public function __construct() {
 
 		parent::__construct();
+	}
+
+	public function set_diagnosis($diagnosis = null) {
+
+		if(!is_null($diagnosis)) {
+
+			$diagnosis = urldecode($diagnosis);
+			$this->diagnosis = trim($diagnosis);
+		}
+
+		return $this;
+	}
+
+	public function get_diagnosis() {
+
+		return $this->diagnosis;
 	}
 
 	protected function build_joins() {
@@ -13,6 +31,7 @@ class PatientSearch extends Search {
 				'LEFT JOIN patients_emergency emergency ON (patients.id = emergency.patient_id)',
 				'LEFT JOIN patients_opd opd ON (patients.id = opd.patient_id)',
 				'LEFT JOIN patients_inpatient inpatient ON (patients.id = inpatient.patient_id)',
+				'LEFT JOIN diagnosis ON (patients.id = diagnosis.patient_id)',
 			);
 	}
 
@@ -21,6 +40,12 @@ class PatientSearch extends Search {
 		$conditions = parent::build_conditions($options, Patient::$table_name);
 
 		$condition_string = $conditions[0];
+
+		if(isset($options->diagnosis)) {
+
+			$condition_string .= 'and '.Diagnoses::$table_name.'.diagnosis LIKE ? ';
+			array_push($conditions, '%'.$options->diagnosis.'%');
+		}
 
 		if(isset($options->search) && $options->search !== '') {
 
@@ -47,6 +72,11 @@ class PatientSearch extends Search {
 	protected function build_options() {
 
 		$options = parent::build_options();
+
+		if(!is_null($this->diagnosis)) {
+
+			$options->diagnosis = $this->diagnosis;
+		}
 
 		return $options;
 	}

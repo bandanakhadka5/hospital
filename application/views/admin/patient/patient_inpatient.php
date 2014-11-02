@@ -56,9 +56,9 @@ $this->bspaginator->config($config);
 
 					<form name="search-patient" action="<?php echo base_url('patient_Inpatient');?>">
 						
-						<input style="width:20%;align:left;" name="search" type="text" value="<?=$patients_inpatient->get_search_term() ? $patients_inpatient->get_search_term() : ''?>" placeholder="Type search term..." autofocus>
+						<input style="width:20%;align:left;" class="form-control" name="search" type="text" value="<?=$patients_inpatient->get_search_term() ? $patients_inpatient->get_search_term() : ''?>" placeholder="Type search term..." autofocus>
 
-						<br/><br/>
+						<br/>
 						
 						<button type="submit" class="btn btn-success" style="width:20%;align:left;"><i class="icon-search icon-white"></i>Search</button>
 						
@@ -83,10 +83,9 @@ $this->bspaginator->config($config);
 											<td><?=$patient->age?></td>			
 											<td><?=$patient->address?></td>
 											<td><?=$patient->contact_number?></td>
-											<td><?=$patients_inpatient->date_of_admission?></td>
-											<td><?=$patients_inpatient->date_of_procedure?>
-											<td><?=$patients_inpatient->date_of_discharge?>
-											</td>
+											<td><?php echo date('Y-m-d H:i:s',strtotime($patients_inpatient->date_of_admission));?></td>
+											<td><?php echo date('Y-m-d H:i:s',strtotime($patients_inpatient->date_of_procedure));?></td>
+											<td><?php echo date('Y-m-d H:i:s',strtotime($patients_inpatient->date_of_discharge));?></td>
 											<td><button class="btn btn-success btn-sm" onclick="pass_pub_id_and_type_id('<?=$patient->pub_id;?>','<?=$patients_inpatient->id;?>');" data-toggle="modal" data-target="#myModal">
 												  Add Diagnosis
 												</button></td>

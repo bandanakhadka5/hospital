@@ -32,6 +32,12 @@ class Patient extends BaseModel {
             'class_name' => 'FollowUp',
             'foreign_key' => 'patient_id'
         ),
+
+        array(
+            'diagnosis',
+            'class_name' => 'Diagnoses',
+            'foreign_key' => 'patient_id'
+        ),
 	);
 
 	/* Public functions - Setters */
@@ -167,6 +173,11 @@ class Patient extends BaseModel {
         $this->assign_attribute('informant',$informant);
     }
 
+    public function set_last_visited_at($date)
+    {
+        $this->assign_attribute('last_visited_at',$date);
+    }
+
     /* Public functions - Getters */
 
     public function get_first_name()
@@ -260,6 +271,7 @@ class Patient extends BaseModel {
 		$patient->source_of_referal = array_key_exists('source_of_referal', $params) ? $params['source_of_referal'] : Null;
 		$patient->contact_number = array_key_exists('contact_number', $params) ? $params['contact_number'] : Null;
 
+        $patient->last_visited_at = date('Y-m-d H:i:s');
         $patient->active = 1;
         $patient->deleted = 0;
 

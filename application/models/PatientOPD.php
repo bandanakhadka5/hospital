@@ -86,6 +86,10 @@ class PatientOPD extends Patient {
         if(array_key_exists('old_record_id', $params) && $params['old_record_id'] != "") {
             
             $patient_opd->patient_id = $params['old_record_id'];
+
+            $patient = Patient::find_by_id($params['old_record_id']);
+            $patient->last_visited_at = date('Y-m-d H:i:s');
+            $patient->save();
         }
 
         else {

@@ -57,6 +57,10 @@ class FollowUp extends BaseModel {
             throw new BlankFollowUpException("Please Enter The Date");
         }
 
+        if($date <= date("Y-m-d")) {
+            throw new Exception("Please enter a valid date for follow up");                
+        }
+
         $this->assign_attribute('follow_up_date',$date);
     }
 

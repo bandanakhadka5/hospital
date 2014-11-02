@@ -40,10 +40,19 @@ class Patients extends BaseController {
             $search = null;
         }
 
+        if(array_key_exists('diagnosis', $_GET)) {
+
+            $diagnosis = $_GET['diagnosis'];
+        }
+        else {
+            $diagnosis = null;
+        }
+
         $patient_search = new PatientSearch();
         $patient_search ->set_order($order_by_field, $order_by_direction)
                         ->set_page($page)
                         ->set_search_term($search)
+                        ->set_diagnosis($diagnosis)
                         ->execute();
 
 		$data['patients'] = $patient_search;

@@ -20,6 +20,7 @@ $config = array(
     'order_by_field' => $patients->get_field(),
     'order_by_direction' => $patients->get_direction(),
     'search' => $patients->get_search_term(),
+    'diagnosis' => $patients->get_diagnosis(),
     'total_rows' => $patients->get_total_rows(),
     'per_page' => $patients->get_page_size(),
 );
@@ -52,17 +53,29 @@ $this->bspaginator->config($config);
 
 		<div class="span12">
 			<div class="row-fluid">
-				<div class="span3" style="border: 1px solid #eee; padding-left: 20px; padding-right: 20px;">
 
-					<form name="search-patient" action="<?php echo base_url('patients/index');?>">
-						
-						<input style="width:20%;align:left;" name="search" type="text" value="<?=$patients->get_search_term() ? $patients->get_search_term() : ''?>" placeholder="Type search term..." autofocus>
+				<form name="search-patient" action="<?php echo base_url('patients/index');?>">
+					<div class="row-fluid">
+						<div class="col-lg-12" style="margin-bottom:2%;margin-top:20px%;">
+							<div class="col-lg-3">
+								<label for="Search Term">Search Term</label>
+								<input style="" class="form-control" name="search" type="text" value="<?=$patients->get_search_term() ? $patients->get_search_term() : ''?>" placeholder="Type search term..." autofocus>
+							</div>
+							
+							<div class="col-lg-3">
+								<label for="diagnosis">Diagnosis</label>
+								<input style="" class="form-control" name="diagnosis" type="text" value="<?=$patients->get_diagnosis() ? $patients->get_diagnosis() : ''?>">
+							</div>
+							<div class="">
+								<label for="search"></label>
+								<button type="submit" class="btn btn-success" style="margin-top:2.3%;"><i class="icon-search"></i>Search</button>
+							</div>
 
-						<br/><br/>
-						
-						<button type="submit" class="btn btn-success" style="width:20%;align:left;"><i class="icon-search icon-white"></i>Search</button>
-						
-					</form>
+						</div>
+					</div>
+					<br>						
+					
+				</form>
 					<hr>
 					<div class="span9">
 						<?php if($patients->get_total_rows() > 0){ ?>
@@ -89,7 +102,7 @@ $this->bspaginator->config($config);
 											</td>
 											<td><?=$patient->address?></td>
 											<td><?=$patient->contact_number?></td>
-											<td><?=$patient->last_visited_at?></td>
+											<td><?php echo date('Y-m-d H:i:s',strtotime($patient->last_visited_at));?></td>
 											<td><button class="btn btn-success btn-sm" onclick="pass_pub_id('<?=$patient->pub_id;?>');" data-toggle="modal" data-target="#myModal">
 												  Add Followup
 												</button></td>
@@ -117,7 +130,12 @@ $this->bspaginator->config($config);
 							    		    <input type="text" class="form-control" name="doctor" id="doctor" placeholder="Enter Doctor's Name">
 
 							    		    <label for="Consultation Type">Consultation Type</label>
-							    		    <input type="text" class="form-control" name="consultation_type" id="consultation_type" placeholder="Enter Consultation Type">
+							    		    <select class="form-control" name="consultation_type">
+									          	<option value="">Select Consultation Type</option>
+									            <option value="Emergency">Emergency</option>
+									            <option value="Inpatient">Inpatient</option>
+									            <option value="OPD">OPD</option>
+									        </select>
 
 							    		    <label for="Follow Up Date">Follow Up Date</label>
 							    		    <input type="date" class="form-control" name="follow_up_date" id="follow_up_date" placeholder="Enter Date">

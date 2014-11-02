@@ -21,6 +21,10 @@ class PatientInpatient extends Patient {
 
     public function set_date_of_admission($date_of_admission)
 	{
+        if($date_of_admission == '' || $date_of_admission === NULL) {
+            throw new Exception("Please Enter Date of Admission");
+        }
+
     	$this->assign_attribute('date_of_admission',$date_of_admission);
     }
 
@@ -29,7 +33,7 @@ class PatientInpatient extends Patient {
     	$this->assign_attribute('date_of_procedure',$date_of_procedure);
     }
 
-    public function set_Date_of_discharge($date_of_discharge)
+    public function set_date_of_discharge($date_of_discharge)
 	{
     	$this->assign_attribute('date_of_discharge',$date_of_discharge);
     }
@@ -92,6 +96,10 @@ class PatientInpatient extends Patient {
         if(array_key_exists('old_record_id', $params) && $params['old_record_id'] != "") {            
             
             $patient_inpatient->patient_id = $params['old_record_id'];
+
+            $patient = Patient::find_by_id($params['old_record_id']);
+            $patient->last_visited_at = date('Y-m-d H:i:s');
+            $patient->save();
         }
 
         else {
@@ -102,7 +110,6 @@ class PatientInpatient extends Patient {
             $patient_inpatient->patient_id = $patient->id;
         }
 
-		return $patient_inpatient;
-		
+		return $patient_inpatient;		
     }
 }

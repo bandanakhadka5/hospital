@@ -22,6 +22,7 @@ class Bspaginator {
 	var $search = '';
 	var $date_from = '';
 	var $date_to = '';
+	var $diagnosis = '';
 
 	public function config($options = array()){
 		if (count($options) > 0) {
@@ -58,6 +59,10 @@ class Bspaginator {
 
 			if($this->date_to != '') {
 				$html .= "&date_to=".$this->date_to;;
+			}
+
+			if($this->diagnosis != '') {
+				$html .= "&diagnosis=".$this->diagnosis;
 			}
 
 			$html .= "'>$key";
@@ -166,6 +171,10 @@ class Bspaginator {
 
 		if($this->date_to != '') {
 			$link .= "&date_to=".$this->date_to;
+		}
+
+		if($this->diagnosis != '') {
+			$link .= "&diagnosis=".$this->diagnosis;
 		}
 
 		$link .= "'>".$link_text."</a>";
