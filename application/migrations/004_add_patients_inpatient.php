@@ -23,10 +23,12 @@ class Migration_Add_patients_inpatient extends CI_Migration {
 
 			'date_of_procedure' => array(
 				'type' => 'datetime',
+				'null'=>True,
 			),
 
 			'date_of_discharge' => array(
 				'type' => 'datetime',
+				'null'=>True,
 			),
 
 			'active' => array(

@@ -52,26 +52,39 @@ $this->bspaginator->config($config);
 	</div>
 
 	<div class="row-fluid" style="margin-top:90px;">
-
+		<button class="btn btn-success" class="pull-right" onclick="clear_form_fields();" style="margin-bottom:10px;" data-toggle="modal" data-target="#myModal">Add Follow Up</button>
 		<div class="span12">
 			<div class="row-fluid">
 				<div class="span3" style="border: 1px solid #eee; padding-left: 20px; padding-right: 20px;">
 
 					<form name="search-patient" action="<?php echo base_url('follow_up/index');?>">
-						
-						<input style="width:20%;align:left;" class="form-control" name="search" type="text" value="<?=$follow_ups->get_search_term() ? $follow_ups->get_search_term() : ''?>" placeholder="Type search term..." autofocus>
-						<label for="datefrom">Date From</label>
-						<input style="width:20%;align:left;" class="form-control" name="date_from" type="date" value="<?=$follow_ups->get_date_from() ? $follow_ups->get_date_from() : ''?>">
-						<label for="dateto">Date To</label>
-						<input style="width:20%;align:left;" class="form-control" name="date_to" type="date" value="<?=$follow_ups->get_date_to() ? $follow_ups->get_date_to() : ''?>">
+						<div class="row-fluid">
+							<div class="col-lg-12" style="margin-bottom:2%;margin-top:20px%;">
+								<div class="col-lg-3">
+									<label for="Search Term">Search Term</label>
+									<input style="" class="form-control" name="search" type="text" value="<?=$follow_ups->get_search_term() ? $follow_ups->get_search_term() : ''?>" placeholder="Type search term..." autofocus>
+								</div>
+								
+								<div class="col-lg-4">
+									<label for="datefrom">Date From</label>
+									<input style="" class="form-control" name="date_from" type="date" value="<?=$follow_ups->get_date_from() ? $follow_ups->get_date_from() : ''?>">
+								</div>
+								<div class="col-lg-4">
+									<label for="dateto">Date To</label>
+									<input style="" class="form-control" name="date_to" type="date" value="<?=$follow_ups->get_date_to() ? $follow_ups->get_date_to() : ''?>">
+								</div>
+								<div class="">
+									<label for="search"></label>
+									<button type="submit" class="btn btn-success" style="margin-top:2.3%;"><i class="icon-search"></i>Search</button>
+								</div>
 
-						<br/>
+							</div>
+						</div>
+						<br>						
 						
-						<button type="submit" class="btn btn-success" style="width:20%;align:left;"><i class="icon-search icon-white"></i>Search</button>
-						<br/><br/>
 					</form>
 
-					<button class="btn btn-success btn-lg" onclick="clear_form_fields();" data-toggle="modal" data-target="#myModal">Add Follow Up</button>
+					
 					
 					<hr>
 					<div class="span9">
