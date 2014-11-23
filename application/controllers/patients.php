@@ -161,7 +161,7 @@ class Patients extends BaseController {
         $page->set_per_page(8);
 
         $patient_search = new PatientSearch();
-        $patient_search ->set_order('name', 'desc')
+        $patient_search ->set_order('first_name', 'desc')
                         ->set_search_term(urldecode($search))
                         ->set_page($page)
                         ->set_deleted(0)
