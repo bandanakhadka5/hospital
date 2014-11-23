@@ -12,7 +12,7 @@ $config = array(
     	'Address' => 'address',
     	'Contact Number' => 'contact_number',
     	'Last Visited At' => 'last_visited_at',
-    	'Chief Compliants' => 'chief_complaints',
+    	'Chief Compliants' => 'chief_compliants',
     	'Doctor' => 'Doctor'
     ),
     'cur_page' => $patients_opd->get_current_page(),
