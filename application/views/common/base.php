@@ -16,6 +16,10 @@
     <script src="<?php echo base_url('public/js/jquery.js');?>"></script>
     <script src="<?php echo base_url('public/js/bootstrap.min.js');?>"></script>
 
+    <!-- Bootstrap Typeahead -->
+    <script src="<?php echo base_url('public/js/bootstrap-typeahead.js');?>"></script>
+    <script src="<?php echo base_url('public/js/script.js');?>"></script>
+
     <!-- Custom styles for this template -->
     <link href="<?php echo base_url('public/custom/css/offcanvas.css')?>" rel="stylesheet">
     </head>

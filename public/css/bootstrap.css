@@ -3223,6 +3223,15 @@ tbody.collapse.in {
   left: 0;
   z-index: 990;
 }
+
+.typeahead {
+  z-index: 1051;
+  margin-top: 2px;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  border-radius: 4px;
+}
+
 .pull-right > .dropdown-menu {
   right: 0;
   left: auto;

@@ -73,8 +73,12 @@ $this->bspaginator->config($config);
 
 						</div>
 					</div>
-					<br>						
-					
+					<br>
+
+					<div class="">
+					<input type="text" data-name="patient_id" value="<?=($this->input->post('patient_id_text') ? $this->input->post('patient_id_text') : '')?>" placeholder="Type patient name..." data-provide="typeahead" class="patient-typeahead"/>					
+					</div>
+
 				</form>
 					<hr>
 					<div class="span9">

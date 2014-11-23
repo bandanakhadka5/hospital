@@ -148,7 +148,36 @@ class Patients extends BaseController {
 	    	$this->session->set_flashdata('alert_error', $e->getMessage());
 	    	redirect(lang_url('/patients'));
 	    }
-	} 
+	}
+
+	public function typeahead($search = null){
+
+        if(is_null($search)){
+            return json_encode('');
+        }
+
+        $page = new Page();
+        $page->set_current_page_number(1);
+        $page->set_per_page(8);
+
+        $patient_search = new PatientSearch();
+        $patient_search ->set_order('name', 'desc')
+                        ->set_search_term(urldecode($search))
+                        ->set_page($page)
+                        ->set_deleted(0)
+                        ->execute();
+
+        $patients = array();
+        if($patient_search->get_total_rows() > 0) {
+            foreach($patient_search as $patient) {
+                $patients[] = array('ID' => $patient->id, 'FullIdentifier' => $patient->first_name." ".$patient->last_name);
+            }
+        }
+
+        $this ->output
+              ->set_content_type('application/json')
+              ->set_output(json_encode($patients));
+    }
 }
 
 ?>

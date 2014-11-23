@@ -84,8 +84,8 @@ $this->bspaginator->config($config);
 											<td><?=$patient->address?></td>
 											<td><?=$patient->contact_number?></td>
 											<td><?php echo date('Y-m-d H:i:s',strtotime($patients_inpatient->date_of_admission));?></td>
-											<td><?php echo date('Y-m-d H:i:s',strtotime($patients_inpatient->date_of_procedure));?></td>
-											<td><?php echo date('Y-m-d H:i:s',strtotime($patients_inpatient->date_of_discharge));?></td>
+											<td><?php if(!is_null($patients_inpatient->date_of_procedure)) echo date('Y-m-d H:i:s',strtotime($patients_inpatient->date_of_procedure));?></td>
+											<td><?php if(!is_null($patients_inpatient->date_of_discharge)) echo date('Y-m-d H:i:s',strtotime($patients_inpatient->date_of_discharge));?></td>
 											<td><button class="btn btn-success btn-sm" onclick="pass_pub_id_and_type_id('<?=$patient->pub_id;?>','<?=$patients_inpatient->id;?>');" data-toggle="modal" data-target="#myModal">
 												  Add Diagnosis
 												</button></td>
