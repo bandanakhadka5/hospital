@@ -22,7 +22,7 @@
 			<div class="form-group" style="width:80%;">
 
 			    <label for="ConsultationDate">ConsultationDate</label>
-			    <input type="date" name="date_of_consultation" class="form-control" id="consultationdate" placeholder="Enter Date">
+			    <input type="text" name="date_of_consultation" class="form-control nepali-calendar" id="consultationdate" placeholder="Enter Date">
 
 			</div>
 
