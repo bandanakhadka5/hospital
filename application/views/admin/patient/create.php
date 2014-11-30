@@ -26,7 +26,7 @@
 			    <div class="form-group" style="width:80%;">
 
 			        <label for="DateOfBirth">DateOfBirth</label>
-			        <input type="text" name="date_of_birth" class="form-control nepali-calendar" id="dateofbirth" placeholder="Enter Date">
+			        <input type="date" name="date_of_birth" class="form-control" id="dateofbirth" placeholder="Enter Date">
 
 			    </div>
 			    <div class="form-group" style="width:80%;">

@@ -20,10 +20,6 @@
     <script src="<?php echo base_url('public/js/bootstrap-typeahead.js');?>"></script>
     <script src="<?php echo base_url('public/js/script.js');?>"></script>
 
-    <!-- Nepali Calendar -->
-    <script type="text/javascript" src="<?php echo base_url('public/nepali.datepicker.min.js');?>"></script>
-    <link rel="stylesheet" type="text/css" href="<?php echo base_url('public/nepali.datepicker.min.css');?>" />
-
     <!-- Custom styles for this template -->
     <link href="<?php echo base_url('public/custom/css/offcanvas.css')?>" rel="stylesheet">
     </head>
@@ -119,9 +115,5 @@
     document.getElementById('datetime').style.color ="White";
     tt=display_c();
   }
-
-  $(document).ready(function(){
-        $('.nepali-calendar').nepaliDatePicker();
-    });
 
 </script> 
