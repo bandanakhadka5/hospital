@@ -6,49 +6,48 @@ class Import_who_diseases extends BaseController {
 
 		if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
 
-            return $this->load_view('adm');
+            return $this->load_view('common/import');
 
 		}
 
-		$connection = Member::connection();
+		$connection = WhoDiseases::connection();
 
 		try {
 
+
 			$connection->transaction();
 
-			$this->create_members_from_params();
-
-			$i = 1;
-			foreach ($this->members as $member) {
-
-				$this->member_auto_enrol($i,$member);
-				$i++;
-			}	
-
-			if ($this->has_errors()){
-				throw new MemberImporterMemberAutoEnrolExcepiton('There were error importing members');
+			if (empty($_FILES["who_diseases"])) {
+			    
+			    throw new Exception("Empty file");
+			    
 			}
+				
 
-			$this->create_profile_members();
+			$file = $_FILES["who_diseases"]['tmp_name'];
 
-			if($this->profile_members) {
+			$file_handle = fopen($file, "r");
 
-				foreach ($this->profile_members as $profile_member) {
+			while (!feof($file_handle) ) {
 
-					$this->profile_auto_enrol($this->profile_member_index[$profile_member->id],$profile_member);
+				$line_of_text = fgetcsv($file_handle);
+
+				if($line_of_text[0] != NULL){
+
+					$disease = WhoDiseases::create($line_of_text[0]);
+					$disease->save();
 				}
-			}			
 
-			if ($this->has_errors()){
-				throw new MemberImporterProfileAutoEnrolExcepiton('There were error importing members');
-			}	
+
+			}
 			
 			$connection->commit();
+			
 
 		} catch (Exception $e) {
 
 			$connection->rollback();
-			throw $e;
+			echo $e->getMessage();
 		}
 	}
 
