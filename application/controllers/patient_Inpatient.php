@@ -81,9 +81,31 @@ class Patient_Inpatient extends BaseController {
         }
 	}
 
-	public function discharge_patient(){
+	public function discharge_patient($inpatient_id) {
 
-		
+        try {
+
+            $patient_inpatient = PatientInpatient::find_by_id($inpatient_id);
+
+            if(!$patient_inpatient) {
+                throw new Exception("Invalid patient!");                
+            }
+
+            $patient_inpatient->discharge();
+
+            $this->session->set_flashdata(
+                'alert_success', 
+                "Patient is discharged."
+            );
+
+            redirect(lang_url('/patient_inpatient/'));
+        }
+
+        catch(Exception $e) {
+
+            $this->session->set_flashdata('alert_error', $e->getMessage());
+            redirect(lang_url('/patient_inpatient'));
+        }
 	}
 
 }

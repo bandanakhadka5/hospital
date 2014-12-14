@@ -35,7 +35,7 @@ $this->bspaginator->config($config);
 		<div class="span12">
 
 			<div class="pull-left">
-				<h2>Listing OPD Patients</h2>
+				<h2>Listing Admitted Patients</h2>
 				<h5 style="margin-left:5px;">Showing result<?=($patients_inpatient->get_total_rows() == 1) ? '' : 's'?> <?=($patients_inpatient->get_page_size() > $patients_inpatient->get_total_rows()) ? $patients_inpatient->get_total_rows() : ($patients_inpatient->get_page_size() * ($patients_inpatient->get_current_page() - 1) + 1) .' - '. ($patients_inpatient->get_page_size() * ($patients_inpatient->get_current_page() - 1) + $patients_inpatient->get_row_per_current_page())?> of <?=number_format($patients_inpatient->get_total_rows())?></h5>
 			</div>
 
@@ -86,9 +86,16 @@ $this->bspaginator->config($config);
 											<td><?php echo date('Y-m-d H:i:s',strtotime($patient_inpatient->date_of_admission));?></td>
 											<td><?php if(!is_null($patient_inpatient->date_of_procedure)) echo date('Y-m-d H:i:s',strtotime($patient_inpatient->date_of_procedure));?></td>
 											<td><?php if(!is_null($patient_inpatient->date_of_discharge)) echo date('Y-m-d H:i:s',strtotime($patient_inpatient->date_of_discharge));?></td>
-											<td><button class="btn btn-success btn-sm" onclick="pass_pub_id_and_type_id('<?=$patient->pub_id;?>','<?=$patient_inpatient->id;?>');" data-toggle="modal" data-target="#myModal">
+											<td>
+											<?php if(is_null($patient_inpatient->date_of_discharge)) { ?>
+											<button style="margin-bottom:2px;" class="btn btn-success btn-sm" onclick="pass_pub_id_and_type_id('<?=$patient->pub_id;?>','<?=$patient_inpatient->id;?>');" data-toggle="modal" data-target="#myModal">
 												  Add Diagnosis
-												</button></td>
+												</button>
+											<a href="<?php echo base_url('patient_inpatient/discharge_patient/'.$patient_inpatient->id);?>"><button class="btn btn-success btn-sm">
+												  Discharge Patient
+												</button><a>
+											<?php } ?>
+											</td>
 										</tr>
 									<?php } }?>
 								</tbody>
@@ -153,8 +160,6 @@ $this->bspaginator->config($config);
     </div>
   </div>
 </div>
-
-
 
 <?php endblock() ?>
 

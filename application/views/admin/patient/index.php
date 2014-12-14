@@ -75,9 +75,9 @@ $this->bspaginator->config($config);
 					</div>
 					<br>
 
-					<div class="">
+					<!-- <div class="">
 					<input type="text" data-name="patient_id" value="<?=($this->input->post('patient_id_text') ? $this->input->post('patient_id_text') : '')?>" placeholder="Type patient name..." data-provide="typeahead" class="patient-typeahead"/>					
-					</div>
+					</div> -->
 
 				</form>
 					<hr>
@@ -107,9 +107,14 @@ $this->bspaginator->config($config);
 											<td><?=$patient->address?></td>
 											<td><?=$patient->contact_number?></td>
 											<td><?php echo date('Y-m-d H:i:s',strtotime($patient->last_visited_at));?></td>
-											<td><button class="btn btn-success btn-sm" onclick="pass_pub_id('<?=$patient->pub_id;?>');" data-toggle="modal" data-target="#myModal">
-												  Add Followup
-												</button></td>
+											<td>
+											<button class="btn btn-success btn-sm" onclick="pass_pub_id('<?=$patient->pub_id;?>');" data-toggle="modal" data-target="#myModal">
+											  Add Followup
+											</button>
+											<a href="<?php echo base_url('patients/edit/'.$patient->id);?>"><button class="btn btn-success btn-sm">
+											  Edit
+											</button><a>
+											</td>
 										</tr>
 									<?php } ?>
 								</tbody>

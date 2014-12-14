@@ -66,18 +66,18 @@ class PatientInpatient extends Patient {
     }
 
 
-    //check patient discharged
+    //discharge patient
 
-    public function discharge($Inpatient){
+    public function discharge(){
 
-        if($Inpatient->deleted){
-
-            throw new PatientDischargedException("The patient has already been discharged", 1);
-            
+        if($this->deleted) {
+            throw new PatientDischargedException("The patient has already been discharged", 1);            
         }
 
-        $Inpatient->delete();
-
+        $this->date_of_discharge = date('Y-m-d H:i:s');
+        $this->deactivate();
+        $this->delete();
+        $this->save();
     }
 
     /* Public static functions */

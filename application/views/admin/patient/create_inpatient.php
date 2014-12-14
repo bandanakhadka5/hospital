@@ -26,12 +26,12 @@
 
 	</div>
 
-	<div class="form-group" style="width:80%;">
+	<!-- <div class="form-group" style="width:80%;">
 
 	    <label for="DischargeDate">DischargeDate</label>
 	    <input type="date" name="date_of_discharge" class="form-control" id="dischargedate" placeholder="Enter Date">
 
-	</div>
+	</div> -->
 
   </form>
 

@@ -51,7 +51,7 @@ class Patients extends BaseController {
         $patient_search = new PatientSearch();
         $patient_search ->set_order($order_by_field, $order_by_direction)
                         ->set_page($page)
-                        ->set_search_term($search)
+                        ->set_search_term(urldecode($search))
                         ->set_diagnosis($diagnosis)
                         ->execute();
 
@@ -144,6 +144,51 @@ class Patients extends BaseController {
 	    }
 
 	    catch(Exception $e) {
+
+	    	$this->session->set_flashdata('alert_error', $e->getMessage());
+	    	redirect(lang_url('/patients'));
+	    }
+	}
+
+	public function edit($patient_id) {
+
+		try {
+
+			$patient = Patient::find_by_id($patient_id);
+
+			if(!$patient) {
+				throw new Exception("Invalid Patient!");				
+			}
+
+			if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
+                return $this->load_view('admin/patient/edit',array('patient' => $patient));
+            }
+
+			$patient->first_name = $this->input->post('first_name');
+			$patient->middle_name = $this->input->post('middle_name');
+			$patient->last_name = $this->input->post('last_name');
+			$patient->date_of_birth = $this->input->post('date_of_birth');
+			$patient->age = $this->input->post('age');
+			$patient->address = $this->input->post('address');
+			$patient->sex = $this->input->post('sex');
+			$patient->email = $this->input->post('email');
+			$patient->informant = $this->input->post('informant');
+			$patient->contact_person = $this->input->post('contact_person');
+			$patient->relation_with_patient = $this->input->post('relation_with_patient');
+			$patient->source_of_referal = $this->input->post('source_of_referal');
+			$patient->contact_number = $this->input->post('contact_number');
+
+			$patient->save();
+
+			$this->session->set_flashdata(
+                'alert_success', 
+                "Patient details edited successfully."
+            );
+
+            redirect(lang_url('/patients'));
+		}
+
+		catch(Exception $e) {
 
 	    	$this->session->set_flashdata('alert_error', $e->getMessage());
 	    	redirect(lang_url('/patients'));

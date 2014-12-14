@@ -49,10 +49,13 @@
 							<th>Address</th>
 							<th>Age</th>
 							<th>sex</th>
+							<th>Date of Admission</th>
 						</tr>
 					</thead>
 					<tbody>
-						<?php foreach ($patients_in_bed as $patient_in_bed){ ?>
+						<?php foreach ($patients_in_bed as $patient_in_bed){ 
+							if(is_null($patient_in_bed->date_of_discharge)) {
+							?>
 							<tr>
 								<td><?=$patient_in_bed->patient->first_name?></td>
 								<td><?=$patient_in_bed->patient->last_name?></td>
@@ -65,8 +68,12 @@
 									else echo "Female";
 									?>
 								</td>
+								<td>
+									<?php echo date('Y-m-d',strtotime($patient_in_bed->date_of_admission));?>
+								</td>
 							</tr>
-						<?php } ?>
+						<?php }
+						} ?>
 					</tbody>
 				</table>
 		</div>			

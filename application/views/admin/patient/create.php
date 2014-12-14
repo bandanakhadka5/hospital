@@ -75,7 +75,7 @@
     		 	<div class="form-group" style="width:80%;">
     		 		
     		 	    <label for="contact">Contact Number</label>
-    		 	    <input type="text" name="contact_number" class="form-control" id="contactnumber" placeholder="Enter Contact Number">
+    		 	    <input type="number" name="contact_number" class="form-control" id="contactnumber" placeholder="Enter Contact Number">
 
     		 	</div>
 
