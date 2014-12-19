@@ -214,11 +214,8 @@ class Patients extends BaseController {
             			'emergency' => $patient->emergency,
             			'opd' => $patient->opd,
             			'inpatient' => $patient->inpatient,
+            			'diagnosis' => $patient->diagnosis,
             			);
-            /*echo "<pre>";
-            print_r($data);
-            echo "</pre>";
-            exit();*/
 
             return $this->load_view('admin/patient/report',$data);
 		}
