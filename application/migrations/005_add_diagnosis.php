@@ -22,6 +22,11 @@ class Migration_Add_diagnosis extends CI_Migration {
 				'constraint'=>'250',
 			),
 
+			'details' => array(
+				'type' => 'varchar',
+				'constraint'=>'1000',
+			),
+
 			'doctor' => array(
 				'type' => 'varchar',
 				'constraint'=>'250',
@@ -66,8 +71,6 @@ class Migration_Add_diagnosis extends CI_Migration {
 	}
 
 	public function down() {
-
 		$this->dbforge->drop_table('diagnosis');
-
 	}
 }

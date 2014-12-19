@@ -132,12 +132,14 @@ $this->bspaginator->config($config);
 	    		    <label for="Consultation Type">Consultation Type</label>
 	    		    <input type="text" name="consultation_type" class="form-control" id="consultation_type" value="OPD" readonly>
 
-	    		    
+	 				<label for="Diagnosis">Diagnosis</label>
+			        <input type="text" data-name="diagnosis" value="<?=($this->input->post('diagnosis') ? $this->input->post('diagnosis') : '')?>" placeholder="Type disease name..." data-provide="typeahead" class="disease-typeahead form-control"/>
+			        <input type="hidden" name="disease_id" value="<?=($this->input->post('disease_id') ? $this->input->post('disease_id') : '')?>"/>
+   					<input type="hidden" name="diagnosis" value="<?=($this->input->post('diagnosis') ? $this->input->post('diagnosis') : '')?>"/>
 
-	    		    <label for="Diagnosis">Diagnosis</label>
-	    		    <textarea class="form-control" rows="5" name="diagnosis"  id="diagnosis"></textarea>
-
-	    		    
+	    		    <label for="Details">Details</label>
+	    		    <textarea class="form-control" rows="5" name="details"  id="details"></textarea>
+	 				   		    
 	    		    <label for="TypeId"></label>
 	    		    <input type="hidden" name="type_id" id="type_id" value="">
 	    		    

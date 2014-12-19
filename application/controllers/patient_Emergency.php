@@ -3,6 +3,7 @@
 class Patient_Emergency extends BaseController {
 
 	public function index() {
+
 		if(array_key_exists('page', $_GET)) {
 
             $cur_page = $_GET['page'];
@@ -79,7 +80,6 @@ class Patient_Emergency extends BaseController {
             redirect(lang_url('/patient_emergency/create'));
         }
 	}
-
 }
 
 ?>

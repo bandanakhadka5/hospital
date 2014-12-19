@@ -51,14 +51,18 @@ class Patients extends BaseController {
         $patient_search = new PatientSearch();
         $patient_search ->set_order($order_by_field, $order_by_direction)
                         ->set_page($page)
-                        ->set_search_term(urldecode($search))
-                        ->set_diagnosis($diagnosis)
-                        ->execute();
+                        ->set_search_term(urldecode($search));
+
+        if($diagnosis) {
+            $patient_search->set_diagnosis($diagnosis);
+        }
+
+        $patient_search->execute();
 
 		$data['patients'] = $patient_search;
 
-		return $this->load_view('admin/patient/index',$data);
 
+		return $this->load_view('admin/patient/index',$data);
 	}
 
 	public function ajax_return_patient(){
@@ -186,6 +190,37 @@ class Patients extends BaseController {
             );
 
             redirect(lang_url('/patients'));
+		}
+
+		catch(Exception $e) {
+
+	    	$this->session->set_flashdata('alert_error', $e->getMessage());
+	    	redirect(lang_url('/patients'));
+	    }
+	}
+
+	public function view_report($patient_id) {
+
+		try {
+
+			$patient = Patient::find_by_id($patient_id);
+
+			if(!$patient) {
+				throw new Exception("Invalid Patient!");				
+			}
+            
+            $data = array(
+            			'patient' => $patient,
+            			'emergency' => $patient->emergency,
+            			'opd' => $patient->opd,
+            			'inpatient' => $patient->inpatient,
+            			);
+            /*echo "<pre>";
+            print_r($data);
+            echo "</pre>";
+            exit();*/
+
+            return $this->load_view('admin/patient/report',$data);
 		}
 
 		catch(Exception $e) {

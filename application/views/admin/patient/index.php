@@ -45,6 +45,7 @@ $this->bspaginator->config($config);
 			</div>
 
 			<br/>
+		</div>
 	</div>
 
 	<br/>
@@ -64,8 +65,10 @@ $this->bspaginator->config($config);
 							
 							<div class="col-lg-3">
 								<label for="diagnosis">Diagnosis</label>
-								<input style="" class="form-control" name="diagnosis" type="text" value="<?=$patients->get_diagnosis() ? $patients->get_diagnosis() : ''?>">
+								<input type="text" data-name="diagnosis" value="<?=($this->input->post('diagnosis') ? $this->input->post('diagnosis') : '')?>" placeholder="Type disease name..." data-provide="typeahead" class="disease-typeahead form-control"/>
+		       					<input type="hidden" name="diagnosis" value="<?=($this->input->post('diagnosis') ? $this->input->post('diagnosis') : '')?>"/>
 							</div>
+
 							<div class="">
 								<label for="search"></label>
 								<button type="submit" class="btn btn-success" style="margin-top:2.3%;"><i class="icon-search"></i>Search</button>
@@ -74,10 +77,6 @@ $this->bspaginator->config($config);
 						</div>
 					</div>
 					<br>
-
-					<!-- <div class="">
-					<input type="text" data-name="patient_id" value="<?=($this->input->post('patient_id_text') ? $this->input->post('patient_id_text') : '')?>" placeholder="Type patient name..." data-provide="typeahead" class="patient-typeahead"/>					
-					</div> -->
 
 				</form>
 					<hr>
@@ -113,6 +112,9 @@ $this->bspaginator->config($config);
 											</button>
 											<a href="<?php echo base_url('patients/edit/'.$patient->id);?>"><button class="btn btn-success btn-sm">
 											  Edit
+											</button><a>
+											<a href="<?php echo base_url('patients/view_report/'.$patient->id);?>"><button class="btn btn-success btn-sm">
+											  View Report
 											</button><a>
 											</td>
 										</tr>
@@ -174,8 +176,6 @@ $this->bspaginator->config($config);
 	</div>
 
 </div>
-
-
 
 <?php endblock() ?>
 

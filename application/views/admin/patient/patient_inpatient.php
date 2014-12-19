@@ -91,8 +91,8 @@ $this->bspaginator->config($config);
 											<button style="margin-bottom:2px;" class="btn btn-success btn-sm" onclick="pass_pub_id_and_type_id('<?=$patient->pub_id;?>','<?=$patient_inpatient->id;?>');" data-toggle="modal" data-target="#myModal">
 												  Add Diagnosis
 												</button>
-											<a href="<?php echo base_url('patient_inpatient/discharge_patient/'.$patient_inpatient->id);?>"><button class="btn btn-success btn-sm">
-												  Discharge Patient
+											<a href="<?php echo base_url('patient_inpatient/discharge_patient/'.$patient_inpatient->id);?>"><button class="btn btn-success btn-sm" onclick="return confirm_discharge();">
+												  Discharge
 												</button><a>
 											<?php } ?>
 											</td>
@@ -137,11 +137,13 @@ $this->bspaginator->config($config);
 	    		    <label for="Consultation Type">Consultation Type</label>
 	    		    <input type="text" name="consultation_type" class="form-control" id="consultation_type" value="Inpatient" readonly>
 
-	    		    
-
 	    		    <label for="Diagnosis">Diagnosis</label>
-	    		    <textarea class="form-control" rows="5" name="diagnosis"  id="diagnosis"></textarea>
+			        <input type="text" data-name="diagnosis" value="<?=($this->input->post('diagnosis') ? $this->input->post('diagnosis') : '')?>" placeholder="Type disease name..." data-provide="typeahead" class="disease-typeahead form-control"/>
+			        <input type="hidden" name="disease_id" value="<?=($this->input->post('disease_id') ? $this->input->post('disease_id') : '')?>"/>
+   					<input type="hidden" name="diagnosis" value="<?=($this->input->post('diagnosis') ? $this->input->post('diagnosis') : '')?>"/>
 
+	    		    <label for="Details">Details</label>
+	    		    <textarea class="form-control" rows="5" name="details"  id="details"></textarea>
 	    		    
 	    		    <label for="TypeId"></label>
 	    		    <input type="hidden" name="type_id" id="type_id" value="">
@@ -168,13 +170,17 @@ $this->bspaginator->config($config);
 
 <script type="text/javascript">
 
-	function pass_pub_id_and_type_id(pub_id,type_id){
+	function pass_pub_id_and_type_id(pub_id,type_id) {
 
 		document.getElementById('publicid').value = pub_id;
 		document.getElementById('publicid').readOnly = true;
 
 		document.getElementById('type_id').value = type_id;
 		document.getElementById('type_id').readOnly = true;
+	}
+
+	function confirm_discharge() {
+	    return confirm("Are you sure to discharge the patient?");
 	}
 
 </script>

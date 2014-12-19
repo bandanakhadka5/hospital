@@ -2,6 +2,12 @@
 
 <?php startblock('content') ?>
 
+	<div style="text-align:center">
+		<h3>Edit Patient's Details</h3>
+	</div>
+	
+	<br/>
+
 	<form class="form" role="form" method ="POST" action="<?php echo base_url('patients/edit/'.$patient->id);?>">	
 	<div class= "row">
 		<div class = "col-md-12">
@@ -100,7 +106,7 @@
     <div class="row">
 		<div class="col-md-12">
 			<div class="col-md-9 col-md-offset-2">
-				<button id="submit" class="btn btn-lg btn-primary btn-block" >Update</button>
+				<button id="submit" class="btn btn-lg btn-primary btn-block" onclick="return confirm_update();">Update</button>
 			</div>		
 		</div>
 	</div>
@@ -110,3 +116,11 @@
 <?php endblock() ?>
 
 <?php end_extend() ?>
+
+<script type="text/javascript">
+
+	function confirm_update() {
+		return confirm("Are you sure about the changes?");
+	}
+
+</script>

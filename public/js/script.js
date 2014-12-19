@@ -35,4 +35,38 @@ $(function() {
 			autoselect: true
 		});
     }
+
+    $disease_typeahead = $('.disease-typeahead');
+
+	if($disease_typeahead.length > 0) {
+
+		$('.disease-typeahead').typeahead({
+
+			source : function(typeahead, query) {
+
+				if (timeout) {
+                	clearTimeout(timeout);
+            	}
+
+	            timeout = setTimeout(function() {
+
+					$.ajax({
+						url: '/hospital/diseases/typeahead/'+encodeURI(query),
+						success: function(data){
+							typeahead.process(data);
+						}
+					});
+
+	            }, 300);
+
+			},
+			property: 'FullIdentifier',
+			onselect: function(obj) {
+				$('.disease-typeahead[data-name="diagnosis"]').attr('data-value', obj['FullIdentifier']);
+				$('form input[name="disease_id"]').attr('value', obj['ID']);
+				$('form input[name="diagnosis"]').val(obj['FullIdentifier']);
+			},
+			autoselect: true
+		});
+    }
 });

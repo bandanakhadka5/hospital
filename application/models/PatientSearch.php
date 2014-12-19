@@ -22,7 +22,9 @@ class PatientSearch extends Search {
 
 	public function get_diagnosis() {
 
-		return $this->diagnosis;
+		if(!is_null($this->diagnosis)) {
+			return $this->diagnosis;
+		}
 	}
 
 	protected function build_joins() {
@@ -41,10 +43,10 @@ class PatientSearch extends Search {
 
 		$condition_string = $conditions[0];
 
-		if(isset($options->diagnosis)) {
+		if (isset($options->diagnosis)) {
 
-			$condition_string .= 'and '.Diagnoses::$table_name.'.diagnosis LIKE ? ';
-			array_push($conditions, '%'.$options->diagnosis.'%');
+			$condition_string .= 'and '.Diagnoses::$table_name.'.diagnosis = ? ';
+			array_push($conditions, $options->diagnosis);
 		}
 
 		if(isset($options->search) && $options->search !== '') {
