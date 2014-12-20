@@ -110,9 +110,9 @@ $this->bspaginator->config($config);
 											<button class="btn btn-success btn-sm" onclick="pass_pub_id('<?=$patient->pub_id;?>');" data-toggle="modal" data-target="#myModal">
 											  Add Followup
 											</button>
-											<a href="<?php echo base_url('patients/edit/'.$patient->id);?>"><img src="<?php echo base_url('public/images/edit.jpg');?>">											
+											<a href="<?php echo base_url('patients/edit/'.$patient->id);?>"><img title="Edit" src="<?php echo base_url('public/images/edit.jpg');?>">											
 											<a>
-											<a href="<?php echo base_url('patients/view_report/'.$patient->id);?>"><img src="<?php echo base_url('public/images/Dapino-Medical-Medical-report.jpg');?>">
+											<a href="<?php echo base_url('patients/view_report/'.$patient->id);?>"><img title="View Report" src="<?php echo base_url('public/images/Dapino-Medical-Medical-report.jpg');?>">
 											<a>
 											</td>
 										</tr>

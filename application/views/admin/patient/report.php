@@ -65,17 +65,12 @@
 				<p style="font-size:14px;">Chief Compliants: <?=$patient_emergency->chief_compliants?></p>
 	
 				<?php 
+					if($emergency_diagnosis) {
 
-					$diagnosis =  Diagnoses::find_by_consultation_type_and_type_id('Emergency',$patient_emergency->id); 
-					if($diagnosis){
-
-						echo "<p>". $diagnosis->diagnosis ."</p>";	
-						echo "<p>". $diagnosis->details ."</p>";
-
-					}
-					
-				?>
-			
+						echo "<p>Diagnosis: ". $emergency_diagnosis->diagnosis ."</p>";	
+						echo "<p>Diagnosis Details: ". $emergency_diagnosis->details ."</p>";
+					}					
+				?>			
 			</div>
 		</div>
 	</div>
@@ -95,17 +90,12 @@
 				<p style="font-size:14px;">Doctor: <?=$patient_opd->doctor?></p>
 				
 				<?php 
-				
-					$diagnosis =  Diagnoses::find_by_consultation_type_and_type_id('OPD',$patient_opd->id); 
-					if($diagnosis){
+					if($opd_diagnosis) {
 
-						echo "<p>". $diagnosis->diagnosis ."</p>";
-						echo "<p>". $diagnosis->details ."</p>";
-
-					}
-					
-				?>
-				
+						echo "<p>Diagnosis: ". $opd_diagnosis->diagnosis ."</p>";
+						echo "<p>Diagnosis Details: ". $opd_diagnosis->details ."</p>";
+					}					
+				?>				
 			</div>
 		</div>
 	</div>
@@ -123,17 +113,12 @@
 				<p style="font-size:14px;">Date of Procedure: <?=date('Y-m-d',strtotime($patient_inpatient->date_of_procedure))?></p>
 				<p style="font-size:14px;">Date of Discharge: <?=date('Y-m-d',strtotime($patient_inpatient->date_of_discharge))?></p>
 				
-				<?php 
-				
-					$diagnosis =  Diagnoses::find_by_consultation_type_and_type_id('Inpatient',$patient_inpatient->id); 
-					if($diagnosis){
+				<?php  
+					if($inpatient_diagnosis) {
 
-						echo "<p>". $diagnosis->diagnosis ."</p>";
-						echo "<p>". $diagnosis->details ."</p>";
-
-
-					}
-					
+						echo "<p>Diagnosis ". $inpatient_diagnosis->diagnosis ."</p>";
+						echo "<p>Diagnosis Details: ". $inpatient_diagnosis->details ."</p>";
+					}					
 				?>
 				
 			</div>
