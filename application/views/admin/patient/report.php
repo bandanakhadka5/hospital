@@ -158,40 +158,11 @@ $(function(){
 
 		if (confirm('Click OK if you have printed the voucher.')) {
 
-			$.ajax({
-				
-				url: '<?php echo site_url('remittance/remsess')?>',
-				type: 'POST', 
-				success: function(e){window.location = '<?php 
-								echo file_exists(APPPATH.'modules/privilegecard')?site_url('privilegecard/issueCard/'.$remitter->getId()):site_url();
-								?>';},
-				error: function(e){}
-					
-			});
-
+			window.location = "<?php echo base_url('patients') ?>"
 		}
 		
 	})
 });
 
-	//function print_page() {
-		//alert('hello');
-		//window.print();
-
-		//if (confirm('Click OK if you have printed the voucher.')) {
-
-			/*$.ajax({
-				
-				url: '<?php echo site_url('remittance/remsess')?>',
-				type: 'POST', 
-				success: function(e){window.location = '<?php 
-								echo file_exists(APPPATH.'modules/privilegecard')?site_url('privilegecard/issueCard/'.$remitter->getId()):site_url();
-								?>';},
-				error: function(e){}
-					
-			});*/
-
-		//}
-	//}
 		
 </script>
