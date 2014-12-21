@@ -80,6 +80,60 @@ class Patient_Opd extends BaseController {
             redirect('/patient_opd/create');        
 	    }
 	}
+
+	public function delete($patient_opd_id) {
+
+        try {
+
+            $patient_opd = PatientOPD::find_by_id($patient_opd_id);
+
+            if(!$patient_opd) {
+                throw new Exception("Invalid Patient!");            
+            }
+
+            $patient_opd->delete();
+            $patient_opd->save();
+
+            $this->session->set_flashdata(
+                'alert_success', 
+                "Patient is deleted."
+            );
+            redirect('/patient_opd');
+        }
+
+        catch(Exception $e) {
+
+            $this->session->set_flashdata('alert_error', $e->getMessage());
+            redirect('/patient_opd');
+        }
+    }
+
+    public function undelete($patient_opd_id) {
+
+        try {
+
+            $patient_opd = PatientOPD::find_by_id($patient_opd_id);
+
+            if(!$patient_opd) {
+                throw new Exception("Invalid Patient!");            
+            }
+
+            $patient_opd->undelete();
+            $patient_opd->save();
+
+            $this->session->set_flashdata(
+                'alert_success', 
+                "Patient is undeleted."
+            );
+            redirect('/patient_opd');
+        }
+
+        catch(Exception $e) {
+
+            $this->session->set_flashdata('alert_error', $e->getMessage());
+            redirect('/patient_opd');
+        }
+    }
 }
 
 ?>

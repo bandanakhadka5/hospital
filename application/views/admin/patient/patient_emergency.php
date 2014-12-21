@@ -7,7 +7,7 @@
 $config = array(
     'headers' => (object) array(
     	'Pub ID' => 'pub_id',
-    	'Name' => 'first_name', 
+    	'Full Name' => 'first_name', 
     	'Age' => 'age', 
     	'Address' => 'address',
     	'Contact Number' => 'contact_number',
@@ -64,7 +64,7 @@ $this->bspaginator->config($config);
 					</form>
 					<hr>
 					<div class="span9">
-						<?php if($patients_emergency->get_total_rows() > 0){ ?>
+						<?php if($patients_emergency->get_total_rows() > 0) { ?>
 
 						<div class="table-container">
 							<table class="table table-striped table-bordered">
@@ -72,23 +72,30 @@ $this->bspaginator->config($config);
 								<?php echo $this->bspaginator->table_header();?>
 
 								<tbody>
-									<?php foreach ($patients_emergency as $patient_emergency){
-										$patient = Patient::find_by_id($patient_emergency->patient_id);
-										if($patient){
+									<?php foreach ($patients_emergency as $patient_emergency) {
 									 ?>
 										<tr>
-											<td><?php echo $patient->pub_id;?></td>
-											<td><?php echo $patient->first_name.' '.$patient->last_name;?></td>				
-											<td><?php echo $patient->age;?></td>			
-											<td><?php echo $patient->address;?></td>
-											<td><?php echo $patient->contact_number;?></td>
+											<td><?php echo $patient_emergency->patient->pub_id;?></td>
+											<td><?php echo $patient_emergency->patient->get_full_name();?></td>			
+											<td><?php echo $patient_emergency->patient->age;?></td>			
+											<td><?php echo $patient_emergency->patient->address;?></td>
+											<td><?php echo $patient_emergency->patient->contact_number;?></td>
 											<td><?php echo date('Y-m-d',strtotime($patient_emergency->created_at));?></td>
 											<td><?php echo $patient_emergency->chief_compliants;?>
-											<td><button class="btn btn-success btn-sm" onclick="pass_pub_id_and_type_id('<?php echo $patient->pub_id;?>','<?php echo $patient_emergency->id;?>');" data-toggle="modal" data-target="#myModal">
+											<td>
+												<button class="btn btn-success btn-sm" onclick="pass_pub_id_and_type_id('<?php echo $patient_emergency->patient->pub_id;?>','<?php echo $patient_emergency->id;?>');" data-toggle="modal" data-target="#myModal">
 												  Add Diagnosis
-												</button></td>
+												</button>
+											<?php if($patient_emergency->is_deleted()) { ?>
+												<a href="<?php echo base_url('patient_emergency/undelete/'.$patient_emergency->id);?>"><img title="UnDelete" src="<?php echo base_url('public/images/undelete.png');?>" onclick="return confirm_undelete();">											
+											<a> 
+											<?php } else { ?>
+												<a href="<?php echo base_url('patient_emergency/delete/'.$patient_emergency->id);?>"><img title="Delete" src="<?php echo base_url('public/images/delete.jpg');?>" onclick="return confirm_delete();">											
+											<a> 
+											<?php } ?>
+											</td>
 										</tr>
-									<?php } }?>
+									<?php } ?>
 								</tbody>
 							</table>
 
@@ -169,6 +176,14 @@ $this->bspaginator->config($config);
 
 		document.getElementById('type_id').value = type_id;
 		document.getElementById('type_id').readOnly = true;
+	}
+
+	function confirm_delete() {
+		return confirm('Are you sure you want to delete the patient?');
+	}
+
+	function confirm_undelete() {
+		return confirm('Are you sure you want to undelete the patient?');
 	}
 
 </script>

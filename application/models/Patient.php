@@ -250,6 +250,14 @@ class Patient extends BaseModel {
         return $this->read_attribute('last_visited_at');
     }
 
+    public function get_full_name()
+    {
+        if($this->middle_name != '')
+            return $this->first_name.' '.$this->middle_name. ' '.$this->last_name;
+        else
+            return $this->first_name.' '.$this->last_name;
+    }
+
 	/* Public static functions */
 
 	public static function create($params) {

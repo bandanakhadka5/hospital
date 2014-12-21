@@ -62,4 +62,9 @@ class PatientDischargedException extends Exception
 class BlankDiagnosisException extends Exception
 {}
 
+/*Base Model Exceptions*/
+
+class ModelExceptionNotExistsException extends Exception
+{}
+
 ?>

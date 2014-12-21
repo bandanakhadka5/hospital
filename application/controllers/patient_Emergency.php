@@ -80,6 +80,60 @@ class Patient_Emergency extends BaseController {
             redirect('/patient_emergency/create');
         }
 	}
+
+    public function delete($patient_emergency_id) {
+
+        try {
+
+            $patient_emergency = PatientEmergency::find_by_id($patient_emergency_id);
+
+            if(!$patient_emergency) {
+                throw new Exception("Invalid Patient!");            
+            }
+
+            $patient_emergency->delete();
+            $patient_emergency->save();
+
+            $this->session->set_flashdata(
+                'alert_success', 
+                "Patient is deleted."
+            );
+            redirect('/patient_emergency');
+        }
+
+        catch(Exception $e) {
+
+            $this->session->set_flashdata('alert_error', $e->getMessage());
+            redirect('/patient_emergency');
+        }
+    }
+
+    public function undelete($patient_emergency_id) {
+
+        try {
+
+            $patient_emergency = PatientEmergency::find_by_id($patient_emergency_id);
+
+            if(!$patient_emergency) {
+                throw new Exception("Invalid Patient!");            
+            }
+
+            $patient_emergency->undelete();
+            $patient_emergency->save();
+
+            $this->session->set_flashdata(
+                'alert_success', 
+                "Patient is undeleted."
+            );
+            redirect('/patient_emergency');
+        }
+
+        catch(Exception $e) {
+
+            $this->session->set_flashdata('alert_error', $e->getMessage());
+            redirect('/patient_emergency');
+        }
+    }
 }
 
 ?>

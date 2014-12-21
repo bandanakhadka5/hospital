@@ -7,7 +7,7 @@
 $config = array(
     'headers' => (object) array(
     	'Pub ID' => 'pub_id',
-    	'Name' => 'first_name', 
+    	'Full Name' => 'first_name', 
     	'Age' => 'age', 
     	'Address' => 'address',
     	'Contact Number' => 'contact_number',
@@ -73,22 +73,20 @@ $this->bspaginator->config($config);
 								<?php echo $this->bspaginator->table_header();?>
 
 								<tbody>
-									<?php foreach ($patients_inpatient as $patient_inpatient){
-										$patient = Patient::find_by_id($patient_inpatient->patient_id);
-										if($patient){
+									<?php foreach ($patients_inpatient as $patient_inpatient) {
 									 ?>
 										<tr>
-											<td><?php echo $patient->pub_id;?></td>
-											<td><?php echo $patient->first_name.' '.$patient->last_name;?></td>				
-											<td><?php echo $patient->age;?></td>			
-											<td><?php echo $patient->address;?></td>
-											<td><?php echo $patient->contact_number;?></td>
+											<td><?php echo $patient_inpatient->patient->pub_id;?></td>
+											<td><?php echo $patient_inpatient->patient->get_full_name();?></td>				
+											<td><?php echo $patient_inpatient->patient->age;?></td>			
+											<td><?php echo $patient_inpatient->patient->address;?></td>
+											<td><?php echo $patient_inpatient->patient->contact_number;?></td>
 											<td><?php echo date('Y-m-d',strtotime($patient_inpatient->date_of_admission));?></td>
 											<td><?php if(!is_null($patient_inpatient->date_of_procedure)) echo date('Y-m-d',strtotime($patient_inpatient->date_of_procedure));?></td>
 											<td><?php if(!is_null($patient_inpatient->date_of_discharge)) echo date('Y-m-d',strtotime($patient_inpatient->date_of_discharge));?></td>
 											<td>
 											<?php if(is_null($patient_inpatient->date_of_discharge)) { ?>
-											<button style="margin-bottom:2px;" class="btn btn-success btn-sm" onclick="pass_pub_id_and_type_id('<?php echo $patient->pub_id;?>','<?php echo $patient_inpatient->id;?>');" data-toggle="modal" data-target="#myModal">
+											<button style="margin-bottom:2px;" class="btn btn-success btn-sm" onclick="pass_pub_id_and_type_id('<?php echo $patient_inpatient->patient->pub_id;?>','<?php echo $patient_inpatient->id;?>');" data-toggle="modal" data-target="#myModal">
 												  Add Diagnosis
 												</button>
 											<a href="<?php echo base_url('patient_inpatient/discharge_patient/'.$patient_inpatient->id);?>"><button class="btn btn-success btn-sm" onclick="return confirm_discharge();">
@@ -97,7 +95,7 @@ $this->bspaginator->config($config);
 											<?php } ?>
 											</td>
 										</tr>
-									<?php } }?>
+									<?php }?>
 								</tbody>
 							</table>
 
