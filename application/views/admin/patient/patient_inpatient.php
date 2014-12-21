@@ -83,9 +83,9 @@ $this->bspaginator->config($config);
 											<td><?php echo $patient->age;?></td>			
 											<td><?php echo $patient->address;?></td>
 											<td><?php echo $patient->contact_number;?></td>
-											<td><?php echo date('Y-m-d H:i:s',strtotime($patient_inpatient->date_of_admission));?></td>
-											<td><?php if(!is_null($patient_inpatient->date_of_procedure)) echo date('Y-m-d H:i:s',strtotime($patient_inpatient->date_of_procedure));?></td>
-											<td><?php if(!is_null($patient_inpatient->date_of_discharge)) echo date('Y-m-d H:i:s',strtotime($patient_inpatient->date_of_discharge));?></td>
+											<td><?php echo date('Y-m-d',strtotime($patient_inpatient->date_of_admission));?></td>
+											<td><?php if(!is_null($patient_inpatient->date_of_procedure)) echo date('Y-m-d',strtotime($patient_inpatient->date_of_procedure));?></td>
+											<td><?php if(!is_null($patient_inpatient->date_of_discharge)) echo date('Y-m-d',strtotime($patient_inpatient->date_of_discharge));?></td>
 											<td>
 											<?php if(is_null($patient_inpatient->date_of_discharge)) { ?>
 											<button style="margin-bottom:2px;" class="btn btn-success btn-sm" onclick="pass_pub_id_and_type_id('<?php echo $patient->pub_id;?>','<?php echo $patient_inpatient->id;?>');" data-toggle="modal" data-target="#myModal">

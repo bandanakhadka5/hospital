@@ -104,7 +104,7 @@ $this->bspaginator->config($config);
 											</td>
 											<td><?php echo $patient->address;?></td>
 											<td><?php echo $patient->contact_number;?></td>
-											<td><?php echo date('Y-m-d H:i:s',strtotime($patient->last_visited_at));?></td>
+											<td><?php echo date('Y-m-d',strtotime($patient->last_visited_at));?></td>
 											<td>
 											<button class="btn btn-success btn-sm" onclick="pass_pub_id('<?php echo $patient->pub_id;?>');" data-toggle="modal" data-target="#myModal">
 											  Add Followup

@@ -83,7 +83,7 @@ $this->bspaginator->config($config);
 											<td><?php echo $patient->age;?></td>			
 											<td><?php echo $patient->address;?></td>
 											<td><?php echo $patient->contact_number;?></td>
-											<td><?php echo date('Y-m-d H:i:s',strtotime($patient_opd->created_at));?></td>
+											<td><?php echo date('Y-m-d',strtotime($patient_opd->created_at));?></td>
 											<td><?php echo $patient_opd->chief_compliants;?>
 											<td><?php echo $patient_opd->doctor;?>
 											</td>
