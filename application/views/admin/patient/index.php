@@ -13,7 +13,7 @@ $config = array(
     	'Sex' => 'sex',
     	'Address' => 'address',
     	'Contact Number' => 'contact_number',
-    	'Last Visited At' => 'last_visited_at'
+    	'Last Visited At' => 'last_visited_at',
     ),
     'cur_page' => $patients->get_current_page(),
     'base_url' => '/hospital/patients/index',
@@ -110,12 +110,10 @@ $this->bspaginator->config($config);
 											<button class="btn btn-success btn-sm" onclick="pass_pub_id('<?=$patient->pub_id;?>');" data-toggle="modal" data-target="#myModal">
 											  Add Followup
 											</button>
-											<a href="<?php echo base_url('patients/edit/'.$patient->id);?>"><button class="btn btn-success btn-sm">
-											  Edit
-											</button><a>
-											<a href="<?php echo base_url('patients/view_report/'.$patient->id);?>"><button class="btn btn-success btn-sm">
-											  View Report
-											</button><a>
+											<a href="<?php echo base_url('patients/edit/'.$patient->id);?>"><img src="<?php echo base_url('public/images/edit.jpg');?>">											
+											<a>
+											<a href="<?php echo base_url('patients/view_report/'.$patient->id);?>"><img src="<?php echo base_url('public/images/Dapino-Medical-Medical-report.jpg');?>">
+											<a>
 											</td>
 										</tr>
 									<?php } ?>
