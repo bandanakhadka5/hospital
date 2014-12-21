@@ -1658,7 +1658,6 @@ Bus occupant injured in noncollision transport accident
 Bus occupant injured in other and unspecified transport accidents
 Animal-rider or occupant of animal-drawn vehicle injured in transport accident
 Occupant of railway train or railway vehicle injured in transport accident
-Occupant of railway train or railway vehicle injured in transport accident
 Occupant of special vehicle mainly used on industrial premises injured in transport accident
 Occupant of special vehicle mainly used in agriculture injured in transport accident
 Occupant of special construction vehicle injured in transport accident
@@ -1926,3 +1925,111 @@ Contaminated medical or biological substances
 Other misadventures during surgical and medical care
 Nonadministration of surgical and medical care
 Unspecified misadventure during surgical and medical care
+Anaesthesiology devices associated with adverse incidents 
+Cardiovascular devices associated with adverse incidents 
+Otorhinolaryngological devices associated with adverse incidents 
+Gastroenterology and urology devices associated with adverse incidents 
+General hospital and personal-use devices associated with adverse incidents 
+Neurological devices associated with adverse incidents
+Obstetric and gynaecological devices associated with adverse incidents 
+Ophthalmic devices associated with adverse incidents
+Radiological devices associated with adverse incidents
+Orthopaedic devices associated with adverse incidents
+Physical medicine devices associated with adverse incidents 
+General-and plastic-surgery devices associated with adverse incidents
+Other and unspecified medical devices associated with adverse incidents
+Sequelae of transport accidents 
+Sequelae of other accidents 
+"Sequelae of intentional self-harm, assault and events of undetermined intent"
+Sequelae of surgical and medical care as external cause
+Sequelae of other external causes
+Evidence of alcohol involvement determined by blood alcohol level
+Evidence of alcohol involvement determined by level of intoxication
+Nosocomial condition 
+Work-related condition 
+Environmental-pollution-related condition
+Lifestyle-related condition
+General examination and investigation of persons without complaint and reported diagnosis
+Other special examinations and investigations of persons without complaint and reported diagnosis
+Examination and encounter for administrative purposes
+Medical observation and evaluation for suspected diseases and conditions
+Examination and observation for other reasons 
+Follow-up examination after treatment for malignant neoplasms 
+Follow-up examination after treatment for conditions other than malignant neoplasms
+Routine general health check-up of defined subpopulation
+Special screening examination for infectious and parasitic diseases
+Special screening examination for neoplasms
+Special screening examination for other diseases and disorders
+Contact with and exposure to communicable diseases 
+Asymptomatic human immunodeficiency virus [HIV] infection status 
+Carrier of infectious disease 
+Need for immunization against single bacterial diseases
+Need for immunization against certain single viral diseases 
+Need for immunization against other single viral diseases
+Need for immunization against other single infectious diseases
+Need for immunization against combinations of infectious diseases
+Immunization not carried out
+Need for other prophylactic measures
+Contraceptive management
+Procreative management
+Pregnancy examination and test
+"Pregnant state, incidental"
+Supervision of normal pregnancy 
+Supervision of high-risk pregnancy
+Antenatal screening 
+Outcome of delivery
+Liveborn infants according to place of birth
+Postpartum care and examination 
+Prophylactic surgery 
+Procedures for purposes other than remedying health state
+Follow-up care involving plastic surgery
+Attention to artificial openings
+Fitting and adjustment of external prosthetic device
+Adjustment and management of implanted device
+Fitting and adjustment of other devices 
+Other orthopaedic follow-up care
+Other surgical follow-up care 
+Care involving dialysis 
+Care involving use of rehabilitation procedures
+Other medical care 
+Donors of organs and tissues 
+"Persons encountering health services for specific procedures, not carried out"
+Convalescence 
+Problems related to education and literacy 
+Problems related to employment and unemployment 
+Occupational exposure to risk-factors
+Problems related to physical environment
+Problems related to housing and economic circumstances
+Problems related to social environment 
+Problems related to negative life events in childhood
+Other problems related to upbringing 
+"Other problems related to primary support group, including family circumstances"
+Problems related to certain psychosocial circumstances
+Problems related to other psychosocial circumstances 
+"Counselling related to sexual attitude, behaviour and orientation"
+"Persons encountering health services for other counselling and medical advice, not elsewhere classified"
+Problems related to lifestyle
+Problems related to life-management difficulty
+Problems related to care-provider dependency 
+Problems related to medical facilities and other health care
+Persons encountering health services in other circumstances
+Family history of malignant neoplasm 
+Family history of mental and behavioural disorders 
+Family history of certain disabilities and chronic diseases leading to disablement
+Family history of other specific disorders
+Family history of other conditions 
+Personal history of malignant neoplasm
+Personal history of certain other diseases
+Personal history of other diseases and conditions 
+"Personal history of allergy to drugs, medicaments and biological substances "
+Acquired absence of limb
+"Acquired absence of organs, not elsewhere classified "
+"Personal history of risk-factors, not elsewhere classified "
+Personal history of medical treatment 
+Artificial opening status
+Transplanted organ and tissue status
+Presence of cardiac and vascular implants and grafts
+Presence of other functional implants
+Presence of other devices 
+Other postsurgical states 
+"Dependence on enabling machines and devices, not elsewhere classified"
