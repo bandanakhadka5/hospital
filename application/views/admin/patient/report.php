@@ -65,7 +65,7 @@
 				<p style="font-size:14px;">Chief Compliants: <?=$patient_emergency->chief_compliants?></p>
 	
 				<?php 
-					if($emergency_diagnosis) {
+					if(isset($emergency_diagnosis)) {
 
 						echo "<p>Diagnosis: ". $emergency_diagnosis->diagnosis ."</p>";	
 						echo "<p>Diagnosis Details: ". $emergency_diagnosis->details ."</p>";
@@ -90,7 +90,7 @@
 				<p style="font-size:14px;">Doctor: <?=$patient_opd->doctor?></p>
 				
 				<?php 
-					if($opd_diagnosis) {
+					if(isset($opd_diagnosis)) {
 
 						echo "<p>Diagnosis: ". $opd_diagnosis->diagnosis ."</p>";
 						echo "<p>Diagnosis Details: ". $opd_diagnosis->details ."</p>";
@@ -114,7 +114,7 @@
 				<p style="font-size:14px;">Date of Discharge: <?=date('Y-m-d',strtotime($patient_inpatient->date_of_discharge))?></p>
 				
 				<?php  
-					if($inpatient_diagnosis) {
+					if(isset($inpatient_diagnosis)) {
 
 						echo "<p>Diagnosis ". $inpatient_diagnosis->diagnosis ."</p>";
 						echo "<p>Diagnosis Details: ". $inpatient_diagnosis->details ."</p>";
@@ -139,12 +139,16 @@ $(function(){
 
 	$('#print_out').bind('click', function() {
 
+		$('#print_out').hide();
+		
 		window.print();
 
 		if (confirm('Click OK if you have printed the voucher.')) {
 
 			window.location = "<?php echo base_url('patients') ?>"
 		}
+
+		$('#print_out').show();
 		
 	})
 });

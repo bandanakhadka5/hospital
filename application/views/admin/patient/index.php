@@ -63,7 +63,7 @@ $this->bspaginator->config($config);
 								<input style="" class="form-control" name="search" type="text" value="<?=$patients->get_search_term() ? $patients->get_search_term() : ''?>" placeholder="Type search term..." autofocus>
 							</div>
 							
-							<div class="col-lg-3">
+							<div class="col-lg-7">
 								<label for="diagnosis">Diagnosis</label>
 								<input type="text" data-name="diagnosis" value="<?=($this->input->post('diagnosis') ? $this->input->post('diagnosis') : '')?>" placeholder="Type disease name..." data-provide="typeahead" class="disease-typeahead form-control"/>
 		       					<input type="hidden" name="diagnosis" value="<?=($this->input->post('diagnosis') ? $this->input->post('diagnosis') : '')?>"/>

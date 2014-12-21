@@ -121,7 +121,7 @@ $this->bspaginator->config($config);
       </div>
       <form class="form" role="form" method ="POST" action="<?php echo base_url('diagnosis/create');?>">
 	      <div class="modal-body">
-	    		<div class="form-group" style="width:80%;">
+	    		<div class="form-group" style="width:100%;">
 	    			
 	    		    <label for="Public Id">Public Id</label>
 	    		    <input type="text" name="pub_id" class="form-control" id="publicid" placeholder="Enter Public ID Of Patient">
