@@ -112,9 +112,9 @@ $this->bspaginator->config($config);
 											</td>
 											<td><?=$follow_up->patient->address?></td>
 											<td><?=$follow_up->patient->contact_number?></td>
-											<td><?=$follow_up->patient->last_visited_at?></td>
+											<td><?php echo date('Y-m-d',strtotime($follow_up->patient->last_visited_at));?></td>
 											<td><?=$follow_up->doctor?></td>
-											<td><?php echo date('Y-m-d H:i:s',strtotime($follow_up->follow_up_date));?></td>
+											<td><?php echo date('Y-m-d',strtotime($follow_up->follow_up_date));?></td>
 											<td><?=$follow_up->consultation_type?></td>
 											<td><a href="<?php echo base_url('follow_up/edit/'.$follow_up->id);?>"><button class="btn btn-success btn-sm">Edit</button></a></td>
 										</tr>

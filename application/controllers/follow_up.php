@@ -66,7 +66,7 @@ class Follow_up extends BaseController {
 
 		$data['follow_ups'] = $follow_up_search;
 
-		return $this->load_view('admin/patient/follow_up',$data);
+		return $this->load_view('admin/followup/follow_up',$data);
 	}
 
 	public function create() {
