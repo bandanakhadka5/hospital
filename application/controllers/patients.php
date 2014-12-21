@@ -104,24 +104,6 @@ class Patients extends BaseController {
 					'error' => ''
 				);
 
-/*		$data = array(
-					'first_name'=>isset($patient->first_name) ?  $patient->first_name :'',
-					'last_name'=>isset($patient->last_name) ? $patient->last_name :'',
-					'middle_name'=>isset($patient->middle_name) ? $patient->middle_name :'',
-					'age' =>isset($patient->age) ? $patient->age :'',
-					'sex'=>isset($patient->sex) ? $patient->sex :'',
-					'date_of_birth'=>isset($patient->date_of_birth) ? $patient->date_of_birth :'',
-					'address'=>isset($patient->address) ? $patient->address :'',
-					'email'=>isset($patient->email) ? $patient->email :'',
-					'informant'=>isset($patient->informant) ? $patient->informant :'',
-					'contact_person'=> isset($patient->contact_person) ? $patient->contact_person :'',
-					'relation_with_patient'=>isset($patient->relation_with_patient) ? $patient->relation_with_patient :'',
-					'source_of_referal'=>isset($patient->source_of_referal) ? $patient->source_of_referal :'',
-					'contact_number'=>isset($patient->contact_number) ? $patient->contact_number :'',
-				);*/
-
-		//print_r($data); exit();
-
 		echo json_encode($data);
 	}
 
@@ -130,7 +112,7 @@ class Patients extends BaseController {
 		try {
 
 	        if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
-	            redirect(lang_url('/patients/'));
+	            redirect('/patients');
 	        }
 
 	        $params = $this->input->post();
@@ -144,13 +126,13 @@ class Patients extends BaseController {
 	        	"Follow Up was added successfully."
 	        );
 
-	        redirect(lang_url('/patients/'));
+	        redirect('/patients');
 	    }
 
 	    catch(Exception $e) {
 
 	    	$this->session->set_flashdata('alert_error', $e->getMessage());
-	    	redirect(lang_url('/patients'));
+	    	redirect('/patients');
 	    }
 	}
 
@@ -189,13 +171,13 @@ class Patients extends BaseController {
                 "Patient details edited successfully."
             );
 
-            redirect(lang_url('/patients'));
+            redirect('/patients');
 		}
 
 		catch(Exception $e) {
 
 	    	$this->session->set_flashdata('alert_error', $e->getMessage());
-	    	redirect(lang_url('/patients'));
+	    	redirect('/patients');
 	    }
 	}
 
@@ -298,7 +280,7 @@ class Patients extends BaseController {
 		catch(Exception $e) {
 
 	    	$this->session->set_flashdata('alert_error', $e->getMessage());
-	    	redirect(lang_url('/patients'));
+	    	redirect('/patients');
 	    }
 	}
 

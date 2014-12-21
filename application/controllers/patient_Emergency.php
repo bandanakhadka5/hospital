@@ -70,14 +70,14 @@ class Patient_Emergency extends BaseController {
 	        	"Patient was successfully created."
 	        );
 
-	        redirect(lang_url('/patient_emergency/'));
+	        redirect('/patient_emergency');
 
 	    }
 
 	    catch(Exception $e) {
 
             $this->session->set_flashdata('alert_error', $e->getMessage());
-            redirect(lang_url('/patient_emergency/create'));
+            redirect('/patient_emergency/create');
         }
 	}
 }

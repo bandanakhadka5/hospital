@@ -74,7 +74,7 @@ class Follow_up extends BaseController {
 		try {
 
 	        if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
-	            redirect(lang_url('/follow_up/'));
+	            redirect('/follow_up');
 	        }
 
 	        $params = $this->input->post();
@@ -88,13 +88,13 @@ class Follow_up extends BaseController {
 	        	"Follow Up was added successfully."
 	        );
 
-	        redirect(lang_url('/follow_up/'));
+	        redirect('/follow_up');
 	    }
 
 	    catch(Exception $e) {
 
 	    	$this->session->set_flashdata('alert_error', $e->getMessage());
-	    	redirect(lang_url('/follow_up'));
+	    	redirect('/follow_up');
 	    }
 	}
 
@@ -111,11 +111,9 @@ class Follow_up extends BaseController {
             if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
                 return $this->load_view('admin/followup/edit',array('follow_up' => $follow_up));
             }
-
             
             $follow_up->follow_up_date = $this->input->post('follow_up_date');
-            $follow_up->doctor = $this->input->post('doctor');
-            
+            $follow_up->doctor = $this->input->post('doctor');            
 
             $follow_up->save();
 
@@ -124,13 +122,13 @@ class Follow_up extends BaseController {
                 "Follow Up details edited successfully."
             );
 
-            redirect(lang_url('/follow_up'));
+            redirect('/follow_up');
         }
 
         catch(Exception $e) {
 
             $this->session->set_flashdata('alert_error', $e->getMessage());
-            redirect(lang_url('/follow_up'));
+            redirect('/follow_up');
         }
     }
 }

@@ -70,14 +70,14 @@ class Patient_Inpatient extends BaseController {
 	        	"Patient was successfully created."
 	        );
 
-	        redirect(lang_url('/patient_inpatient/'));
+	        redirect('/patient_inpatient/');
 
 	    }
 
 	    catch(Exception $e) {
 
             $this->session->set_flashdata('alert_error', $e->getMessage());
-            redirect(lang_url('/patient_inpatient/create'));
+            redirect('/patient_inpatient/create');
         }
 	}
 
@@ -98,13 +98,13 @@ class Patient_Inpatient extends BaseController {
                 "Patient is discharged."
             );
 
-            redirect(lang_url('/patient_inpatient/'));
+            redirect('/patient_inpatient/');
         }
 
         catch(Exception $e) {
 
             $this->session->set_flashdata('alert_error', $e->getMessage());
-            redirect(lang_url('/patient_inpatient'));
+            redirect('/patient_inpatient');
         }
 	}
 

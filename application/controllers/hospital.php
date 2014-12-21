@@ -9,11 +9,10 @@ class Hospital extends SessionController {
     public function index(){
 
         if($this->isActiveSession()){
-            redirect(lang_url('/dashboard/'));
+            redirect('/dashboard');
             exit();
         }
 
        $this->loadView('admin/auth/login');
     }
-
 }

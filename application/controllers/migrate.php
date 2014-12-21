@@ -1,7 +1,5 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
-//This class is suspended until we figure out an alternative way -- Colin
-
 class Migrate extends CI_Controller {
 
     public function __construct() {
