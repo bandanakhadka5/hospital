@@ -29,7 +29,6 @@ $this->bspaginator->config($config);
 
 ?>
 
-
 <div class="container">
 
 	<div class="row-fluid">
@@ -37,11 +36,11 @@ $this->bspaginator->config($config);
 
 			<div class="pull-left">
 				<h2>Listing Patients</h2>
-				<h5 style="margin-left:5px;">Showing result<?=($patients->get_total_rows() == 1) ? '' : 's'?> <?=($patients->get_page_size() > $patients->get_total_rows()) ? $patients->get_total_rows() : ($patients->get_page_size() * ($patients->get_current_page() - 1) + 1) .' - '. ($patients->get_page_size() * ($patients->get_current_page() - 1) + $patients->get_row_per_current_page())?> of <?=number_format($patients->get_total_rows())?></h5>
+				<h5 style="margin-left:5px;">Showing result<?php echo ($patients->get_total_rows() == 1) ? '' : 's';?> <?php echo ($patients->get_page_size() > $patients->get_total_rows()) ? $patients->get_total_rows() : ($patients->get_page_size() * ($patients->get_current_page() - 1) + 1) .' - '. ($patients->get_page_size() * ($patients->get_current_page() - 1) + $patients->get_row_per_current_page());?> of <?php echo number_format($patients->get_total_rows());?></h5>
 			</div>
 
 			<div class="pager pull-right" style="margin-top: 5px;">
-				<?=$this->bspaginator->pagination_links()?>
+				<?php echo $this->bspaginator->pagination_links();?>
 			</div>
 
 			<br/>
@@ -60,13 +59,13 @@ $this->bspaginator->config($config);
 						<div class="col-lg-12" style="margin-bottom:2%;margin-top:20px%;">
 							<div class="col-lg-3">
 								<label for="Search Term">Search Term</label>
-								<input style="" class="form-control" name="search" type="text" value="<?=$patients->get_search_term() ? $patients->get_search_term() : ''?>" placeholder="Type search term..." autofocus>
+								<input style="" class="form-control" name="search" type="text" value="<?php echo $patients->get_search_term() ? $patients->get_search_term() : '';?>" placeholder="Type search term..." autofocus>
 							</div>
 							
 							<div class="col-lg-7">
 								<label for="diagnosis">Diagnosis</label>
-								<input type="text" data-name="diagnosis" value="<?=($this->input->post('diagnosis') ? $this->input->post('diagnosis') : '')?>" placeholder="Type disease name..." data-provide="typeahead" class="disease-typeahead form-control"/>
-		       					<input type="hidden" name="diagnosis" value="<?=($this->input->post('diagnosis') ? $this->input->post('diagnosis') : '')?>"/>
+								<input type="text" data-name="diagnosis" value="<?php echo ($this->input->post('diagnosis') ? $this->input->post('diagnosis') : '');?>" placeholder="Type disease name..." data-provide="typeahead" class="disease-typeahead form-control"/>
+		       					<input type="hidden" name="diagnosis" value="<?php echo ($this->input->post('diagnosis') ? $this->input->post('diagnosis') : '');?>"/>
 							</div>
 
 							<div class="">
@@ -86,15 +85,15 @@ $this->bspaginator->config($config);
 						<div class="table-container">
 							<table class="table table-striped table-bordered">
 
-								<?=$this->bspaginator->table_header()?>
+								<?php echo $this->bspaginator->table_header();?>
 
 								<tbody>
 									<?php foreach ($patients as $patient){ ?>
 										<tr>
-											<td><?=$patient->pub_id?></td>
-											<td><?=$patient->first_name?></td>
-											<td><?=$patient->last_name?></td>
-											<td><?=$patient->age?></td>
+											<td><?php echo $patient->pub_id;?></td>
+											<td><?php echo $patient->first_name;?></td>
+											<td><?php echo $patient->last_name;?></td>
+											<td><?php echo $patient->age;?></td>
 											<td>
 												<?php
 												if($patient->sex == 0)
@@ -103,11 +102,11 @@ $this->bspaginator->config($config);
 													echo "Female";
 												?>
 											</td>
-											<td><?=$patient->address?></td>
-											<td><?=$patient->contact_number?></td>
+											<td><?php echo $patient->address;?></td>
+											<td><?php echo $patient->contact_number;?></td>
 											<td><?php echo date('Y-m-d H:i:s',strtotime($patient->last_visited_at));?></td>
 											<td>
-											<button class="btn btn-success btn-sm" onclick="pass_pub_id('<?=$patient->pub_id;?>');" data-toggle="modal" data-target="#myModal">
+											<button class="btn btn-success btn-sm" onclick="pass_pub_id('<?php echo $patient->pub_id;?>');" data-toggle="modal" data-target="#myModal">
 											  Add Followup
 											</button>
 											<a href="<?php echo base_url('patients/edit/'.$patient->id);?>"><img title="Edit" src="<?php echo base_url('public/images/edit.jpg');?>">											

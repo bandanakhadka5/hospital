@@ -41,11 +41,11 @@ $this->bspaginator->config($config);
 
 			<div class="pull-left">
 				<h2>Listing Patients' Follow Ups</h2>
-				<h5 style="margin-left:5px;">Showing result<?=($follow_ups->get_total_rows() == 1) ? '' : 's'?> <?=($follow_ups->get_page_size() > $follow_ups->get_total_rows()) ? $follow_ups->get_total_rows() : ($follow_ups->get_page_size() * ($follow_ups->get_current_page() - 1) + 1) .' - '. ($follow_ups->get_page_size() * ($follow_ups->get_current_page() - 1) + $follow_ups->get_row_per_current_page())?> of <?=number_format($follow_ups->get_total_rows())?></h5>
+				<h5 style="margin-left:5px;">Showing result<?php echo ($follow_ups->get_total_rows() == 1) ? '' : 's';?> <?php echo ($follow_ups->get_page_size() > $follow_ups->get_total_rows()) ? $follow_ups->get_total_rows() : ($follow_ups->get_page_size() * ($follow_ups->get_current_page() - 1) + 1) .' - '. ($follow_ups->get_page_size() * ($follow_ups->get_current_page() - 1) + $follow_ups->get_row_per_current_page());?> of <?php echo number_format($follow_ups->get_total_rows());?></h5>
 			</div>
 
 			<div class="pager pull-right" style="margin-top: 5px;">
-				<?=$this->bspaginator->pagination_links()?>
+				<?php echo $this->bspaginator->pagination_links();?>
 			</div>
 
 			<br/>
@@ -62,16 +62,16 @@ $this->bspaginator->config($config);
 							<div class="col-lg-12" style="margin-bottom:2%;margin-top:20px%;">
 								<div class="col-lg-3">
 									<label for="Search Term">Search Term</label>
-									<input style="" class="form-control" name="search" type="text" value="<?=$follow_ups->get_search_term() ? $follow_ups->get_search_term() : ''?>" placeholder="Type search term..." autofocus>
+									<input style="" class="form-control" name="search" type="text" value="<?php echo $follow_ups->get_search_term() ? $follow_ups->get_search_term() : '';?>" placeholder="Type search term..." autofocus>
 								</div>
 								
 								<div class="col-lg-4">
 									<label for="datefrom">Date From</label>
-									<input style="" class="form-control" name="date_from" type="date" value="<?=$follow_ups->get_date_from() ? $follow_ups->get_date_from() : ''?>">
+									<input style="" class="form-control" name="date_from" type="date" value="<?php echo $follow_ups->get_date_from() ? $follow_ups->get_date_from() : '';?>">
 								</div>
 								<div class="col-lg-4">
 									<label for="dateto">Date To</label>
-									<input style="" class="form-control" name="date_to" type="date" value="<?=$follow_ups->get_date_to() ? $follow_ups->get_date_to() : ''?>">
+									<input style="" class="form-control" name="date_to" type="date" value="<?php echo $follow_ups->get_date_to() ? $follow_ups->get_date_to() : '';?>">
 								</div>
 								<div class="">
 									<label for="search"></label>
@@ -93,15 +93,15 @@ $this->bspaginator->config($config);
 						<div class="table-container">
 							<table class="table table-striped table-bordered">
 
-								<?=$this->bspaginator->table_header()?>
+								<?php echo $this->bspaginator->table_header();?>
 
 								<tbody>
 									<?php foreach ($follow_ups as $follow_up){ ?>
 										<tr>
-											<td><?=$follow_up->patient->pub_id?></td>
-											<td><?=$follow_up->patient->first_name?></td>
-											<td><?=$follow_up->patient->last_name?></td>
-											<td><?=$follow_up->patient->age?></td>
+											<td><?php echo $follow_up->patient->pub_id;?></td>
+											<td><?php echo $follow_up->patient->first_name;?></td>
+											<td><?php echo $follow_up->patient->last_name;?></td>
+											<td><?php echo $follow_up->patient->age;?></td>
 											<td>
 												<?php
 												if($follow_up->patient->sex == 0)
@@ -110,12 +110,12 @@ $this->bspaginator->config($config);
 													echo "Female";
 												?>
 											</td>
-											<td><?=$follow_up->patient->address?></td>
-											<td><?=$follow_up->patient->contact_number?></td>
+											<td><?php echo $follow_up->patient->address;?></td>
+											<td><?php echo $follow_up->patient->contact_number;?></td>
 											<td><?php echo date('Y-m-d',strtotime($follow_up->patient->last_visited_at));?></td>
-											<td><?=$follow_up->doctor?></td>
+											<td><?php echo $follow_up->doctor;?></td>
 											<td><?php echo date('Y-m-d',strtotime($follow_up->follow_up_date));?></td>
-											<td><?=$follow_up->consultation_type?></td>
+											<td><?php echo $follow_up->consultation_type;?></td>
 											<td><a href="<?php echo base_url('follow_up/edit/'.$follow_up->id);?>"><button class="btn btn-success btn-sm">Edit</button></a></td>
 										</tr>
 									<?php } ?>

@@ -36,11 +36,11 @@ $this->bspaginator->config($config);
 
 			<div class="pull-left">
 				<h2>Listing Admitted Patients</h2>
-				<h5 style="margin-left:5px;">Showing result<?=($patients_inpatient->get_total_rows() == 1) ? '' : 's'?> <?=($patients_inpatient->get_page_size() > $patients_inpatient->get_total_rows()) ? $patients_inpatient->get_total_rows() : ($patients_inpatient->get_page_size() * ($patients_inpatient->get_current_page() - 1) + 1) .' - '. ($patients_inpatient->get_page_size() * ($patients_inpatient->get_current_page() - 1) + $patients_inpatient->get_row_per_current_page())?> of <?=number_format($patients_inpatient->get_total_rows())?></h5>
+				<h5 style="margin-left:5px;">Showing result<?php echo ($patients_inpatient->get_total_rows() == 1) ? '' : 's';?> <?php echo ($patients_inpatient->get_page_size() > $patients_inpatient->get_total_rows()) ? $patients_inpatient->get_total_rows() : ($patients_inpatient->get_page_size() * ($patients_inpatient->get_current_page() - 1) + 1) .' - '. ($patients_inpatient->get_page_size() * ($patients_inpatient->get_current_page() - 1) + $patients_inpatient->get_row_per_current_page());?> of <?php echo number_format($patients_inpatient->get_total_rows());?></h5>
 			</div>
 
 			<div class="pager pull-right" style="margin-top: 5px;">
-				<?=$this->bspaginator->pagination_links()?>
+				<?php echo $this->bspaginator->pagination_links();?>
 			</div>
 
 			<br/>
@@ -56,7 +56,7 @@ $this->bspaginator->config($config);
 
 					<form name="search-patient" action="<?php echo base_url('patient_Inpatient');?>">
 						
-						<input style="width:20%;align:left;" class="form-control" name="search" type="text" value="<?=$patients_inpatient->get_search_term() ? $patients_inpatient->get_search_term() : ''?>" placeholder="Type search term..." autofocus>
+						<input style="width:20%;align:left;" class="form-control" name="search" type="text" value="<?php echo $patients_inpatient->get_search_term() ? $patients_inpatient->get_search_term() : '';?>" placeholder="Type search term..." autofocus>
 
 						<br/>
 						
@@ -70,7 +70,7 @@ $this->bspaginator->config($config);
 						<div class="table-container">
 							<table class="table table-striped table-bordered">
 
-								<?=$this->bspaginator->table_header()?>
+								<?php echo $this->bspaginator->table_header();?>
 
 								<tbody>
 									<?php foreach ($patients_inpatient as $patient_inpatient){
@@ -78,17 +78,17 @@ $this->bspaginator->config($config);
 										if($patient){
 									 ?>
 										<tr>
-											<td><?=$patient->pub_id?></td>
-											<td><?=$patient->first_name.' '.$patient->last_name?></td>				
-											<td><?=$patient->age?></td>			
-											<td><?=$patient->address?></td>
-											<td><?=$patient->contact_number?></td>
+											<td><?php echo $patient->pub_id;?></td>
+											<td><?php echo $patient->first_name.' '.$patient->last_name;?></td>				
+											<td><?php echo $patient->age;?></td>			
+											<td><?php echo $patient->address;?></td>
+											<td><?php echo $patient->contact_number;?></td>
 											<td><?php echo date('Y-m-d H:i:s',strtotime($patient_inpatient->date_of_admission));?></td>
 											<td><?php if(!is_null($patient_inpatient->date_of_procedure)) echo date('Y-m-d H:i:s',strtotime($patient_inpatient->date_of_procedure));?></td>
 											<td><?php if(!is_null($patient_inpatient->date_of_discharge)) echo date('Y-m-d H:i:s',strtotime($patient_inpatient->date_of_discharge));?></td>
 											<td>
 											<?php if(is_null($patient_inpatient->date_of_discharge)) { ?>
-											<button style="margin-bottom:2px;" class="btn btn-success btn-sm" onclick="pass_pub_id_and_type_id('<?=$patient->pub_id;?>','<?=$patient_inpatient->id;?>');" data-toggle="modal" data-target="#myModal">
+											<button style="margin-bottom:2px;" class="btn btn-success btn-sm" onclick="pass_pub_id_and_type_id('<?php echo $patient->pub_id;?>','<?php echo $patient_inpatient->id;?>');" data-toggle="modal" data-target="#myModal">
 												  Add Diagnosis
 												</button>
 											<a href="<?php echo base_url('patient_inpatient/discharge_patient/'.$patient_inpatient->id);?>"><button class="btn btn-success btn-sm" onclick="return confirm_discharge();">
@@ -138,9 +138,9 @@ $this->bspaginator->config($config);
 	    		    <input type="text" name="consultation_type" class="form-control" id="consultation_type" value="Inpatient" readonly>
 
 	    		    <label for="Diagnosis">Diagnosis</label>
-			        <input type="text" data-name="diagnosis" value="<?=($this->input->post('diagnosis') ? $this->input->post('diagnosis') : '')?>" placeholder="Type disease name..." data-provide="typeahead" class="disease-typeahead form-control"/>
-			        <input type="hidden" name="disease_id" value="<?=($this->input->post('disease_id') ? $this->input->post('disease_id') : '')?>"/>
-   					<input type="hidden" name="diagnosis" value="<?=($this->input->post('diagnosis') ? $this->input->post('diagnosis') : '')?>"/>
+			        <input type="text" data-name="diagnosis" value="<?php echo ($this->input->post('diagnosis') ? $this->input->post('diagnosis') : '');?>" placeholder="Type disease name..." data-provide="typeahead" class="disease-typeahead form-control"/>
+			        <input type="hidden" name="disease_id" value="<?php echo ($this->input->post('disease_id') ? $this->input->post('disease_id') : '');?>"/>
+   					<input type="hidden" name="diagnosis" value="<?php echo ($this->input->post('diagnosis') ? $this->input->post('diagnosis') : '');?>"/>
 
 	    		    <label for="Details">Details</label>
 	    		    <textarea class="form-control" rows="5" name="details"  id="details"></textarea>

@@ -25,10 +25,10 @@
 					<tbody>
 						<?php  foreach ($follow_ups as $follow_up){ ?>
 							<tr>
-								<td><?=$follow_up->patient->first_name?></td>
-								<td><?=$follow_up->patient->last_name?></td>
-								<td><?=$follow_up->patient->address?></td>
-								<td><?=$follow_up->patient->age?></td>
+								<td><?php echo $follow_up->patient->first_name;?></td>
+								<td><?php echo $follow_up->patient->last_name;?></td>
+								<td><?php echo $follow_up->patient->address;?></td>
+								<td><?php echo $follow_up->patient->age;?></td>
 								<td>
 									<?php
 									if($follow_up->patient->sex == 0) 
@@ -36,7 +36,7 @@
 									else echo "Female";
 									?>
 								</td>
-								<td><?=$follow_up->doctor?></td>
+								<td><?php echo $follow_up->doctor;?></td>
 							</tr>
 						<?php } ?>
 					</tbody>
@@ -62,10 +62,10 @@
 					<tbody>
 						<?php foreach ($patients_in_bed as $patient_in_bed) { ?>
 							<tr>
-								<td><?=$patient_in_bed->patient->first_name?></td>
-								<td><?=$patient_in_bed->patient->last_name?></td>
-								<td><?=$patient_in_bed->patient->address?></td>
-								<td><?=$patient_in_bed->patient->age?></td>
+								<td><?php echo $patient_in_bed->patient->first_name;?></td>
+								<td><?php echo $patient_in_bed->patient->last_name;?></td>
+								<td><?php echo $patient_in_bed->patient->address;?></td>
+								<td><?php echo $patient_in_bed->patient->age;?></td>
 								<td>
 									<?php
 									if($patient_in_bed->patient->sex == 0) 

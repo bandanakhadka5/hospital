@@ -35,11 +35,11 @@ $this->bspaginator->config($config);
 
 			<div class="pull-left">
 				<h2>Listing Emergency Patients</h2>
-				<h5 style="margin-left:5px;">Showing result<?=($patients_emergency->get_total_rows() == 1) ? '' : 's'?> <?=($patients_emergency->get_page_size() > $patients_emergency->get_total_rows()) ? $patients_emergency->get_total_rows() : ($patients_emergency->get_page_size() * ($patients_emergency->get_current_page() - 1) + 1) .' - '. ($patients_emergency->get_page_size() * ($patients_emergency->get_current_page() - 1) + $patients_emergency->get_row_per_current_page())?> of <?=number_format($patients_emergency->get_total_rows())?></h5>
+				<h5 style="margin-left:5px;">Showing result<?php echo ($patients_emergency->get_total_rows() == 1) ? '' : 's';?> <?php echo ($patients_emergency->get_page_size() > $patients_emergency->get_total_rows()) ? $patients_emergency->get_total_rows() : ($patients_emergency->get_page_size() * ($patients_emergency->get_current_page() - 1) + 1) .' - '. ($patients_emergency->get_page_size() * ($patients_emergency->get_current_page() - 1) + $patients_emergency->get_row_per_current_page());?> of <?php echo number_format($patients_emergency->get_total_rows());?></h5>
 			</div>
 
 			<div class="pager pull-right" style="margin-top: 5px;">
-				<?=$this->bspaginator->pagination_links()?>
+				<?php echo $this->bspaginator->pagination_links();?>
 			</div>
 
 			<br/>
@@ -55,7 +55,7 @@ $this->bspaginator->config($config);
 
 					<form name="search-patient" action="<?php echo base_url('patient_emergency');?>">
 						
-						<input style="width:20%;align:left;" class="form-control" name="search" type="text" value="<?=$patients_emergency->get_search_term() ? $patients_emergency->get_search_term() : ''?>" placeholder="Type search term..." autofocus>
+						<input style="width:20%;align:left;" class="form-control" name="search" type="text" value="<?php echo $patients_emergency->get_search_term() ? $patients_emergency->get_search_term() : '';?>" placeholder="Type search term..." autofocus>
 
 						<br/>
 						
@@ -69,7 +69,7 @@ $this->bspaginator->config($config);
 						<div class="table-container">
 							<table class="table table-striped table-bordered">
 
-								<?=$this->bspaginator->table_header()?>
+								<?php echo $this->bspaginator->table_header();?>
 
 								<tbody>
 									<?php foreach ($patients_emergency as $patient_emergency){
@@ -77,14 +77,14 @@ $this->bspaginator->config($config);
 										if($patient){
 									 ?>
 										<tr>
-											<td><?=$patient->pub_id?></td>
-											<td><?=$patient->first_name.' '.$patient->last_name?></td>				
-											<td><?=$patient->age?></td>			
-											<td><?=$patient->address?></td>
-											<td><?=$patient->contact_number?></td>
+											<td><?php echo $patient->pub_id;?></td>
+											<td><?php echo $patient->first_name.' '.$patient->last_name;?></td>				
+											<td><?php echo $patient->age;?></td>			
+											<td><?php echo $patient->address;?></td>
+											<td><?php echo $patient->contact_number;?></td>
 											<td><?php echo date('Y-m-d H:i:s',strtotime($patient_emergency->created_at));?></td>
-											<td><?=$patient_emergency->chief_compliants?>
-											<td><button class="btn btn-success btn-sm" onclick="pass_pub_id_and_type_id('<?=$patient->pub_id;?>','<?=$patient_emergency->id;?>');" data-toggle="modal" data-target="#myModal">
+											<td><?php echo $patient_emergency->chief_compliants;?>
+											<td><button class="btn btn-success btn-sm" onclick="pass_pub_id_and_type_id('<?php echo $patient->pub_id;?>','<?php echo $patient_emergency->id;?>');" data-toggle="modal" data-target="#myModal">
 												  Add Diagnosis
 												</button></td>
 										</tr>
@@ -129,9 +129,9 @@ $this->bspaginator->config($config);
 		    		    <input type="text" name="consultation_type" class="form-control" id="consultation_type" value="Emergency" readonly>
 
 				        <label for="Diagnosis">Diagnosis</label>
-				        <input type="text" data-name="diagnosis" value="<?=($this->input->post('diagnosis') ? $this->input->post('diagnosis') : '')?>" placeholder="Type disease name..." data-provide="typeahead" class="disease-typeahead form-control"/>
-				        <input type="hidden" name="disease_id" value="<?=($this->input->post('disease_id') ? $this->input->post('disease_id') : '')?>"/>
-       					<input type="hidden" name="diagnosis" value="<?=($this->input->post('diagnosis') ? $this->input->post('diagnosis') : '')?>"/>
+				        <input type="text" data-name="diagnosis" value="<?php echo ($this->input->post('diagnosis') ? $this->input->post('diagnosis') : '');?>" placeholder="Type disease name..." data-provide="typeahead" class="disease-typeahead form-control"/>
+				        <input type="hidden" name="disease_id" value="<?php echo ($this->input->post('disease_id') ? $this->input->post('disease_id') : '');?>"/>
+       					<input type="hidden" name="diagnosis" value="<?php echo ($this->input->post('diagnosis') ? $this->input->post('diagnosis') : '');?>"/>
     
 		    		    <label for="Details">Details</label>
 		    		    <textarea class="form-control" rows="5" name="details"  id="details"></textarea>

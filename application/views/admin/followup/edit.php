@@ -14,7 +14,7 @@
 				<div class="col-md-9 col-md-offset-2">
 					<div class="form-group" style="width:80%;">
 					    <label for="Doctor">Doctor</label>
-					    <input type="text" name="doctor" value="<?=$follow_up->doctor?>" class="form-control" id="doctor" placeholder="Enter Doctor's name" required>
+					    <input type="text" name="doctor" value="<?php echo $follow_up->doctor;?>" class="form-control" id="doctor" placeholder="Enter Doctor's name" required>
 					</div>
 
 					<div class="form-group" style="width:80%;">

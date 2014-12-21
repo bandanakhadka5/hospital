@@ -61,7 +61,7 @@
                     <li><a href="<?php echo base_url('diagnosis') ?>">Add Diagnosis</a></li>
                     <li><a href="<?php echo base_url('auth/logout');?>">Sign Out</a></li>
                 </ul>
-                <div style="color:white;text-align:right;padding-top:7px;">Welcome <?=$this->session->userdata('user_name')?>!</div>
+                <div style="color:white;text-align:right;padding-top:7px;">Welcome <?php echo $this->session->userdata('user_name');?>!</div>
                 <div id="datetime" style="text-align:right;padding-top:1px;"></div>
             </div><!-- /.nav-collapse -->
         </div><!--/.container -->
