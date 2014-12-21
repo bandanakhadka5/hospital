@@ -97,4 +97,40 @@ class Follow_up extends BaseController {
 	    	redirect(lang_url('/follow_up'));
 	    }
 	}
+
+    public function edit($follow_up_id) {
+
+        try {
+
+            $follow_up = FollowUp::find_by_id($follow_up_id);
+
+            if(!$follow_up) {
+                throw new Exception("Invalid Followup!");                
+            }
+
+            if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
+                return $this->load_view('admin/followup/edit',array('follow_up' => $follow_up));
+            }
+
+            
+            $follow_up->follow_up_date = $this->input->post('follow_up_date');
+            $follow_up->doctor = $this->input->post('doctor');
+            
+
+            $follow_up->save();
+
+            $this->session->set_flashdata(
+                'alert_success', 
+                "Follow Up details edited successfully."
+            );
+
+            redirect(lang_url('/follow_up'));
+        }
+
+        catch(Exception $e) {
+
+            $this->session->set_flashdata('alert_error', $e->getMessage());
+            redirect(lang_url('/follow_up'));
+        }
+    }
 }
