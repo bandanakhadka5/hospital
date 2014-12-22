@@ -3,17 +3,27 @@
 <?php startblock('content') ?>
 
 <div class="container">
-	
+	<div class="row">
+		<div class="pull-right">
+			Phone Number:061522222
+		</div>
+	</div>
 	<div class="row-fluid">
 		<div class="span12">	
 			<div class="col-xs-6 col-xs-push-4">
 				<h1>BG HOSPITAL</h1>
-
+			</div>			
+		</div>
+	</div>
+	<div class="clearfix"></div>
+	<div class="row-fluid">
+		<div class="span12">	
+			<div class="col-xs-6 col-xs-push-4">
+				<h5 style="margin-left:8%">Matepani-12,Pokhara</h5>
 			</div>
 		</div>
 	</div>
-
-	<div class="row-fluid" style="margin-top:120px;">
+	<div class="row-fluid" style="margin-top:8%;">
 
 		<div class= "col-xs-4">
 			<p><b>Full Name:</b> <?php echo $patient->first_name." ".$patient->last_name;?></p>
@@ -46,7 +56,7 @@
 					if(isset($emergency_diagnosis)) {
 
 						echo "<p>Diagnosis: ". $emergency_diagnosis->diagnosis ."</p>";	
-						echo "<p>Diagnosis Details: ". $emergency_diagnosis->details ."</p>";
+						echo "<p>Treatment Details: ". $emergency_diagnosis->details ."</p>";
 					}					
 				?>			
 			</div>
@@ -71,7 +81,7 @@
 					if(isset($opd_diagnosis)) {
 
 						echo "<p>Diagnosis: ". $opd_diagnosis->diagnosis ."</p>";
-						echo "<p>Diagnosis Details: ". $opd_diagnosis->details ."</p>";
+						echo "<p>Treatment Details: ". $opd_diagnosis->details ."</p>";
 					}					
 				?>				
 			</div>
@@ -95,7 +105,7 @@
 					if(isset($inpatient_diagnosis)) {
 
 						echo "<p>Diagnosis ". $inpatient_diagnosis->diagnosis ."</p>";
-						echo "<p>Diagnosis Details: ". $inpatient_diagnosis->details ."</p>";
+						echo "<p>Treatment Details: ". $inpatient_diagnosis->details ."</p>";
 					}					
 				?>
 				

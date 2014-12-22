@@ -218,7 +218,7 @@
 				           document.getElementById('age').readOnly = true;
 				           document.getElementById('address').readOnly = true;
 				           document.getElementById('dateofbirth').readOnly = true;
-				           document.getElementById('source').readOnly = true;
+				           //document.getElementById('source').readOnly = true;
 				           document.getElementById('informant').readOnly = true;
 				           document.getElementById('sex').readOnly = true;
 
