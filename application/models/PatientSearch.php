@@ -94,6 +94,7 @@ class PatientSearch extends Search {
 			'order' => $this->get_order(),
 			'limit' => $this->get_page_size(),
 			'offset' => $this->build_offset(),
+			'group' => 'pub_id',
 		);
 
 		parent::execute(new Patient, $query);
