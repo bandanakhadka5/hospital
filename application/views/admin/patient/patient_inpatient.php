@@ -8,7 +8,6 @@ $config = array(
     'headers' => (object) array(
     	'Pub ID' => 'pub_id',
     	'Full Name' => 'first_name', 
-    	'Age' => 'age', 
     	'Address' => 'address',
     	'Contact Number' => 'contact_number',
     	'Date Of Admission' => 'date_of_admission',
@@ -77,8 +76,7 @@ $this->bspaginator->config($config);
 									 ?>
 										<tr>
 											<td><?php echo $patient_inpatient->patient->pub_id;?></td>
-											<td><?php echo $patient_inpatient->patient->get_full_name();?></td>				
-											<td><?php echo $patient_inpatient->patient->age;?></td>			
+											<td><?php echo $patient_inpatient->patient->get_full_name();?></td>						
 											<td><?php echo $patient_inpatient->patient->address;?></td>
 											<td><?php echo $patient_inpatient->patient->contact_number;?></td>
 											<td><?php echo date('Y-m-d',strtotime($patient_inpatient->date_of_admission));?></td>
