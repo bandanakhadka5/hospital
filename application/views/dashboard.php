@@ -14,8 +14,7 @@
 				<table class="table table-striped table-bordered">
 					<thead>
 						<tr>
-							<th>First Name</th>
-							<th>Last Name</th>
+							<th>Name</th>
 							<th>Address</th>
 							<th>Age</th>
 							<th>sex</th>
@@ -25,8 +24,7 @@
 					<tbody>
 						<?php  foreach ($follow_ups as $follow_up){ ?>
 							<tr>
-								<td><?php echo $follow_up->patient->first_name;?></td>
-								<td><?php echo $follow_up->patient->last_name;?></td>
+								<td><?php echo $follow_up->patient->get_full_name();?></td>
 								<td><?php echo $follow_up->patient->address;?></td>
 								<td><?php echo $follow_up->patient->age;?></td>
 								<td>
@@ -51,8 +49,7 @@
 				<table class="table table-striped table-bordered">
 					<thead>
 						<tr>
-							<th>First Name</th>
-							<th>Last Name</th>
+							<th>Name</th>
 							<th>Address</th>
 							<th>Age</th>
 							<th>sex</th>
@@ -62,8 +59,7 @@
 					<tbody>
 						<?php foreach ($patients_in_bed as $patient_in_bed) { ?>
 							<tr>
-								<td><?php echo $patient_in_bed->patient->first_name;?></td>
-								<td><?php echo $patient_in_bed->patient->last_name;?></td>
+								<td><?php echo $patient_in_bed->patient->get_full_name();?></td>
 								<td><?php echo $patient_in_bed->patient->address;?></td>
 								<td><?php echo $patient_in_bed->patient->age;?></td>
 								<td>

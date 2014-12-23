@@ -33,7 +33,7 @@ class Auth extends BaseController {
                 'user_name' => $user->username,
             ));
 
-            $this->session->set_flashdata('alert_success', "Welcome back to BGHospital.");
+            $this->session->set_flashdata('alert_success', "Welcome back to BG Hospital.");
 
             redirect('/dashboard');
 

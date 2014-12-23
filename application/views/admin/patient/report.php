@@ -26,7 +26,7 @@
 	<div class="row-fluid" style="margin-top:8%;">
 
 		<div class= "col-xs-4">
-			<p><b>Full Name:</b> <?php echo $patient->first_name." ".$patient->last_name;?></p>
+			<p><b>Full Name:</b> <?php echo $patient->get_full_name();?></p>
 			<p><b>Age:</b> <?php echo $patient->age;?> </p>
 		</div>
 
@@ -50,19 +50,25 @@
 
 			<div class="well" style="margin-left=2px;">
 				<p style="font-size:14px;">Date of Consultation: <?php echo date('Y-m-d',strtotime($patient_emergency->created_at));?></p>
-				<p style="font-size:14px;">Chief Compliants: <?php echo $patient_emergency->chief_compliants;?></p>
-	
-				<?php 
-					if(isset($emergency_diagnosis)) {
-
-						echo "<p>Diagnosis: ". $emergency_diagnosis->diagnosis ."</p>";	
-						echo "<p>Treatment Details: ". $emergency_diagnosis->details ."</p>";
-					}					
-				?>			
+				<p style="font-size:14px;">Chief Compliants: <?php echo $patient_emergency->chief_compliants;?></p>			
 			</div>
 		</div>
 	</div>
-	<?php }} ?>
+	<?php }
+	    if(!empty($emergency_diagnosis)) {
+
+			foreach ($emergency_diagnosis as $diagnosis) { ?>
+
+			<div class="well" style="margin-left=2px;">
+				<p style="font-size:14px;">Diagnosis: <?php echo $diagnosis->diagnosis;?></p>
+				<p style="font-size:14px;">Details: <?php echo $diagnosis->details;?></p>
+				<p style="font-size:14px;">Date: <?php echo date('Y-m-d',strtotime($diagnosis->created_at));?></p>
+			</div>
+			<?php
+			}	
+		}
+	}
+	?>
 
 	<?php
 		if(!empty($opd)) {
@@ -75,19 +81,26 @@
 			<div class="well" style="margin-left=2px;">
 				<p style="font-size:14px;">Date of Consultation: <?php echo date('Y-m-d',strtotime($patient_opd->created_at));?></p>
 				<p style="font-size:14px;">Chief Compliants: <?php echo $patient_opd->chief_compliants;?></p>
-				<p style="font-size:14px;">Doctor: <?php echo $patient_opd->doctor;?></p>
-				
-				<?php 
-					if(isset($opd_diagnosis)) {
-
-						echo "<p>Diagnosis: ". $opd_diagnosis->diagnosis ."</p>";
-						echo "<p>Treatment Details: ". $opd_diagnosis->details ."</p>";
-					}					
-				?>				
+				<p style="font-size:14px;">Doctor: <?php echo $patient_opd->doctor;?></p>			
 			</div>
 		</div>
 	</div>
-	<?php }} ?>
+	<?php }
+	
+	if(!empty($opd_diagnosis)) {
+
+			foreach ($opd_diagnosis as $diagnosis) { ?>
+
+			<div class="well" style="margin-left=2px;">
+				<p style="font-size:14px;">Diagnosis: <?php echo $diagnosis->diagnosis;?></p>
+				<p style="font-size:14px;">Details: <?php echo $diagnosis->details;?></p>
+				<p style="font-size:14px;">Date: <?php echo date('Y-m-d',strtotime($diagnosis->created_at));?></p>			
+			</div>
+			<?php
+			}	
+		}
+
+	} ?>
 
 	<?php
 		if(!empty($inpatient)) {
@@ -100,19 +113,29 @@
 				<p style="font-size:14px;">Date of Admission: <?php echo date('Y-m-d',strtotime($patient_inpatient->date_of_admission));?></p>
 				<p style="font-size:14px;">Date of Procedure: <?php echo date('Y-m-d',strtotime($patient_inpatient->date_of_procedure));?></p>
 				<p style="font-size:14px;">Date of Discharge: <?php echo date('Y-m-d',strtotime($patient_inpatient->date_of_discharge));?></p>
-				
-				<?php  
-					if(isset($inpatient_diagnosis)) {
-
-						echo "<p>Diagnosis ". $inpatient_diagnosis->diagnosis ."</p>";
-						echo "<p>Treatment Details: ". $inpatient_diagnosis->details ."</p>";
-					}					
-				?>
-				
 			</div>
 		</div>
 	</div>
-	<?php }} ?>
+	<?php }
+
+	if(!empty($inpatient_diagnosis)) {
+
+			foreach ($inpatient_diagnosis as $diagnosis) { ?>
+
+			<div class="well" style="margin-left=2px;">
+				<p style="font-size:14px;">Diagnosis: <?php echo $diagnosis->diagnosis;?></p>
+				<p style="font-size:14px;">Details: <?php echo $diagnosis->details;?></p>
+				<p style="font-size:14px;">Date: <?php echo date('Y-m-d',strtotime($diagnosis->created_at));?></p>	
+			</div>
+			<?php
+			}	
+		}
+	}
+	?>
+	<br/>
+	<p>______________________</p>
+	<p>Doctor's Signature</p>
+
 	
 	<input type="button" id="print_out" class="btn btn-primary" value="Print" onclick="print_page();"/>
 </div>

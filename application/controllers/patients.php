@@ -190,89 +190,40 @@ class Patients extends BaseController {
 			if(!$patient) {
 				throw new Exception("Invalid Patient!");				
 			}
-            
-            $data = array('patient' => $patient);
 
-            $data['emergency'] = PatientEmergency::find('all', array(
+            $data = array(
+                        'patient' => $patient,
+                        'emergency' => $patient->emergency,
+                        'opd' => $patient->opd,
+                        'inpatient' => $patient->inpatient,
+                        );
+
+            $data['emergency_diagnosis'] =  Diagnoses::find('all', array(
+                                                'conditions' => array(
+                                                    'patient_id = ? and 
+                                                    consultation_type = ?',
+                                                    $patient->id,
+                                                    'Emergency',
+                                                    ),
+                                                ));
+
+            $data['opd_diagnosis'] =  Diagnoses::find('all', array(
                                         'conditions' => array(
-                                            'patient_id = ?',
-                                            $patient->id
-                                            ),
-                                        'order' => 'created_at desc',
-                                        'limit' => 1
-                                        ));
-
-            foreach ($data['emergency'] as $patient_emergency) {
-
-            	$diagnoses = Diagnoses::find('all', array(
-                                        'conditions' => array(
-                                            'type_id = ? and 
+                                            'patient_id = ? and 
                                             consultation_type = ?',
-                                            $patient_emergency->id,
-                                            'Emergency',
-                                            ),
-                                        'order' => 'created_at desc',
-                                        'limit' => 1
-                                        ));
-            	
-            	foreach ($diagnoses as $diagnosis) {
-            		$data['emergency_diagnosis'] = $diagnosis;
-            	}
-            }
-
-            $data['opd'] = PatientOPD::find('all', array(
-                                        'conditions' => array(
-                                            'patient_id = ?',
-                                            $patient->id
-                                            ),
-                                        'order' => 'created_at desc',
-                                        'limit' => 1
-                                        ));
-
-            foreach ($data['opd'] as $patient_opd) {
-
-            	$diagnoses = Diagnoses::find('all', array(
-                                        'conditions' => array(
-                                            'type_id = ? and 
-                                            consultation_type = ?',
-                                            $patient_opd->id,
+                                            $patient->id,
                                             'OPD',
                                             ),
-                                        'order' => 'created_at desc',
-                                        'limit' => 1
-                                        ));
-            	
-            	foreach ($diagnoses as $diagnosis) {
-            		$data['opd_diagnosis'] = $diagnosis;
-            	}
-            }
-
-            $data['inpatient'] = PatientInpatient::find('all', array(
-                                        'conditions' => array(
-                                            'patient_id = ?',
-                                            $patient->id
-                                            ),
-                                        'order' => 'created_at desc',
-                                        'limit' => 1
                                         ));
 
-            foreach ($data['inpatient'] as $patient_inpatient) {
-
-            	$diagnoses = Diagnoses::find('all', array(
-                                        'conditions' => array(
-                                            'type_id = ? and 
-                                            consultation_type = ?',
-                                            $patient_inpatient->id,
-                                            'Inpatient',
-                                            ),
-                                        'order' => 'created_at desc',
-                                        'limit' => 1
-                                        ));
-
-            	foreach ($diagnoses as $diagnosis) {
-            		$data['inpatient_diagnosis'] = $diagnosis;
-            	}
-            }
+            $data['inpatient_diagnosis'] =  Diagnoses::find('all', array(
+                                                'conditions' => array(
+                                                    'patient_id = ? and 
+                                                    consultation_type = ?',
+                                                    $patient->id,
+                                                    'Inpatient',
+                                                    ),
+                                                ));
 
             return $this->load_view('admin/patient/report',$data);
 		}
