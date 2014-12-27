@@ -7,7 +7,7 @@
 $config = array(
     'headers' => (object) array(
     	'Pub ID' => 'pub_id',
-    	'Full Name' => 'first_name', 
+    	'Name' => 'first_name', 
     	'Address' => 'address',
     	'Contact Number' => 'contact_number',
     	'Date Of Admission' => 'date_of_admission',
@@ -82,14 +82,18 @@ $this->bspaginator->config($config);
 											<td><?php echo date('Y-m-d',strtotime($patient_inpatient->date_of_admission));?></td>
 											<td><?php if(!is_null($patient_inpatient->date_of_procedure)) echo date('Y-m-d',strtotime($patient_inpatient->date_of_procedure));?></td>
 											<td><?php if(!is_null($patient_inpatient->date_of_discharge)) echo date('Y-m-d',strtotime($patient_inpatient->date_of_discharge));?></td>
-											<td>
-											<?php if(is_null($patient_inpatient->date_of_discharge)) { ?>
-											<button style="margin-bottom:2px;" class="btn btn-success btn-sm" onclick="pass_pub_id_and_type_id('<?php echo $patient_inpatient->patient->pub_id;?>','<?php echo $patient_inpatient->id;?>');" data-toggle="modal" data-target="#myModal">
-												  Add Diagnosis
-												</button>
-											<a href="<?php echo base_url('patient_inpatient/discharge_patient/'.$patient_inpatient->id);?>"><button class="btn btn-success btn-sm" onclick="return confirm_discharge();">
-												  Discharge
-												</button><a>
+											
+											<td style="text-align:center;width:65px;">
+											<?php if(!$patient_inpatient->is_deleted()) { ?>
+											<div class="btn-group">
+						  						<a class="btn btn-sm dropdown-toggle" style="border:1px solid #eee;" data-toggle="dropdown" href="#">
+						    						Actions<span class="caret"></span>
+						  						</a>
+												<ul class="dropdown-menu pull-right" style="text-align:left;">														
+													<li><a onclick="pass_pub_id_and_type_id('<?php echo $patient_inpatient->patient->pub_id;?>','<?php echo $patient_inpatient->id;?>');" data-toggle="modal" data-target="#myModal">Add Diagnosis</a></li>
+													<li><a href="<?php echo base_url('patient_inpatient/discharge_patient/'.$patient_inpatient->id);?>" onclick="return confirm_discharge();">Discharge</a></li>
+												</ul>
+											</div>
 											<?php } ?>
 											</td>
 										</tr>

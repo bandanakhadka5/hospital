@@ -26,7 +26,7 @@
 	<div class="row-fluid" style="margin-top:8%;">
 
 		<div class= "col-xs-4">
-			<p><b>Full Name:</b> <?php echo $patient->get_full_name();?></p>
+			<p><b>Name:</b> <?php echo $patient->get_full_name();?></p>
 			<p><b>Age:</b> <?php echo $patient->age;?> </p>
 		</div>
 

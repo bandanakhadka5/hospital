@@ -7,7 +7,7 @@
 $config = array(
     'headers' => (object) array(
     	'Pub ID' => 'pub_id',
-    	'Full Name' => 'first_name',  
+    	'Name' => 'first_name',  
     	'Address' => 'address',
     	'Last Visited At' => 'last_visited_at',
     	'Chief Compliants' => 'chief_compliants',
@@ -81,17 +81,26 @@ $this->bspaginator->config($config);
 											<td><?php echo $patient_opd->chief_compliants;?>
 											<td><?php echo $patient_opd->doctor;?>
 											</td>
-											<td>
-												<button class="btn btn-success btn-sm" onclick="pass_pub_id_and_type_id('<?php echo $patient_opd->patient->pub_id;?>','<?php echo $patient_opd->id;?>');" data-toggle="modal" data-target="#myModal">
-												  Add Diagnosis
-												</button>
-											<?php if($patient_opd->is_deleted()) { ?>
-												<a href="<?php echo base_url('patient_opd/undelete/'.$patient_opd->id);?>"><img title="UnDelete" src="<?php echo base_url('public/images/undelete.png');?>" onclick="return confirm_undelete();">											
-											<a> 
-											<?php } else { ?>
-												<a href="<?php echo base_url('patient_opd/delete/'.$patient_opd->id);?>"><img title="Delete" src="<?php echo base_url('public/images/delete.jpg');?>" onclick="return confirm_delete();">											
-											<a> 
-											<?php } ?>
+
+											<td style="text-align:center;width:65px;">
+											<div class="btn-group">
+						  						<a class="btn btn-sm dropdown-toggle" style="border:1px solid #eee;" data-toggle="dropdown" href="#">
+						    						Actions<span class="caret"></span>
+						  						</a>
+												<ul class="dropdown-menu pull-right" style="text-align:left;">
+
+													<?php if($patient_opd->is_deleted()) { ?>
+														
+														<li><a href="<?php echo base_url('patient_opd/undelete/'.$patient_opd->id);?>" onclick="return confirm_undelete();">Undelete</a></li>
+
+													<?php } else { ?>
+														
+														<li><a onclick="pass_pub_id_and_type_id('<?php echo $patient_opd->patient->pub_id;?>','<?php echo $patient_opd->id;?>');" data-toggle="modal" data-target="#myModal">Add Diagnosis</a></li>
+														<li><a href="<?php echo base_url('patient_opd/delete/'.$patient_opd->id);?>" onclick="return confirm_delete();">Delete</a></li>
+
+													<?php } ?>
+												</ul>
+											</div>
 											</td>
 										</tr>
 									<?php }?>

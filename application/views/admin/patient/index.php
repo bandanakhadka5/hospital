@@ -7,8 +7,7 @@
 $config = array(
     'headers' => (object) array(
     	'Pub ID' => 'pub_id',
-    	'First Name' => 'first_name', 
-    	'Last Name' => 'last_name',
+    	'Name' => 'first_name',
     	'Age' => 'age', 
     	'Sex' => 'sex',
     	'Address' => 'address',
@@ -91,8 +90,7 @@ $this->bspaginator->config($config);
 									<?php foreach ($patients as $patient){ ?>
 										<tr>
 											<td><?php echo $patient->pub_id;?></td>
-											<td><?php echo $patient->first_name;?></td>
-											<td><?php echo $patient->last_name;?></td>
+											<td><?php echo $patient->get_full_name();?></td>
 											<td><?php echo $patient->age;?></td>
 											<td>
 												<?php
@@ -105,14 +103,18 @@ $this->bspaginator->config($config);
 											<td><?php echo $patient->address;?></td>
 											<td><?php echo $patient->contact_number;?></td>
 											<td><?php echo date('Y-m-d',strtotime($patient->last_visited_at));?></td>
-											<td>
-											<button class="btn btn-success btn-sm" onclick="pass_pub_id('<?php echo $patient->pub_id;?>');" data-toggle="modal" data-target="#myModal">
-											  Add Followup
-											</button>
-											<a href="<?php echo base_url('patients/edit/'.$patient->id);?>"><img title="Edit" src="<?php echo base_url('public/images/edit.jpg');?>">											
-											<a>
-											<a href="<?php echo base_url('patients/view_report/'.$patient->id);?>"><img title="View Report" src="<?php echo base_url('public/images/Dapino-Medical-Medical-report.jpg');?>">
-											<a>
+											
+											<td style="text-align:center;width:65px;">
+											<div class="btn-group">
+						  						<a class="btn btn-sm dropdown-toggle" style="border:1px solid #eee;" data-toggle="dropdown" href="#">
+						    						Actions<span class="caret"></span>
+						  						</a>
+												<ul class="dropdown-menu pull-right" style="text-align:left;">	
+													<li><a href="<?php echo base_url('patients/edit/'.$patient->id);?>">Edit</a></li>
+													<li><a onclick="pass_pub_id('<?php echo $patient->pub_id;?>');" data-toggle="modal" data-target="#myModal">Add Follow Up</a></li>
+													<li><a href="<?php echo base_url('patients/view_report/'.$patient->id);?>">View Report</a></li>
+												</ul>
+											</div>
 											</td>
 										</tr>
 									<?php } ?>
