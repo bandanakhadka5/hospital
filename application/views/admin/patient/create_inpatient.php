@@ -15,23 +15,14 @@
 	<div class="form-group" style="width:80%;">
 
 	    <label for="AdmissionDate">Admission Date</label>
-	    <input name="date_of_admission" type="date" class="form-control" id="admissiondate" placeholder="Enter Date">
-
+	    <input type="text" name="date_of_admission" id="admissiondate" class="form-control nepali-calendar" placeholder="yyyy-mm-dd">
 	</div>
 
 	<div class="form-group" style="width:80%;">
 
-	    <label for="ProcedureDate">ProcedureDate</label>
-	    <input name="date_of_procedure" type="date" class="form-control" id="proceduredate" placeholder="Enter Date">
-
+	    <label for="ProcedureDate">Procedure Date</label>
+	    <input type="text" name="date_of_procedure" id="proceduredate" class="form-control nepali-calendar" placeholder="yyyy-mm-dd">
 	</div>
-
-	<!-- <div class="form-group" style="width:80%;">
-
-	    <label for="DischargeDate">DischargeDate</label>
-	    <input type="date" name="date_of_discharge" class="form-control" id="dischargedate" placeholder="Enter Date">
-
-	</div> -->
 
   </form>
 

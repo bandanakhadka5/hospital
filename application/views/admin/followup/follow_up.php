@@ -67,11 +67,11 @@ $this->bspaginator->config($config);
 								
 								<div class="col-lg-4">
 									<label for="datefrom">Date From</label>
-									<input style="" class="form-control" name="date_from" type="date" value="<?php echo $follow_ups->get_date_from() ? $follow_ups->get_date_from() : '';?>">
+									<input type="text" value="<?php echo $follow_ups->get_date_from() ? $follow_ups->get_date_from() : '';?>" name="date_from" id="date_from" class="form-control nepali-calendar" placeholder="yyyy-mm-dd">
 								</div>
 								<div class="col-lg-4">
 									<label for="dateto">Date To</label>
-									<input style="" class="form-control" name="date_to" type="date" value="<?php echo $follow_ups->get_date_to() ? $follow_ups->get_date_to() : '';?>">
+									<input type="text" value="<?php echo $follow_ups->get_date_to() ? $follow_ups->get_date_to() : '';?>" name="date_to" id="date_to" class="form-control nepali-calendar" placeholder="yyyy-mm-dd">
 								</div>
 								<div class="">
 									<label for="search"></label>
@@ -163,8 +163,7 @@ $this->bspaginator->config($config);
 			        </select>
 
 	    		    <label for="Follow Up Date">Follow Up Date</label>
-	    		    <input type="date" class="form-control" name="follow_up_date" id="follow_up_date" placeholder="Enter Date">
-	    		    
+	    		    <input type="text" name="follow_up_date" id="follow_up_date" class="form-control nepali-calendar" placeholder="yyyy-mm-dd">
 	    		</div>
 
 	    		<div id="message"></div>

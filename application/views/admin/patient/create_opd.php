@@ -21,8 +21,8 @@
 
 			<div class="form-group" style="width:80%;">
 
-			    <label for="ConsultationDate">ConsultationDate</label>
-			    <input type="text" name="date_of_consultation" class="form-control nepali-calendar" id="consultationdate" placeholder="Enter Date">
+			    <label for="ConsultationDate">Consultation Date</label>
+			    <input type="text" name="date_of_consultation" class="form-control nepali-calendar" id="consultationdate" placeholder="yyyy-mm-dd">
 
 			</div>
 
@@ -35,7 +35,7 @@
 
 			<div class="form-group" style="width:80%;">
 				
-			    <label for="Complaints">Complaints</label>
+			    <label for="Complaints">Chief Complaints</label>
 			    <input name="chief_compliants" type="text" class="form-control" id="complaints" placeholder="Enter Complaints">
 
 			</div>

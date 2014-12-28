@@ -14,21 +14,16 @@
 		<?php get_extended_block();?>
 
 		<div class="form-group" style="width:80%;">
-
-		    <label for="ConsultationDate">ConsultationDate</label>
-		    <input type="text" name="date_of_consultation" id="consultationdate" class="form-control nepali-calendar" placeholder="Enter Date">
-
+		    <label for="ConsultationDate">Consultation Date</label>
+		    <input type="text" name="date_of_consultation" id="consultationdate" class="form-control nepali-calendar" placeholder="yyyy-mm-dd">
 		</div>
 
-		<div class="form-group" style="width:80%;">
-			
-		    <label for="Complaints">Complaints</label>
+		<div class="form-group" style="width:80%;">			
+		    <label for="Complaints"> Chief Complaints</label>
 		    <input type="text" name="chief_compliants" class="form-control" id="complaints" placeholder="Enter Complaints">
-
 		</div>
 
 	  </form>
-
 
 	</div> <!-- /bootstrap -->
 	</div><!-- /row -->

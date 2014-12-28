@@ -21,7 +21,6 @@
     <script src="<?php echo base_url('public/js/script.js');?>"></script>
 
     <!-- Nepali Calendar -->
-    <script type="text/javascript" src="<?php echo base_url('public/js/jquery-2.1.0.min.js');?>"></script>
     <script type="text/javascript" src="<?php echo base_url('public/nepali.datepicker.min.js');?>"></script>
     <link rel="stylesheet" type="text/css" href="<?php echo base_url('public/nepali.datepicker.min.css');?>" />
 

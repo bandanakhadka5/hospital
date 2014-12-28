@@ -42,7 +42,9 @@
 				        <input type="text" data-name="diagnosis" value="<?php echo ($this->input->post('diagnosis') ? $this->input->post('diagnosis') : '');?>" placeholder="Type disease name..." data-provide="typeahead" class="disease-typeahead form-control"/>
 				        <input type="hidden" name="disease_id" value="<?php echo ($this->input->post('disease_id') ? $this->input->post('disease_id') : '');?>"/>
        					<input type="hidden" name="diagnosis" value="<?php echo ($this->input->post('diagnosis') ? $this->input->post('diagnosis') : '');?>"/>
-
+       					
+       					<a class='btn' id="plus" title="Add another Diagnosis" style="font-size:20px;border:1px solid #eee;margin:5px;" onclick="next_diagnosis();">+</a>
+		    		    <br/>
 		    		    <label for="Details">Details</label>
 		    		    <textarea class="form-control" rows="5" name="details"  id="details"></textarea>
 		    		    
@@ -57,3 +59,11 @@
 <?php endblock() ?>
 
 <?php end_extend() ?>
+
+<script type="text/javascript">
+
+function next_diagnosis() {
+	return false;
+}
+
+</script>

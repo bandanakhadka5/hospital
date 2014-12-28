@@ -5,7 +5,7 @@
 <div class="container">
 	<div class="row">
 		<div class="pull-right">
-			Phone Number:061522222
+			Phone Number: 061522222
 		</div>
 	</div>
 	<div class="row-fluid">

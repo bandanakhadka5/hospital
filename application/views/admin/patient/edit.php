@@ -15,32 +15,29 @@
 			<div class="col-md-4 col-md-offset-2">
 
 			    <div class="form-group" style="width:80%;">
-			        <label for="FirstName">FirstName</label>
+			        <label for="FirstName">First Name</label>
 			        <input type="text" name="first_name" value="<?php echo $patient->first_name;?>" class="form-control" id="firstname" placeholder="Enter FirstName" required>
 			    </div>
 
 			    <div class="form-group" style="width:80%;">
 			     
-			        <label for="MiddleName">MiddleName</label>
+			        <label for="MiddleName">Middle Name</label>
 			        <input type="text" name="middle_name" value="<?php echo $patient->middle_name;?>" class="form-control" id="middlename" placeholder="Enter MiddleName">
 			    </div>
 			    
 			    <div class="form-group" style="width:80%;">
-			        <label for="LastName">LastName</label>
+			        <label for="LastName">Last Name</label>
 			        <input type="text" name="last_name" value="<?php echo $patient->last_name;?>" class="form-control" id="lastname" placeholder="Enter LastName">
 			    </div>
 
 			    <div class="form-group" style="width:80%;">
-
-			        <label for="DateOfBirth">DateOfBirth</label>
-			        <input type="date" name="date_of_birth"  value="<?php echo date('Y-m-d',strtotime($patient->date_of_birth));?>" class="form-control" id="dateofbirth" placeholder="Enter Date">
-
+			        <label for="DateOfBirth">Date of Birth</label>
+			        <input type="text" name="date_of_birth" id="date_of_birth" class="form-control nepali-calendar" placeholder="yyyy-mm-dd" value="<?php echo date('Y-m-d',strtotime($patient->date_of_birth));?>">
 			    </div>
+
 			    <div class="form-group" style="width:80%;">
-
 			        <label for="Age">Age</label>
-			        <input type="text" name="age" value="<?php echo $patient->age;?>" class="form-control" id="age" placeholder="Enter Age">
-
+			        <input type="text" name="age" value="<?php echo $patient->age;?>" class="form-control" id="age" placeholder="Enter Age">			        
 			    </div>
 
 			    <div class="form-group" style="width:80%;">

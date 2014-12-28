@@ -8,25 +8,25 @@
 			<div class="col-md-4 col-md-offset-2">
 
 			    <div class="form-group" style="width:80%;">
-			        <label for="FirstName">FirstName</label>
+			        <label for="FirstName">First Name</label>
 			        <input type="text" name="first_name" class="form-control" id="firstname" placeholder="Enter FirstName" required autofocus>
 			    </div>
 
 			    <div class="form-group" style="width:80%;">
 			     
-			        <label for="MiddleName">MiddleName</label>
+			        <label for="MiddleName">Middle Name</label>
 			        <input type="text" name="middle_name" class="form-control" id="middlename" placeholder="Enter MiddleName">
 			    </div>
 			    
 			    <div class="form-group" style="width:80%;">
-			        <label for="LastName">LastName</label>
+			        <label for="LastName">Last Name</label>
 			        <input type="text" name="last_name" class="form-control" id="lastname" placeholder="Enter LastName">
 			    </div>
 
 			    <div class="form-group" style="width:80%;">
 
-			        <label for="DateOfBirth">DateOfBirth</label>
-			        <input type="text" name="date_of_birth" class="form-control nepali-calendar" id="dateofbirth" placeholder="Enter Date">
+			        <label for="DateOfBirth">Date of Birth</label>
+			        <input type="text" name="date_of_birth" class="form-control nepali-calendar" id="dateofbirth" placeholder="yyyy-mm-dd">
 
 			    </div>
 			    <div class="form-group" style="width:80%;">
@@ -56,7 +56,7 @@
 
 			    <div class="form-group" style="width:80%;">
     		 		
-    		 	    <label for="sourceofreferal">Source Of Referal</label>
+    		 	    <label for="sourceofreferal">Source of Referal</label>
     		 	    <input type="text" name="source_of_referal" class="form-control" id="source" placeholder="Enter Source of Referal">
 
     		 	</div>

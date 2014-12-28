@@ -148,8 +148,7 @@ $this->bspaginator->config($config);
 									        </select>
 
 							    		    <label for="Follow Up Date">Follow Up Date</label>
-							    		    <input type="date" class="form-control" name="follow_up_date" id="follow_up_date" placeholder="Enter Date">
-							    		    
+							    		    <input type="text" name="follow_up_date" id="follow_up_date" class="form-control nepali-calendar" placeholder="yyyy-mm-dd">
 							    		</div>
 
 							    		<div id="message"></div>
