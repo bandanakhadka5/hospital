@@ -108,6 +108,35 @@ class Patient_Inpatient extends BaseController {
         }
 	}
 
+    public function add_diagnosis() {
+
+        try {
+
+            if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
+                redirect('/patient_inpatient');
+            }
+
+            $params = $this->input->post();
+
+            $diagnosis = Diagnoses::create($params);
+
+            $diagnosis->save();
+
+            $this->session->set_flashdata(
+                'alert_success', 
+                "Diagnosis was added successfully."
+            );
+
+            redirect('/patient_inpatient');
+        }
+
+        catch(Exception $e) {
+
+            $this->session->set_flashdata('alert_error', $e->getMessage());
+            redirect('/patient_inpatient');
+        }
+    }
+
 }
 
 ?>

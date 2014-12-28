@@ -129,7 +129,7 @@ $this->bspaginator->config($config);
 	        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
 	        <h4 class="modal-title" id="myModalLabel">Add Diagnosis</h4>
 	      </div>
-	      <form class="form" role="form" method ="POST" action="<?php echo base_url('diagnosis/create');?>">
+	      <form class="form" role="form" method ="POST" action="<?php echo base_url('patient_emergency/add_diagnosis');?>">
 		      <div class="modal-body">
 		    		<div class="form-group" style="width:100%;">
 		    			
