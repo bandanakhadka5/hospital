@@ -106,10 +106,10 @@ $this->bspaginator->config($config);
 											
 											<td style="text-align:center;width:65px;">
 											<div class="btn-group">
-						  						<a class="btn btn-sm dropdown-toggle" style="border:1px solid #eee;" data-toggle="dropdown" href="#">
-						    						Actions<span class="caret"></span>
+						  						<a class="btn dropdown-toggle" style="border:1px solid #eee;" data-toggle="dropdown" href="#">
+						    						Actions <span class="caret"></span>
 						  						</a>
-												<ul class="dropdown-menu pull-right" style="text-align:left;">	
+												<ul class="dropdown-menu" style="text-align:left;">	
 													<li><a href="<?php echo base_url('patients/edit/'.$patient->id);?>">Edit</a></li>
 													<li><a onclick="pass_pub_id('<?php echo $patient->pub_id;?>');" data-toggle="modal" data-target="#myModal">Add Follow Up</a></li>
 													<li><a href="<?php echo base_url('patients/view_report/'.$patient->id);?>">View Report</a></li>

@@ -83,10 +83,10 @@ $this->bspaginator->config($config);
 
 											<td style="text-align:center;width:65px;">
 											<div class="btn-group">
-						  						<a class="btn btn-sm dropdown-toggle" style="border:1px solid #eee;" data-toggle="dropdown" href="#">
-						    						Actions<span class="caret"></span>
+						  						<a class="btn dropdown-toggle" style="border:1px solid #eee;" data-toggle="dropdown" href="#">
+						    						Actions <span class="caret"></span>
 						  						</a>
-												<ul class="dropdown-menu pull-right" style="text-align:left;">
+												<ul class="dropdown-menu" style="text-align:left;">
 
 													<?php if($patient_emergency->is_deleted()) { ?>
 														

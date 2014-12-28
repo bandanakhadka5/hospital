@@ -86,10 +86,10 @@ $this->bspaginator->config($config);
 											<td style="text-align:center;width:65px;">
 											<?php if(!$patient_inpatient->is_deleted()) { ?>
 											<div class="btn-group">
-						  						<a class="btn btn-sm dropdown-toggle" style="border:1px solid #eee;" data-toggle="dropdown" href="#">
-						    						Actions<span class="caret"></span>
+						  						<a class="btn dropdown-toggle" style="border:1px solid #eee;" data-toggle="dropdown" href="#">
+						    						Actions <span class="caret"></span>
 						  						</a>
-												<ul class="dropdown-menu pull-right" style="text-align:left;">														
+												<ul class="dropdown-menu" style="text-align:left;">														
 													<li><a onclick="pass_pub_id_and_type_id('<?php echo $patient_inpatient->patient->pub_id;?>','<?php echo $patient_inpatient->id;?>');" data-toggle="modal" data-target="#myModal">Add Diagnosis</a></li>
 													<li><a href="<?php echo base_url('patient_inpatient/discharge_patient/'.$patient_inpatient->id);?>" onclick="return confirm_discharge();">Discharge</a></li>
 												</ul>
