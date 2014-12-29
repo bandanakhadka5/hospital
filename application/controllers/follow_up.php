@@ -57,16 +57,25 @@ class Follow_up extends BaseController {
         }
 
         $follow_up_search = new FollowUpSearch();
-        $follow_up_search ->set_order($order_by_field, $order_by_direction)
-                          ->set_page($page)
-                          ->set_search_term($search)
-                          ->set_date_from($date_from)
-                          ->set_date_to($date_to)
-                          ->execute();
+        try
+        {
 
-		$data['follow_ups'] = $follow_up_search;
+            $follow_up_search ->set_order($order_by_field, $order_by_direction)
+                              ->set_page($page)
+                              ->set_search_term($search)
+                              ->set_date_from($date_from)
+                              ->set_date_to($date_to)
+                              ->execute();    
+        
+		    $data['follow_ups'] = $follow_up_search;
 
-		return $this->load_view('admin/followup/follow_up',$data);
+		     return $this->load_view('admin/followup/follow_up',$data);
+
+        } catch(Exception $e) {
+
+            $this->session->set_flashdata('alert_error', $e->getMessage());
+            redirect('/follow_up');
+        }
 	}
 
 	public function create() {

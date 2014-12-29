@@ -67,11 +67,11 @@ $this->bspaginator->config($config);
 								
 								<div class="col-lg-4">
 									<label for="datefrom">Date From</label>
-									<input type="text" value="<?php echo $follow_ups->get_date_from() ? $follow_ups->get_date_from() : '';?>" name="date_from" id="date_from" class="form-control nepali-calendar" placeholder="yyyy-mm-dd">
+									<input type="text" value="<?php //echo $follow_ups->get_date_from() ? $follow_ups->get_date_from() : '';?>" name="date_from" id="date_from" class="form-control nepali-calendar" placeholder="yyyy-mm-dd">
 								</div>
 								<div class="col-lg-4">
 									<label for="dateto">Date To</label>
-									<input type="text" value="<?php echo $follow_ups->get_date_to() ? $follow_ups->get_date_to() : '';?>" name="date_to" id="date_to" class="form-control nepali-calendar" placeholder="yyyy-mm-dd">
+									<input type="text" value="<?php //echo $follow_ups->get_date_to() ? $follow_ups->get_date_to() : '';?>" name="date_to" id="date_to" class="form-control nepali-calendar" placeholder="yyyy-mm-dd">
 								</div>
 								<div class="">
 									<label for="search"></label>
@@ -114,7 +114,7 @@ $this->bspaginator->config($config);
 											<td><?php echo $follow_up->patient->contact_number;?></td>
 											<td><?php echo date('Y-m-d',strtotime($follow_up->patient->last_visited_at));?></td>
 											<td><?php echo $follow_up->doctor;?></td>
-											<td><?php echo date('Y-m-d',strtotime($follow_up->follow_up_date));?></td>
+											<td><?php echo patient::english_to_nepali(date('Y-m-d',strtotime($follow_up->follow_up_date)));?></td>
 											<td><?php echo $follow_up->consultation_type;?></td>
 											<td><a href="<?php echo base_url('follow_up/edit/'.$follow_up->id);?>"><button class="btn btn-success btn-sm">Edit</button></a></td>
 										</tr>

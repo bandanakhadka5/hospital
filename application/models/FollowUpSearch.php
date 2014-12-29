@@ -16,7 +16,7 @@ class FollowUpSearch extends Search {
 
 			$date_from = urldecode($date_from);
 
-			$date_from  = self::convert_date($date_from);
+			$date_from  = Patient::convert_date($date_from);
 			
 			if($date_from == '' || $date_from === NULL) {
 
@@ -37,14 +37,14 @@ class FollowUpSearch extends Search {
 
 			$date_to = urldecode($date_to);
 
-			$date_to  = self::convert_date($date_to);
+			$date_to  = Patient::convert_date($date_to);
 			
 			if($date_to == '' || $date_to === NULL) {
 
 			    throw new Exception("Invalid Date! Please Try Again");
 
 			}
-			
+
 			$this->date_to = trim($date_to);
 		}
 
