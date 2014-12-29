@@ -1,7 +1,6 @@
 <?php
 
 include_once('Exceptions.php');
-include_once('nepali_calendar.php');
 
 class Patient extends BaseModel {
 

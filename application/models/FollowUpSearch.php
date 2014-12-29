@@ -15,6 +15,16 @@ class FollowUpSearch extends Search {
 		if(!is_null($date_from)) {
 
 			$date_from = urldecode($date_from);
+
+			$date_from  = self::convert_date($date_from);
+			
+			if($date_from == '' || $date_from === NULL) {
+
+			    throw new Exception("Invalid Date! Please Try Again");
+
+			}
+
+			
 			$this->date_from = trim($date_from);
 		}
 
@@ -26,6 +36,15 @@ class FollowUpSearch extends Search {
 		if(!is_null($date_to)) {
 
 			$date_to = urldecode($date_to);
+
+			$date_to  = self::convert_date($date_to);
+			
+			if($date_to == '' || $date_to === NULL) {
+
+			    throw new Exception("Invalid Date! Please Try Again");
+
+			}
+			
 			$this->date_to = trim($date_to);
 		}
 

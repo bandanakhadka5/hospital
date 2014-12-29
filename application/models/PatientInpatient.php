@@ -21,6 +21,8 @@ class PatientInpatient extends Patient {
 
     public function set_date_of_admission($date_of_admission)
 	{
+        $date_of_admission = self::convert_date($date_of_admission);
+
         if($date_of_admission == '' || $date_of_admission === NULL) {
             throw new Exception("Please Enter Date of Admission");
         }
@@ -30,6 +32,12 @@ class PatientInpatient extends Patient {
 
     public function set_date_of_procedure($date_of_procedure)
 	{
+        $date_of_procedure = self::convert_date($date_of_procedure);
+        
+        if($date_of_procedure == '' || $date_of_procedure === NULL) {
+            throw new Exception("Please Enter Date of procedure");
+        }
+        
     	$this->assign_attribute('date_of_procedure',$date_of_procedure);
     }
 
