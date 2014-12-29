@@ -1,5 +1,5 @@
 <?php 
-
+include_once('nepali_calendar.php');
 class BaseModel extends ActiveRecord_Base {
 
 	public function __construct ($attributes=array(), $guard_attributes=TRUE, $instantiating_via_find=FALSE, $new_record=TRUE) {
@@ -131,6 +131,20 @@ class BaseModel extends ActiveRecord_Base {
 			$model->throw_base_exception('not-exists');
 		}
 
+	}
+
+	public static function convert_date($nepali_date){
+
+		$date = explode('-', $nepali_date);
+
+		$cal = new Nepali_Calendar();
+		$eng_date_array = $cal->nep_to_eng($date[0],$date[1],$date[2]);
+		
+		$eng_date = $eng_date_array['year'].'-'.$eng_date_array['month'].'-'.$eng_date_array['date'];
+		
+		$new_date = date ("Y-m-d", strtotime($eng_date) );
+		
+		return $new_date;
 	}
 
 	public static function __callStatic($method, $args) {

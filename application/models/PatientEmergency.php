@@ -21,6 +21,8 @@ class PatientEmergency extends Patient {
 
     public function set_date_of_consultation($date_of_consultation)
 	{
+        $date_of_consultation = self::convert_date($date_of_consultation);
+        
         if($date_of_consultation == '' || $date_of_consultation === NULL) {
             throw new Exception("Please Enter Date of Consultation");
         }

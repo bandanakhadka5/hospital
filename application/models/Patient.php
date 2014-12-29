@@ -1,6 +1,7 @@
 <?php
 
 include_once('Exceptions.php');
+include_once('nepali_calendar.php');
 
 class Patient extends BaseModel {
 
@@ -145,6 +146,12 @@ class Patient extends BaseModel {
 
     public function set_date_of_birth($date_of_birth)
     {
+        $date_of_birth = self::convert_date($date_of_birth);
+
+        if($date_of_birth == '' || $date_of_birth === NULL) {
+            throw new Exception("Please Enter Date of Birth");
+        }
+
         $this->assign_attribute('date_of_birth',$date_of_birth);
     }
 
