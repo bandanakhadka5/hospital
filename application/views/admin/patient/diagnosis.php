@@ -43,6 +43,31 @@
 				        <input type="hidden" name="disease_id" value="<?php echo ($this->input->post('disease_id') ? $this->input->post('disease_id') : '');?>"/>
        					<input type="hidden" name="diagnosis" value="<?php echo ($this->input->post('diagnosis') ? $this->input->post('diagnosis') : '');?>"/>
        					<br/>
+
+       					<a class='btn' id="plus" title="Add another Diagnosis" style="font-size:20px;border:1px solid #eee;margin:5px;" onclick="next_diagnosis();">+</a>
+       					<div id="second_diagnosis">
+       						<input type="text" data-name="diagnosis_1" value="<?php echo ($this->input->post('diagnosis_1') ? $this->input->post('diagnosis_1') : '');?>" placeholder="Type disease name..." data-provide="typeahead" class="disease-typeahead-1 form-control"/>       						
+					        <input type="hidden" name="disease_id_1" value="<?php echo ($this->input->post('disease_id_1') ? $this->input->post('disease_id_1') : '');?>"/>
+	       					<input type="hidden" name="diagnosis_1" value="<?php echo ($this->input->post('diagnosis_1') ? $this->input->post('diagnosis_1') : '');?>"/>
+       					</div>
+
+       					<br/>
+
+       					<table class="table table-bordered">
+       						<tr>
+       							<th style="width:30px;text-align:center;">SN</th>
+       							<th style="text-align:center;">Drugs</th>
+       							<th style="text-align:center;">Remarks</th>
+       						</tr>
+       						<?php for($i=1;$i<6;$i++) { ?>
+       						<tr>
+       							<td style="text-align:center;"><?php echo $i;?></td>
+       							<td><input type="text" name="drugs_<?php echo $i;?>" class="form-control"></td>
+       							<td><input type="text" name="remarks_<?php echo $i;?>" class="form-control"></td>
+       						</tr>
+       						<?php } ?>
+       					</table>
+
 		    		    <label for="Details">Details</label>
 		    		    <textarea class="form-control" rows="5" name="details"  id="details"></textarea>
 		    		    
@@ -60,8 +85,13 @@
 
 <script type="text/javascript">
 
+$(document).ready(function() {
+    $('#second_diagnosis').hide();
+});
+
 function next_diagnosis() {
-	return false;
+	$('#plus').hide();
+	$('#second_diagnosis').show();
 }
 
 </script>
