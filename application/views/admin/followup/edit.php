@@ -3,7 +3,7 @@
 <?php startblock('content') ?>
 
 	<div style="text-align:center">
-		<h3>Edit FollowUp</h3>
+		<h3>Edit Follow Up</h3>
 	</div>
 	
 	<br/>
@@ -18,8 +18,8 @@
 					</div>
 
 					<div class="form-group" style="width:80%;">
-					    <label for="date">FollowUp Date</label>
-					    <input type="text" name="follow_up_date" id="follow_up_date" class="form-control nepali-calendar" placeholder="yyyy-mm-dd" value="<?php echo date('Y-m-d',strtotime($follow_up->follow_up_date));?>" required>
+					    <label for="date">Follow Up Date</label>
+					    <input type="text" name="follow_up_date" id="follow_up_date" class="form-control nepali-calendar" placeholder="yyyy-mm-dd" value="<?php echo Patient::english_to_nepali(date('Y-m-d',strtotime($follow_up->follow_up_date)));?>" required>
 					</div>
 				</div>
 			</div>

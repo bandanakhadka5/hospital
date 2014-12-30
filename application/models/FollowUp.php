@@ -57,7 +57,9 @@ class FollowUp extends BaseModel {
             throw new BlankFollowUpException("Please Enter The Date");
         }
 
-        if($date <= date("Y-m-d")) {
+        $date = self::convert_date($date);
+        
+        if($date < date("Y-m-d")) {
             throw new Exception("Please enter a valid date for follow up");                
         }
 
