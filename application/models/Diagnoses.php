@@ -65,6 +65,16 @@ class Diagnoses extends BaseModel {
         $this->assign_attribute('diagnosis',$diagnosis);
     }
 
+    public function set_medication($medication) {
+
+        $this->assign_attribute('medication', $medication);
+    }
+
+    public function set_med_remarks($med_remarks) {
+
+        $this->assign_attribute('med_remarks', $med_remarks);
+    }
+
     public function set_details($details) {
 
         $this->assign_attribute('details', $details);
@@ -100,6 +110,16 @@ class Diagnoses extends BaseModel {
     public function get_details()
     {
         return $this->read_attribute('details');
+    }
+
+    public function get_medication()
+    {
+        return $this->read_attribute('medication');
+    }
+
+    public function get_med_remarks()
+    {
+        return $this->read_attribute('med_remarks');
     }
 
     private function find_type_id($type,$patient) {
@@ -150,6 +170,8 @@ class Diagnoses extends BaseModel {
         $diagnosis->type_id = $type_id;
         $diagnosis->patient_id = $patient->id;
         $diagnosis->diagnosis = array_key_exists('diagnosis', $params) ? $params['diagnosis'] : '';
+        $diagnosis->medication = array_key_exists('medication', $params) ? $params['medication'] : '';
+        $diagnosis->med_remarks = array_key_exists('med_remarks', $params) ? $params['med_remarks'] : '';
         $diagnosis->details = array_key_exists('details', $params) ? $params['details'] : '';
 		
         $diagnosis->active = 1;

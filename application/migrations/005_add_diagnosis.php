@@ -22,9 +22,19 @@ class Migration_Add_diagnosis extends CI_Migration {
 				'constraint'=>'250',
 			),
 
+			'medication' => array(
+				'type' => 'varchar',
+				'constraint'=>'250',
+			),
+
+			'med_remarks' => array(
+				'type' => 'varchar',
+				'constraint'=>'250',
+			),
+
 			'details' => array(
 				'type' => 'varchar',
-				'constraint'=>'1000',
+				'constraint'=>'500',
 			),
 
 			'doctor' => array(

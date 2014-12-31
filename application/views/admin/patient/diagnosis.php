@@ -44,19 +44,10 @@
        					<input type="hidden" name="diagnosis" value="<?php echo ($this->input->post('diagnosis') ? $this->input->post('diagnosis') : '');?>"/>
        					<br/>
 
-       					<a class='btn' id="plus" title="Add another Diagnosis" style="font-size:20px;border:1px solid #eee;margin:5px;" onclick="next_diagnosis();">+</a>
-       					<div id="second_diagnosis">
-       						<input type="text" data-name="diagnosis_1" value="<?php echo ($this->input->post('diagnosis_1') ? $this->input->post('diagnosis_1') : '');?>" placeholder="Type disease name..." data-provide="typeahead" class="disease-typeahead-1 form-control"/>       						
-					        <input type="hidden" name="disease_id_1" value="<?php echo ($this->input->post('disease_id_1') ? $this->input->post('disease_id_1') : '');?>"/>
-	       					<input type="hidden" name="diagnosis_1" value="<?php echo ($this->input->post('diagnosis_1') ? $this->input->post('diagnosis_1') : '');?>"/>
-       					</div>
-
-       					<br/>
-
        					<table class="table table-bordered">
        						<tr>
        							<th style="width:30px;text-align:center;">SN</th>
-       							<th style="text-align:center;">Drugs</th>
+       							<th style="text-align:center;">Medication</th>
        							<th style="text-align:center;">Remarks</th>
        						</tr>
        						<?php for($i=1;$i<6;$i++) { ?>
@@ -70,7 +61,40 @@
 
 		    		    <label for="Details">Details</label>
 		    		    <textarea class="form-control" rows="5" name="details"  id="details"></textarea>
-		    		    
+		    		    <br/>
+
+		    		    <label id="title"><h3>Add another Diagnosis</h3></label>
+		    		    <a class='btn' id="plus" title="Add another Diagnosis" style="width:100px;font-size:30px;border:1px solid #eee;margin:5px;" onclick="next_diagnosis();">+</a>
+       					
+       					<div id="second_diagnosis">
+
+       						<label for="Diagnosis">Diagnosis</label>
+       						<input type="text" data-name="diagnosis_1" value="<?php echo ($this->input->post('diagnosis_1') ? $this->input->post('diagnosis_1') : '');?>" placeholder="Type disease name..." data-provide="typeahead" class="disease-typeahead-1 form-control"/>       						
+					        <input type="hidden" name="disease_id_1" value="<?php echo ($this->input->post('disease_id_1') ? $this->input->post('disease_id_1') : '');?>"/>
+	       					<input type="hidden" name="diagnosis_1" value="<?php echo ($this->input->post('diagnosis_1') ? $this->input->post('diagnosis_1') : '');?>"/>
+       						<br/>
+
+	       					<table class="table table-bordered">
+       						<tr>
+       							<th style="width:30px;text-align:center;">SN</th>
+       							<th style="text-align:center;">Medication</th>
+       							<th style="text-align:center;">Remarks</th>
+       						</tr>
+       						<?php for($i=1;$i<6;$i++) { ?>
+       						<tr>
+       							<td style="text-align:center;"><?php echo $i;?></td>
+       							<td><input type="text" name="medication_<?php echo $i;?>" class="form-control"></td>
+       							<td><input type="text" name="med_remarks_<?php echo $i;?>" class="form-control"></td>
+       						</tr>
+       						<?php } ?>
+       					</table>
+
+		    		    <label for="Details">Details</label>
+		    		    <textarea class="form-control" rows="5" name="details_1"  id="details_1"></textarea>
+
+       					</div>
+
+       					<br/>
 		    		</div>			
 		      
 		   
@@ -90,6 +114,7 @@ $(document).ready(function() {
 });
 
 function next_diagnosis() {
+	$('#title').hide();
 	$('#plus').hide();
 	$('#second_diagnosis').show();
 }

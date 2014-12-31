@@ -7,7 +7,7 @@ class Diagnosis extends BaseController {
 	}
 
 	public function create() {
-
+		
 		try {
 
 	        if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
@@ -16,9 +16,53 @@ class Diagnosis extends BaseController {
 
 	        $params = $this->input->post();
 
-	        $diagnosis = Diagnoses::create($params);
+	        $medication = array();
+	        for($i=1;$i<6;$i++) {
+	        	if($this->input->post('drugs_'.$i) != '') {
+	        		$medication[] = $this->input->post('drugs_'.$i);
+	        	} 
+	        }
 
+	        $med_remarks = array();
+	        for($i=1;$i<6;$i++) {
+	        	if($this->input->post('remarks_'.$i) != '') {
+	        		$med_remarks[] = $this->input->post('remarks_'.$i);
+	        	} 
+	        }
+
+	        $params['medication'] = serialize($medication);
+	        $params['med_remarks'] = serialize($med_remarks);
+
+	        $diagnosis = Diagnoses::create($params);
 	        $diagnosis->save();
+
+	        /*Add Second Diagnosis*/
+
+	        if($this->input->post('diagnosis_1')) {
+	        	
+	        	$params['diagnosis'] = $this->input->post('diagnosis_1');
+
+	        	$medication = array();
+		        for($i=1;$i<6;$i++) {
+		        	if($this->input->post('medication_'.$i) != '') {
+		        		$medication[] = $this->input->post('medication_'.$i);
+		        	} 
+		        }
+
+		        $med_remarks = array();
+		        for($i=1;$i<6;$i++) {
+		        	if($this->input->post('med_remarks_'.$i) != '') {
+		        		$med_remarks[] = $this->input->post('med_remarks_'.$i);
+		        	} 
+		        }
+
+		        $params['medication'] = serialize($medication);
+		        $params['med_remarks'] = serialize($med_remarks);
+		        $params['details'] = $this->input->post('details_1');
+
+	        	$diagnosis_1 = Diagnoses::create($params);
+	        	$diagnosis_1->save();
+	        }
 
 	        $this->session->set_flashdata(
 	        	'alert_success', 
