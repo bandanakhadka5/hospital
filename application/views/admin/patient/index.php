@@ -102,7 +102,7 @@ $this->bspaginator->config($config);
 											</td>
 											<td><?php echo $patient->address;?></td>
 											<td><?php echo $patient->contact_number;?></td>
-											<td><?php echo date('Y-m-d',strtotime($patient->last_visited_at));?></td>
+											<td><?php echo Patient::english_to_nepali(date('Y-m-d',strtotime($patient->last_visited_at)));?></td>
 											
 											<td style="text-align:center;width:65px;">
 											<div class="btn-group">

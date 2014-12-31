@@ -32,7 +32,7 @@
 
 			    <div class="form-group" style="width:80%;">
 			        <label for="DateOfBirth">Date of Birth</label>
-			        <input type="text" name="date_of_birth" id="date_of_birth" class="form-control nepali-calendar" placeholder="yyyy-mm-dd" value="<?php echo date('Y-m-d',strtotime($patient->date_of_birth));?>">
+			        <input type="text" name="date_of_birth" id="date_of_birth" class="form-control nepali-calendar" placeholder="yyyy-mm-dd" value="<?php echo Patient::english_to_nepali(date('Y-m-d',strtotime($patient->date_of_birth)));?>">
 			    </div>
 
 			    <div class="form-group" style="width:80%;">

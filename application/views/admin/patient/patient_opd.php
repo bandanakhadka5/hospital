@@ -77,7 +77,7 @@ $this->bspaginator->config($config);
 											<td><?php echo $patient_opd->patient->pub_id;?></td>
 											<td><?php echo $patient_opd->patient->get_full_name();?></td>			
 											<td><?php echo $patient_opd->patient->address;?></td>			
-											<td><?php echo date('Y-m-d',strtotime($patient_opd->created_at));?></td>
+											<td><?php echo Patient::english_to_nepali(date('Y-m-d',strtotime($patient_opd->created_at)));?></td>
 											<td><?php echo $patient_opd->chief_compliants;?>
 											<td><?php echo $patient_opd->doctor;?>
 											</td>

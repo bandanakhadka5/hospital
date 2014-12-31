@@ -79,9 +79,9 @@ $this->bspaginator->config($config);
 											<td><?php echo $patient_inpatient->patient->get_full_name();?></td>						
 											<td><?php echo $patient_inpatient->patient->address;?></td>
 											<td><?php echo $patient_inpatient->patient->contact_number;?></td>
-											<td><?php echo date('Y-m-d',strtotime($patient_inpatient->date_of_admission));?></td>
-											<td><?php if(!is_null($patient_inpatient->date_of_procedure)) echo date('Y-m-d',strtotime($patient_inpatient->date_of_procedure));?></td>
-											<td><?php if(!is_null($patient_inpatient->date_of_discharge)) echo date('Y-m-d',strtotime($patient_inpatient->date_of_discharge));?></td>
+											<td><?php echo Patient::english_to_nepali(date('Y-m-d',strtotime($patient_inpatient->date_of_admission)));?></td>
+											<td><?php if(!is_null($patient_inpatient->date_of_procedure)) echo Patient::english_to_nepali(date('Y-m-d',strtotime($patient_inpatient->date_of_procedure)));?></td>
+											<td><?php if(!is_null($patient_inpatient->date_of_discharge)) echo Patient::english_to_nepali(date('Y-m-d',strtotime($patient_inpatient->date_of_discharge)));?></td>
 											
 											<td style="text-align:center;width:65px;">
 											<?php if(!$patient_inpatient->is_deleted()) { ?>
