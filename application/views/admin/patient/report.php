@@ -57,13 +57,45 @@
 	<?php }
 	    if(!empty($emergency_diagnosis)) {
 
-			foreach ($emergency_diagnosis as $diagnosis) { ?>
+			foreach ($emergency_diagnosis as $diagnosis) { 
 
-			<div class="well" style="margin-left=2px;">
-				<p style="font-size:14px;">Diagnosis: <?php echo $diagnosis->diagnosis;?></p>
-				<p style="font-size:14px;">Details: <?php echo $diagnosis->details;?></p>
-				<p style="font-size:14px;">Date: <?php echo date('Y-m-d',strtotime($diagnosis->created_at));?></p>
-			</div>
+			$medication = unserialize($diagnosis->get_medication()); 
+			$med_remarks = unserialize($diagnosis->get_med_remarks());
+			$count = count($medication);
+			
+			?>
+
+			<table class="table">
+			      <caption></caption>
+			      <thead>
+			        <tr>
+			          <th>S.N</th>
+			          <th>Medication</th>
+			          <th>Medication Remarks</th>
+			        </tr>
+			      </thead>
+			      <tbody>
+			      	<?php 
+			      		for ($i=1; $i<=$count ; $i++) { ?>
+
+			      		<tr>
+			      		  <th scope="row"><?php echo $i;?></th>
+			      		  <td><?php echo ($medication[$i-1] !='') ? $medication[$i-1] : "No drug";?></td>
+			      		  <td><?php echo ($med_remarks[$i-1] !='') ? $med_remarks[$i-1] : "No remark";?></td> 
+			      		 
+			      		</tr>
+			      		
+			      	<?php } ?>
+			        
+			          
+			        
+			      </tbody>
+			    </table>
+			<!-- <div class="well" style="margin-left=2px;">
+				<p style="font-size:14px;">Diagnosis: <?php //echo $diagnosis->diagnosis;?></p>
+				<p style="font-size:14px;">Details: <?php //echo $diagnosis->details;?></p>
+				<p style="font-size:14px;">Date: <?php //echo date('Y-m-d',strtotime($diagnosis->created_at));?></p>
+			</div> -->
 			<?php
 			}	
 		}
@@ -89,13 +121,52 @@
 	
 	if(!empty($opd_diagnosis)) {
 
-			foreach ($opd_diagnosis as $diagnosis) { ?>
+
+			foreach ($opd_diagnosis as $diagnosis) { 
+
+			$medication = unserialize($diagnosis->get_medication()); 
+			$med_remarks = unserialize($diagnosis->get_med_remarks());
+			$count = count($medication);
+			?>
 
 			<div class="well" style="margin-left=2px;">
 				<p style="font-size:14px;">Diagnosis: <?php echo $diagnosis->diagnosis;?></p>
 				<p style="font-size:14px;">Details: <?php echo $diagnosis->details;?></p>
 				<p style="font-size:14px;">Date: <?php echo date('Y-m-d',strtotime($diagnosis->created_at));?></p>			
 			</div>
+
+			<table class="table">
+			      <caption></caption>
+			      <thead>
+			        <tr>
+			          <th>S.N</th>
+			          <th>Medication</th>
+			          <th>Medication Remarks</th>
+			        </tr>
+			      </thead>
+			      <tbody>
+			      	<?php 
+			      		for ($i=1; $i<=$count ; $i++) { ?>
+
+			      		<tr>
+			      		  <th scope="row"><?php echo $i;?></th>
+			      		  <td><?php echo ($medication[$i-1] !='') ? $medication[$i-1] : "No drug";?></td>
+			      		  <td><?php echo ($med_remarks[$i-1] !='') ? $med_remarks[$i-1] : "No remark";?></td> 
+			      		 
+			      		</tr>
+			      		
+			      	<?php } ?>
+			        
+			          
+			        
+			      </tbody>
+			    </table>
+
+			<!-- <div class="well" style="margin-left=2px;">
+				<p style="font-size:14px;">Diagnosis: <?php //echo $diagnosis->diagnosis;?></p>
+				<p style="font-size:14px;">Details: <?php //echo $diagnosis->details;?></p>
+				<p style="font-size:14px;">Date: <?php// echo date('Y-m-d',strtotime($diagnosis->created_at));?></p>			
+			</div> -->
 			<?php
 			}	
 		}
@@ -120,8 +191,40 @@
 
 	if(!empty($inpatient_diagnosis)) {
 
-			foreach ($inpatient_diagnosis as $diagnosis) { ?>
+			foreach ($inpatient_diagnosis as $diagnosis) { 
 
+			$medication = unserialize($diagnosis->get_medication()); 
+			$med_remarks = unserialize($diagnosis->get_med_remarks());
+			$count = count($medication);
+			
+			?>
+
+			<table class="table">
+			      <caption></caption>
+			      <thead>
+			        <tr>
+			          <th>S.N</th>
+			          <th>Medication</th>
+			          <th>Medication Remarks</th>
+			        </tr>
+			      </thead>
+			      <tbody>
+			      	<?php 
+			      		for ($i=1; $i<=$count ; $i++) { ?>
+
+			      		<tr>
+			      		  <th scope="row"><?php echo $i;?></th>
+			      		  <td><?php echo ($medication[$i-1] !='') ? $medication[$i-1] : "No drug";?></td>
+			      		  <td><?php echo ($med_remarks[$i-1] !='') ? $med_remarks[$i-1] : "No remark";?></td> 
+			      		 
+			      		</tr>
+			      		
+			      	<?php } ?>
+			        
+			          
+			        
+			      </tbody>
+			    </table>
 			<div class="well" style="margin-left=2px;">
 				<p style="font-size:14px;">Diagnosis: <?php echo $diagnosis->diagnosis;?></p>
 				<p style="font-size:14px;">Details: <?php echo $diagnosis->details;?></p>
