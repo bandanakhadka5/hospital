@@ -141,7 +141,7 @@ $this->bspaginator->config($config);
 	    <div class="modal-content">
 	      <div class="modal-header">
 	        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-	        <h4 class="modal-title" id="myModalLabel">Enter PubId Of Patient</h4>
+	        <h4 class="modal-title" id="myModalLabel">Add Follow Up</h4>
 	      </div>
 
 	      <form class="form" role="form" method ="POST" action="<?php echo base_url('follow_up/create');?>">
@@ -163,7 +163,7 @@ $this->bspaginator->config($config);
 			        </select>
 
 	    		    <label for="Follow Up Date">Follow Up Date</label>
-	    		    <input type="text" name="follow_up_date" id="follow_up_date" class="form-control nepali-calendar" placeholder="yyyy-mm-dd">
+	    		    <input type="text" name="follow_up_date" id="follow_up_date" class="form-control" placeholder="yyyy-mm-dd">
 	    		</div>
 
 	    		<div id="message"></div>
