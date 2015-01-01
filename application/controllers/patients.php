@@ -107,6 +107,27 @@ class Patients extends BaseController {
 		echo json_encode($data);
 	}
 
+    public function ajax_return_age() {
+
+        $dob = $this->input->get('dob');
+
+        $date_of_birth = date_create(Patient::convert_date($dob));
+        $currrent_date = date_create(date('Y-m-d'));
+
+        $diff = date_diff($date_of_birth,$currrent_date);
+        $days = $diff->format("%R%a");
+
+        $data = array('error' => '');
+        if(intval($days) < 0) {
+            $data['error'] = "Invalid Date";
+        }
+
+        $data['age'] = intval($days/365);
+
+        echo json_encode($data);
+        return;
+    }
+
 	public function add_follow_up() {
 
 		try {

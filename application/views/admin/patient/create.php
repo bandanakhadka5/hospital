@@ -22,17 +22,17 @@
 			        <label for="LastName">Last Name</label>
 			        <input type="text" name="last_name" class="form-control" id="lastname" placeholder="Enter LastName">
 			    </div>
-
+			    <div id="error"></div>
 			    <div class="form-group" style="width:80%;">
 
 			        <label for="DateOfBirth">Date of Birth</label>
-			        <input type="text" name="date_of_birth" class="form-control nepali-calendar" id="dateofbirth" placeholder="yyyy-mm-dd">
+			        <input type="text" name="date_of_birth" class="form-control nepali-calendar" id="dateofbirth" placeholder="yyyy-mm-dd" onblur="find_age();">
 
 			    </div>
 			    <div class="form-group" style="width:80%;">
 
 			        <label for="Age">Age</label>
-			        <input type="text" name="age" class="form-control" id="age" placeholder="Enter Age">
+			        <input type="number" min="0" name="age" class="form-control" id="age" placeholder="Enter Age">
 
 			    </div>
 
@@ -63,7 +63,7 @@
 
     		 </div>
 
-    		 <div class="col-md-6">
+    		<div class="col-md-6">
 	   
     		 	<div class="form-group" style="width:80%;">
     		 		
@@ -131,9 +131,7 @@
 
 <script type="text/javascript">
 
-	function clear_form_fields() {
-
-		
+	function clear_form_fields() {		
 
 		document.getElementById('firstname').readOnly = false;
 		document.getElementById('middlename').readOnly = false;
@@ -161,23 +159,21 @@
 	}
 
 	function reset() {
-
-	    document.getElementById('message').innerHTML = "";
-	    
+	    document.getElementById('message').innerHTML = "";	    
 	}
 
 	$( "#publicid" ).focus(function() {
 	  	document.getElementById('message').innerHTML = "";
 	});
 
-	function fill_form(){
+	function fill_form() {
 		
 		var pubid = document.getElementById('publicid').value;
+
 		if (pubid == '') {
-
 			document.getElementById('message').innerHTML = '<h5 style="color:red">Sorry! Please Enter Valid Public Id</h5>';
-
-		}else{
+		}
+		else {
 
 			document.getElementById('message').innerHTML = "<h5 style='color:green;margin-left:2%;'>Finding Patient .....</h5>";
 			
@@ -221,24 +217,37 @@
 				           //document.getElementById('source').readOnly = true;
 				           document.getElementById('informant').readOnly = true;
 				           document.getElementById('sex').readOnly = true;
-
-				         
-
-
 				       }
 					},
 
 					// Generic Ajax Error for webapp
-					error: function (xhr, ajaxOptions, thrownError){
-
+					error: function (xhr, ajaxOptions, thrownError) {
 						 $("#close_modal").trigger('click');
 					}
 				});
-
-
 		}
+	}
 
+	function find_age() {
 
+		var dob = document.getElementById('dateofbirth').value;
+		document.getElementById('error').innerHTML = "";
+
+		$.ajax ({
+
+			type: "GET",			
+			url: "<?php echo base_url('patients/ajax_return_age')?>"+"?dob="+dob,
+			success: function(result) {
+				var result = JSON.parse(result);
+
+	            if(result['error'] != '') {
+	           		document.getElementById('error').innerHTML = "<h5 style='color:red;margin-left:2%;'>" + result['error'] + "</h5>";
+	           	}
+	            else {
+					document.getElementById('age').value = result['age'];
+				}
+			}
+		});
 	}
 
 </script>

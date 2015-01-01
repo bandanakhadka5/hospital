@@ -82,7 +82,7 @@ class Patient extends BaseModel {
 	{
         if($first_name=='')
         {
-            throw new BlankFirstNameException("First Name Required!");              
+            throw new BlankFirstNameException("Please Enter First Name");              
         }
 
     	$this->assign_attribute('first_name',$first_name);
@@ -97,7 +97,7 @@ class Patient extends BaseModel {
 	{
         if($last_name=='')
         {
-            throw new BlankLastNameException("Last Name Required!");                
+            throw new BlankLastNameException("Please Enter Last Name");                
         }
 
     	$this->assign_attribute('last_name',$last_name);
@@ -107,7 +107,7 @@ class Patient extends BaseModel {
     {
         if($address=='')
         {
-            throw new BlankAddressException("Address field cannot be empty!");                
+            throw new BlankAddressException("Please Enter Address");                
         }
 
         $this->assign_attribute('address',$address);
@@ -117,7 +117,7 @@ class Patient extends BaseModel {
     {
         if($age=='')
         {
-            throw new BlankAgeException("Age field cannot be empty!");                
+            throw new BlankAgeException("Please Enter Age");                
         }
 
         $this->assign_attribute('age',$age);
@@ -125,11 +125,6 @@ class Patient extends BaseModel {
 
     public function set_contact_number($contact_number)
     {
-        /*if($contact_number=='')
-        {
-            throw new BlankContactNumberException("Contact Number required!");                
-        }*/
-
         $this->assign_attribute('contact_number',$contact_number);
     }
 
@@ -137,7 +132,7 @@ class Patient extends BaseModel {
 	{
         if($sex=='')
         {
-            throw new BlankSexException("Sex field cannot be empty!");                
+            throw new BlankSexException("Please Enter Sex");                
         }
 
     	$this->assign_attribute('sex',$sex);
@@ -149,6 +144,10 @@ class Patient extends BaseModel {
 
         if($date_of_birth == '' || $date_of_birth === NULL) {
             throw new Exception("Please Enter Date of Birth");
+        }
+
+        if($date_of_birth > date('Y-m-d')) {
+            throw new Exception("Please Enter Valid Date of Birth");
         }
 
         $this->assign_attribute('date_of_birth',$date_of_birth);
