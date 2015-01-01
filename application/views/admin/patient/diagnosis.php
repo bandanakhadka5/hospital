@@ -20,23 +20,28 @@
 		    		<div class="form-group" style="width:80%;">
 
 		    		    <label for="Public Id">Public Id</label>
-		    		    <input type="text" name="pub_id" class="form-control" id="publicid" placeholder="Enter Public ID Of Patient">
+		    		    <input type="text" name="pub_id" class="form-control" id="publicid" placeholder="Enter Public ID Of Patient" <?php if(isset($pub_id)) { ?> value="<?php echo $pub_id;?>" readonly <?php } ?>>
 		    		    <br/>
 		    		    <label for="Doctor">Doctor</label>
-		    		    <input type="text" name="doctor" class="form-control" id="doctor" placeholder="Enter Name Of Doctor">
+		    		    <input type="text" name="doctor" class="form-control" id="doctor" placeholder="Enter Name Of Doctor" <?php if(isset($doctor)) { ?> value="<?php echo $doctor;?>" <?php } ?>>
 		    		    <br/>
 		    		    <label for="Consultation Type">Consultation Type</label>
+		    		    <?php if(isset($consultation_type)) { ?>
+		    		    <input type="text" name="consultation_type" class="form-control" id="consultation_type" value="<?php echo $consultation_type;?>" readonly>
+		    		    <br/>
+		    		    <?php } else { ?>
 						<div class="form-group">
 				          <select class="form-control" name="consultation_type">
 				          	 <option value="">Select Consultation Type</option>
 				             <option value="Emergency">Emergency</option>
-				             <option value="Inpatient">Inpatient</option>
 				             <option value="OPD">OPD</option>
+				             <option value="Inpatient">Inpatient</option>				             
 				          </select>
 				        </div>
+				        <?php } ?>
 
 				        <label for="TypeId"></label>
-				        <input type="hidden" name="type_id" id="type_id" value="">
+				        <input type="hidden" name="type_id" id="type_id" <?php if(isset($type_id)) { ?> value="<?php echo $type_id;?>" <?php } ?>>
 
 				        <label for="Diagnosis">Diagnosis</label>
 				        <input type="text" data-name="diagnosis" value="<?php echo ($this->input->post('diagnosis') ? $this->input->post('diagnosis') : '');?>" placeholder="Type disease name..." data-provide="typeahead" class="disease-typeahead form-control"/>
@@ -59,7 +64,7 @@
        						<?php } ?>
        					</table>
 
-		    		    <label for="Details">Details</label>
+		    		    <label for="Details">Case Summary</label>
 		    		    <textarea class="form-control" rows="5" name="details"  id="details"></textarea>
 		    		    <br/>
 
@@ -89,7 +94,7 @@
        						<?php } ?>
        					</table>
 
-		    		    <label for="Details">Details</label>
+		    		    <label for="Details">Case Summary</label>
 		    		    <textarea class="form-control" rows="5" name="details_1"  id="details_1"></textarea>
 
        					</div>

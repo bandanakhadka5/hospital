@@ -26,9 +26,11 @@ class PatientOPDSearch extends Search {
 					or ".Patient::$table_name.".last_name LIKE ?
 					or ".Patient::$table_name.".middle_name LIKE ?
 					or ".Patient::$table_name.".address LIKE ?
+					or ".PatientOPD::$table_name.".doctor LIKE ?
 			)";
 			
 			array_push($conditions, '%'.$options->search.'%');
+        	array_push($conditions, '%'.$options->search.'%');
         	array_push($conditions, '%'.$options->search.'%');
         	array_push($conditions, '%'.$options->search.'%');
         	array_push($conditions, '%'.$options->search.'%');

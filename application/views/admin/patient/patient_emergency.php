@@ -94,7 +94,7 @@ $this->bspaginator->config($config);
 
 													<?php } else { ?>
 														
-														<li><a onclick="pass_pub_id_and_type_id('<?php echo $patient_emergency->patient->pub_id;?>','<?php echo $patient_emergency->id;?>');" data-toggle="modal" data-target="#myModal">Add Diagnosis</a></li>
+														<li><a href="<?php echo base_url('diagnosis/emergency_diagnosis/'.$patient_emergency->patient->pub_id.'/'.$patient_emergency->id);?>">Add Diagnosis</a></li>
 														<li><a href="<?php echo base_url('patient_emergency/delete/'.$patient_emergency->id);?>" onclick="return confirm_delete();">Delete</a></li>
 
 													<?php } ?>
@@ -121,69 +121,11 @@ $this->bspaginator->config($config);
 
 </div>
 
-	<!-- Modal -->
-	<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-	  <div class="modal-dialog">
-	    <div class="modal-content">
-	      <div class="modal-header">
-	        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-	        <h4 class="modal-title" id="myModalLabel">Add Diagnosis</h4>
-	      </div>
-	      <form class="form" role="form" method ="POST" action="<?php echo base_url('patient_emergency/add_diagnosis');?>">
-		      <div class="modal-body">
-		    		<div class="form-group" style="width:100%;">
-		    			
-		    		    <label for="Public Id">Public Id</label>
-		    		    <input type="text" name="pub_id" class="form-control" id="publicid" placeholder="Enter Public ID Of Patient">
-
-		    		    <label for="Doctor">Doctor</label>
-		    		    <input type="text" name="doctor" class="form-control" id="doctor" placeholder="Enter Name Of Doctor">
-
-		    		    <label for="Consultation Type">Consultation Type</label>
-		    		    <input type="text" name="consultation_type" class="form-control" id="consultation_type" value="Emergency" readonly>
-
-				        <label for="Diagnosis">Diagnosis</label>
-				        <input type="text" data-name="diagnosis" value="<?php echo ($this->input->post('diagnosis') ? $this->input->post('diagnosis') : '');?>" placeholder="Type disease name..." data-provide="typeahead" class="disease-typeahead form-control"/>
-				        <input type="hidden" name="disease_id" value="<?php echo ($this->input->post('disease_id') ? $this->input->post('disease_id') : '');?>"/>
-       					<input type="hidden" name="diagnosis" value="<?php echo ($this->input->post('diagnosis') ? $this->input->post('diagnosis') : '');?>"/>
-    
-		    		    <label for="Details">Details</label>
-		    		    <textarea class="form-control" rows="5" name="details"  id="details"></textarea>
-		    		    
-		    		    <label for="TypeId"></label>
-		    		    <input type="hidden" name="type_id" id="type_id" value="">
-		    		    
-		    		</div>
-
-		    		<div id="message"></div>
-
-		      </div>
-		      <div class="modal-footer">
-		   
-		        <button type="button" id="close_modal" class="btn btn-default" data-dismiss="modal">Close</button>
-		        <button type="submit" class="btn btn-primary">Submit</button>
-		      </div>
-	  		</form>
-	    </div>
-	  </div>
-	</div>
-
-
-
 <?php endblock() ?>
 
 <?php end_extend() ?>
 
 <script type="text/javascript">
-
-	function pass_pub_id_and_type_id(pub_id,type_id){
-
-		document.getElementById('publicid').value = pub_id;
-		document.getElementById('publicid').readOnly = true;
-
-		document.getElementById('type_id').value = type_id;
-		document.getElementById('type_id').readOnly = true;
-	}
 
 	function confirm_delete() {
 		return confirm('Are you sure you want to delete the patient?');

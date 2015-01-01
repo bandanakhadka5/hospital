@@ -134,35 +134,6 @@ class Patient_Opd extends BaseController {
             redirect('/patient_opd');
         }
     }
-
-    public function add_diagnosis() {
-
-    	try {
-
-	        if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
-	            redirect('/patient_opd');
-	        }
-
-	        $params = $this->input->post();
-
-	        $diagnosis = Diagnoses::create($params);
-
-	        $diagnosis->save();
-
-	        $this->session->set_flashdata(
-	        	'alert_success', 
-	        	"Diagnosis was added successfully."
-	        );
-
-	        redirect('/patient_opd');
-	    }
-
-	    catch(Exception $e) {
-
-	    	$this->session->set_flashdata('alert_error', $e->getMessage());
-	    	redirect('/patient_opd');
-	    }
-    }
 }
 
 ?>
