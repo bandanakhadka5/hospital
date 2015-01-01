@@ -67,7 +67,7 @@ $this->bspaginator->config($config);
 						<?php if($patients_inpatient->get_total_rows() > 0){ ?>
 
 						<div class="table-container">
-							<table class="table table-striped table-bordered">
+							<table class="table table-striped table-bordered" style="margin-bottom:60px;">
 
 								<?php echo $this->bspaginator->table_header();?>
 
