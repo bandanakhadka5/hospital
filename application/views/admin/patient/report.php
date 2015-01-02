@@ -11,6 +11,7 @@
 	<div class="row-fluid">
 		<div class="span12">	
 			<div class="col-xs-6 col-xs-push-4">
+				<img style = "margin-left:12%;" src="<?php echo base_url('public/images/logobg.jpg'); ?>">
 				<h1>BG HOSPITAL</h1>
 			</div>			
 		</div>
@@ -49,7 +50,7 @@
 		<div class="span12">
 
 			<div class="well" style="margin-left=2px;">
-				<p style="font-size:14px;">Date of Consultation: <?php echo date('Y-m-d',strtotime($patient_emergency->created_at));?></p>
+				<p style="font-size:14px;">Date of Consultation: <?php echo Patient::english_to_nepali(date('Y-m-d',strtotime($patient_emergency->created_at)));?></p>
 				<p style="font-size:14px;">Chief Compliants: <?php echo $patient_emergency->chief_compliants;?></p>			
 			</div>
 		</div>
@@ -64,6 +65,12 @@
 			$count = count($medication);
 			
 			?>
+
+			<div class="well" style="margin-left=2px;">
+				<p style="font-size:14px;">Diagnosis: <?php echo $diagnosis->diagnosis;?></p>
+				<p style="font-size:14px;">Details: <?php echo $diagnosis->details;?></p>
+				<p style="font-size:14px;">Date: <?php echo Patient::english_to_nepali(date('Y-m-d',strtotime($diagnosis->created_at)));?></p>			
+			</div>
 
 			<table class="table">
 			      <caption></caption>
@@ -111,7 +118,7 @@
 		<div class="span12">
 
 			<div class="well" style="margin-left=2px;">
-				<p style="font-size:14px;">Date of Consultation: <?php echo date('Y-m-d',strtotime($patient_opd->created_at));?></p>
+				<p style="font-size:14px;">Date of Consultation: <?php echo Patient::english_to_nepali(date('Y-m-d',strtotime($patient_opd->created_at)));?></p>
 				<p style="font-size:14px;">Chief Compliants: <?php echo $patient_opd->chief_compliants;?></p>
 				<p style="font-size:14px;">Doctor: <?php echo $patient_opd->doctor;?></p>			
 			</div>
@@ -132,7 +139,7 @@
 			<div class="well" style="margin-left=2px;">
 				<p style="font-size:14px;">Diagnosis: <?php echo $diagnosis->diagnosis;?></p>
 				<p style="font-size:14px;">Details: <?php echo $diagnosis->details;?></p>
-				<p style="font-size:14px;">Date: <?php echo date('Y-m-d',strtotime($diagnosis->created_at));?></p>			
+				<p style="font-size:14px;">Date: <?php echo Patient::english_to_nepali(date('Y-m-d',strtotime($diagnosis->created_at)));?></p>			
 			</div>
 
 			<table class="table">
@@ -181,9 +188,9 @@
 	<div class="row-fluid" style="margin-top:2px;">
 		<div class="span12">
 			<div class="well" style="margin-left=2px;">
-				<p style="font-size:14px;">Date of Admission: <?php echo date('Y-m-d',strtotime($patient_inpatient->date_of_admission));?></p>
-				<p style="font-size:14px;">Date of Procedure: <?php echo date('Y-m-d',strtotime($patient_inpatient->date_of_procedure));?></p>
-				<p style="font-size:14px;">Date of Discharge: <?php echo date('Y-m-d',strtotime($patient_inpatient->date_of_discharge));?></p>
+				<p style="font-size:14px;">Date of Admission: <?php echo Patient::english_to_nepali(date('Y-m-d',strtotime($patient_inpatient->date_of_admission)));?></p>
+				<p style="font-size:14px;">Date of Procedure: <?php echo Patient::english_to_nepali(date('Y-m-d',strtotime($patient_inpatient->date_of_procedure)));?></p>
+				<p style="font-size:14px;">Date of Discharge: <?php echo Patient::english_to_nepali(date('Y-m-d',strtotime($patient_inpatient->date_of_discharge)));?></p>
 			</div>
 		</div>
 	</div>
@@ -228,7 +235,7 @@
 			<div class="well" style="margin-left=2px;">
 				<p style="font-size:14px;">Diagnosis: <?php echo $diagnosis->diagnosis;?></p>
 				<p style="font-size:14px;">Details: <?php echo $diagnosis->details;?></p>
-				<p style="font-size:14px;">Date: <?php echo date('Y-m-d',strtotime($diagnosis->created_at));?></p>	
+				<p style="font-size:14px;">Date: <?php echo Patient::english_to_nepali(date('Y-m-d',strtotime($diagnosis->created_at)));?></p>	
 			</div>
 			<?php
 			}	

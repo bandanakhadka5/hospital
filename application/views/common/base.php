@@ -7,6 +7,8 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
+    <link rel="shortcut icon" href="<?php echo base_url('public/images/favicon.ico');?>">
+
     <title>BG Hospital</title>
 
     <!-- Bootstrap core CSS -->
