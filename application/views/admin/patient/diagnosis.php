@@ -55,8 +55,8 @@
        							<th style="text-align:center;">Medication</th>
        							<th style="text-align:center;">Remarks</th>
        						</tr>
-       						<?php for($i=1;$i<6;$i++) { ?>
-       						<tr>
+       						<?php for($i=1;$i<=10;$i++) { ?>
+       						<tr id="row<?php echo $i;?>">
        							<td style="text-align:center;"><?php echo $i;?></td>
        							<td><input type="text" name="drugs_<?php echo $i;?>" class="form-control"></td>
        							<td><input type="text" name="remarks_<?php echo $i;?>" class="form-control"></td>
@@ -64,10 +64,13 @@
        						<?php } ?>
        					</table>
 
+       					<a class='btn' id="next" title="Add another Medication" style="width:200px;border:1px solid #eee;margin:5px;" onclick="next_row();">Add another Medication</a>
+		    		    
+		    		    <br/>
 		    		    <label for="Details">Case Summary</label>
 		    		    <textarea class="form-control" rows="5" name="details"  id="details"></textarea>
 		    		    <br/>
-
+		    		    
 		    		    <label id="title"><h3>Add another Diagnosis</h3></label>
 		    		    <a class='btn' id="plus" title="Add another Diagnosis" style="width:100px;font-size:30px;border:1px solid #eee;margin:5px;" onclick="next_diagnosis();">+</a>
        					
@@ -85,14 +88,16 @@
        							<th style="text-align:center;">Medication</th>
        							<th style="text-align:center;">Remarks</th>
        						</tr>
-       						<?php for($i=1;$i<6;$i++) { ?>
-       						<tr>
+       						<?php for($i=1;$i<=10;$i++) { ?>
+       						<tr id="rows_<?php echo $i;?>">
        							<td style="text-align:center;"><?php echo $i;?></td>
        							<td><input type="text" name="medication_<?php echo $i;?>" class="form-control"></td>
        							<td><input type="text" name="med_remarks_<?php echo $i;?>" class="form-control"></td>
        						</tr>
        						<?php } ?>
        					</table>
+       					<a class='btn' id="next_1" title="Add another Medication" style="width:200px;border:1px solid #eee;margin:5px;" onclick="show_next_row();">Add another Medication</a>
+       					<br/>
 
 		    		    <label for="Details">Case Summary</label>
 		    		    <textarea class="form-control" rows="5" name="details_1"  id="details_1"></textarea>
@@ -115,13 +120,43 @@
 <script type="text/javascript">
 
 $(document).ready(function() {
+
+	for(var i = 6; i<=10; i++) {
+		$('#row'+i).hide();
+		$('#rows_'+i).hide();
+	}
+
     $('#second_diagnosis').hide();
+    
+    var j = 6;
 });
 
 function next_diagnosis() {
+
 	$('#title').hide();
 	$('#plus').hide();
+
 	$('#second_diagnosis').show();
+}
+
+var ii = 6;
+function next_row() {
+	$('#row'+ii).show();
+	ii++;
+
+	if(ii == 11) {
+		$('#next').hide();
+	}
+}
+
+var j = 6;
+function show_next_row() {
+	$('#rows_'+j).show();
+	j++;
+
+	if(j == 11) {
+		$('#next_1').hide();
+	}
 }
 
 </script>

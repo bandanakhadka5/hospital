@@ -17,14 +17,14 @@ class Diagnosis extends BaseController {
 	        $params = $this->input->post();
 
 	        $medication = array();
-	        for($i=1;$i<6;$i++) {
+	        for($i=1;$i<=10;$i++) {
 	        	if($this->input->post('drugs_'.$i) != '') {
 	        		$medication[] = $this->input->post('drugs_'.$i);
 	        	} 
 	        }
 
 	        $med_remarks = array();
-	        for($i=1;$i<6;$i++) {
+	        for($i=1;$i<=10;$i++) {
 	        	if($this->input->post('remarks_'.$i) != '') {
 	        		$med_remarks[] = $this->input->post('remarks_'.$i);
 	        	} 
@@ -43,14 +43,14 @@ class Diagnosis extends BaseController {
 	        	$params['diagnosis'] = $this->input->post('diagnosis_1');
 
 	        	$medication = array();
-		        for($i=1;$i<6;$i++) {
+		        for($i=1;$i<=10;$i++) {
 		        	if($this->input->post('medication_'.$i) != '') {
 		        		$medication[] = $this->input->post('medication_'.$i);
 		        	} 
 		        }
 
 		        $med_remarks = array();
-		        for($i=1;$i<6;$i++) {
+		        for($i=1;$i<=10;$i++) {
 		        	if($this->input->post('med_remarks_'.$i) != '') {
 		        		$med_remarks[] = $this->input->post('med_remarks_'.$i);
 		        	} 
