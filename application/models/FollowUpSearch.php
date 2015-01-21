@@ -23,7 +23,6 @@ class FollowUpSearch extends Search {
 			    throw new Exception("Invalid Date! Please Try Again");
 
 			}
-
 			
 			$this->date_from = trim($date_from);
 		}

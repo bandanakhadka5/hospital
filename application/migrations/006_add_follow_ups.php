@@ -62,7 +62,7 @@ class Migration_Add_follow_ups extends CI_Migration {
 		$this->dbforge->add_key('id', true);
 		$this->dbforge->create_table('patient_follow_ups');
 
-		$this->db->query('ALTER TABLE patient_follow_ups MODIFY modified_at TIMESTAMP ON UPDATE CURRENT_TIMESTAMP');
+		//$this->db->query('ALTER TABLE patient_follow_ups MODIFY modified_at TIMESTAMP ON UPDATE CURRENT_TIMESTAMP');
 
 	}
 

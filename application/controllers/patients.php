@@ -74,7 +74,7 @@ class Patients extends BaseController {
 			$patient = Patient::find_by_pub_id($public_id);
 
 			if(!$patient) {
-				throw new Exception("Data not found. Please enter correct Public ID.");
+				throw new Exception("Data not found. Please enter correct Patient No.");
 			}
 		}
 

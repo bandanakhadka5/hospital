@@ -36,7 +36,7 @@
 		</div>
 
 		<div class= "col-xs-4">
-			<p style="font-size:14px;"><b>Public ID:</b> <?php echo $patient->pub_id;?></p>
+			<p style="font-size:14px;"><b>Patient No.:</b> <?php echo $patient->pub_id;?></p>
 			<p style="font-size:14px;"><b>Sex:</b> <?php if($patient->sex == 0) echo 'Male'; else echo 'Female';?></p>
 		</div>
 	</div>
@@ -68,7 +68,7 @@
 
 			<div class="well" style="margin-left=2px;">
 				<p style="font-size:14px;">Diagnosis: <?php echo $diagnosis->diagnosis;?></p>
-				<p style="font-size:14px;">Details: <?php echo $diagnosis->details;?></p>
+				<p style="font-size:14px;">Case Summary: <?php echo $diagnosis->details;?></p>
 				<p style="font-size:14px;">Date: <?php echo Patient::english_to_nepali(date('Y-m-d',strtotime($diagnosis->created_at)));?></p>			
 			</div>
 
@@ -93,16 +93,10 @@
 			      		</tr>
 			      		
 			      	<?php } ?>
-			        
-			          
-			        
+
 			      </tbody>
 			    </table>
-			<!-- <div class="well" style="margin-left=2px;">
-				<p style="font-size:14px;">Diagnosis: <?php //echo $diagnosis->diagnosis;?></p>
-				<p style="font-size:14px;">Details: <?php //echo $diagnosis->details;?></p>
-				<p style="font-size:14px;">Date: <?php //echo date('Y-m-d',strtotime($diagnosis->created_at));?></p>
-			</div> -->
+
 			<?php
 			}	
 		}
@@ -138,7 +132,7 @@
 
 			<div class="well" style="margin-left=2px;">
 				<p style="font-size:14px;">Diagnosis: <?php echo $diagnosis->diagnosis;?></p>
-				<p style="font-size:14px;">Details: <?php echo $diagnosis->details;?></p>
+				<p style="font-size:14px;">Case Summary: <?php echo $diagnosis->details;?></p>
 				<p style="font-size:14px;">Date: <?php echo Patient::english_to_nepali(date('Y-m-d',strtotime($diagnosis->created_at)));?></p>			
 			</div>
 
@@ -162,18 +156,10 @@
 			      		 
 			      		</tr>
 			      		
-			      	<?php } ?>
-			        
-			          
+			      	<?php } ?>			          
 			        
 			      </tbody>
 			    </table>
-
-			<!-- <div class="well" style="margin-left=2px;">
-				<p style="font-size:14px;">Diagnosis: <?php //echo $diagnosis->diagnosis;?></p>
-				<p style="font-size:14px;">Details: <?php //echo $diagnosis->details;?></p>
-				<p style="font-size:14px;">Date: <?php// echo date('Y-m-d',strtotime($diagnosis->created_at));?></p>			
-			</div> -->
 			<?php
 			}	
 		}
@@ -234,7 +220,7 @@
 			    </table>
 			<div class="well" style="margin-left=2px;">
 				<p style="font-size:14px;">Diagnosis: <?php echo $diagnosis->diagnosis;?></p>
-				<p style="font-size:14px;">Details: <?php echo $diagnosis->details;?></p>
+				<p style="font-size:14px;">Case Summary: <?php echo $diagnosis->details;?></p>
 				<p style="font-size:14px;">Date: <?php echo Patient::english_to_nepali(date('Y-m-d',strtotime($diagnosis->created_at)));?></p>	
 			</div>
 			<?php

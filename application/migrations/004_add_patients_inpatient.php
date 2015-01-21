@@ -54,7 +54,7 @@ class Migration_Add_patients_inpatient extends CI_Migration {
 		$this->dbforge->add_key('id', true);
 		$this->dbforge->create_table('patients_inpatient');
 
-		$this->db->query('ALTER TABLE patients_inpatient MODIFY modified_at TIMESTAMP ON UPDATE CURRENT_TIMESTAMP');
+		//$this->db->query('ALTER TABLE patients_inpatient MODIFY modified_at TIMESTAMP ON UPDATE CURRENT_TIMESTAMP');
 
 	}
 

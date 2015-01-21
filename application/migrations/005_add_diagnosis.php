@@ -77,7 +77,7 @@ class Migration_Add_diagnosis extends CI_Migration {
 		$this->dbforge->add_key('id', true);
 		$this->dbforge->create_table('diagnosis');
 
-		$this->db->query('ALTER TABLE diagnosis MODIFY modified_at TIMESTAMP ON UPDATE CURRENT_TIMESTAMP');
+		//$this->db->query('ALTER TABLE diagnosis MODIFY modified_at TIMESTAMP ON UPDATE CURRENT_TIMESTAMP');
 	}
 
 	public function down() {

@@ -56,7 +56,7 @@ class Migration_Add_patients_opd extends CI_Migration {
 		$this->dbforge->add_key('id', true);
 		$this->dbforge->create_table('patients_opd');
 
-		$this->db->query('ALTER TABLE patients_opd MODIFY modified_at TIMESTAMP ON UPDATE CURRENT_TIMESTAMP');
+		//$this->db->query('ALTER TABLE patients_opd MODIFY modified_at TIMESTAMP ON UPDATE CURRENT_TIMESTAMP');
 
 	}
 

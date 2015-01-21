@@ -148,8 +148,8 @@ $this->bspaginator->config($config);
 	      <div class="modal-body">
 	    		<div class="form-group" style="width:80%;">
 
-	    		    <label for="Public Id">Public Id</label>
-	    		    <input type="text" class="form-control" name="pub_id" id="publicid" placeholder="Enter Public ID Of Patient" autofocus>
+	    		    <label for="Public Id">Patient No.</label>
+	    		    <input type="text" class="form-control" name="pub_id" id="publicid" placeholder="Enter Patient No." autofocus>
 
 	    		    <label for="Doctor">Doctor</label>
 	    		    <input type="text" class="form-control" name="doctor" id="doctor" placeholder="Enter Doctor's Name">

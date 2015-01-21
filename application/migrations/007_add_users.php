@@ -70,7 +70,7 @@ class Migration_Add_users extends CI_Migration {
 		$this->dbforge->add_key('id', true);
 		$this->dbforge->create_table('users');
 
-		$this->db->query('ALTER TABLE users MODIFY modified_at TIMESTAMP ON UPDATE CURRENT_TIMESTAMP');
+		//$this->db->query('ALTER TABLE users MODIFY modified_at TIMESTAMP ON UPDATE CURRENT_TIMESTAMP');
 
 		$data =  array(
 

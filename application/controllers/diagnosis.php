@@ -38,9 +38,12 @@ class Diagnosis extends BaseController {
 
 	        /*Add Second Diagnosis*/
 
-	        if($this->input->post('diagnosis_1')) {
+	        if($this->input->post('diagnosis_1') || $this->input->post('diagnosis_2')) {
 	        	
-	        	$params['diagnosis'] = $this->input->post('diagnosis_1');
+	        	if($this->input->post('diagnosis_2'))
+	        		$params['diagnosis'] = $this->input->post('diagnosis_2');
+	        	else
+	        		$params['diagnosis'] = $this->input->post('diagnosis_1');
 
 	        	$medication = array();
 		        for($i=1;$i<=10;$i++) {

@@ -19,8 +19,8 @@
 			      
 		    		<div class="form-group" style="width:80%;">
 
-		    		    <label for="Public Id">Public Id</label>
-		    		    <input type="text" name="pub_id" class="form-control" id="publicid" placeholder="Enter Public ID Of Patient" <?php if(isset($pub_id)) { ?> value="<?php echo $pub_id;?>" readonly <?php } ?>>
+		    		    <label for="Public Id">Patient No.</label>
+		    		    <input type="text" name="pub_id" class="form-control" id="publicid" placeholder="Enter Patient No." <?php if(isset($pub_id)) { ?> value="<?php echo $pub_id;?>" readonly <?php } ?>>
 		    		    <br/>
 		    		    <label for="Doctor">Doctor</label>
 		    		    <input type="text" name="doctor" class="form-control" id="doctor" placeholder="Enter Name Of Doctor" <?php if(isset($doctor)) { ?> value="<?php echo $doctor;?>" <?php } ?>>
@@ -76,10 +76,22 @@
        					
        					<div id="second_diagnosis">
 
+       						<label class="checkbox">
+					        <input type="checkbox" checked="checked" id="check"> Use Typeahead
+					        </label>
+
        						<label for="Diagnosis">Diagnosis</label>
+
+       						<div id="option1">
        						<input type="text" data-name="diagnosis_1" value="<?php echo ($this->input->post('diagnosis_1') ? $this->input->post('diagnosis_1') : '');?>" placeholder="Type disease name..." data-provide="typeahead" class="disease-typeahead-1 form-control"/>       						
 					        <input type="hidden" name="disease_id_1" value="<?php echo ($this->input->post('disease_id_1') ? $this->input->post('disease_id_1') : '');?>"/>
 	       					<input type="hidden" name="diagnosis_1" value="<?php echo ($this->input->post('diagnosis_1') ? $this->input->post('diagnosis_1') : '');?>"/>
+       						</div>
+
+       						<div id="option2">
+       						<input class="form-control" type="text" id="diagnosis_2" name="diagnosis_2" placeholder="Enter Diagnosis Name">
+       						</div>
+
        						<br/>
 
 	       					<table class="table table-bordered">
@@ -127,8 +139,22 @@ $(document).ready(function() {
 	}
 
     $('#second_diagnosis').hide();
+    $('#option2').hide();
     
-    var j = 6;
+    $('#check').change(function () {
+
+	    if($('#check').prop('checked')) {
+	    	$('#option2').hide();
+	    	$('#option1').show();
+	    	$('#diagnosis_2').val('');
+	    }
+
+	    else {
+	    	$('#option1').hide();
+	    	$('#option2').show();
+	    	$('#diagnosis_1').val('');
+	    }
+	 });
 });
 
 function next_diagnosis() {

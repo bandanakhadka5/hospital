@@ -101,7 +101,7 @@ class FollowUp extends BaseModel {
         $patient = Patient::find_by_pub_id($pub_id);
 
         if(!$patient) {
-            throw new Exception("Patient with the provided Public ID not found. Please enter a valid Public ID of patient.");       
+            throw new Exception("Patient with the provided Patient No. not found. Please enter a valid Public ID of patient.");       
         }
 
         return $patient->id;

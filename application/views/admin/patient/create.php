@@ -106,8 +106,8 @@
     		 	      <div class="modal-body">
     		 	    		<div class="form-group" style="width:80%;">
     		 	    			
-    		 	    		    <label for="Public Id">Public Id</label>
-    		 	    		    <input type="text" class="form-control" id="publicid" placeholder="Enter Public ID Of Patient">
+    		 	    		    <label for="Public Id">Patient No.</label>
+    		 	    		    <input type="text" class="form-control" id="publicid" placeholder="Enter Patient No.">
     		 	    		    
     		 	    		</div>
 
@@ -171,7 +171,7 @@
 		var pubid = document.getElementById('publicid').value;
 
 		if (pubid == '') {
-			document.getElementById('message').innerHTML = '<h5 style="color:red">Sorry! Please Enter Valid Public Id</h5>';
+			document.getElementById('message').innerHTML = '<h5 style="color:red">Sorry! Please Enter Valid Patient No.</h5>';
 		}
 		else {
 
