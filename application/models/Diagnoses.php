@@ -142,7 +142,7 @@ class Diagnoses extends BaseModel {
         $patient = Patient::find_by_pub_id($pub_id);
 
         if(!$patient) {
-            throw new Exception("No Patient With The Given PubID");            
+            throw new Exception("No Patient found with the given Patient No.");            
         }
 
         return $patient;

@@ -6,7 +6,7 @@
 
 $config = array(
     'headers' => (object) array(
-    	'Pub ID' => 'pub_id',
+    	'Patient No.' => 'pub_id',
     	'First Name' => 'first_name', 
     	'Last Name' => 'last_name',
     	'Age' => 'age', 
