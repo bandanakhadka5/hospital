@@ -112,7 +112,7 @@ $this->bspaginator->config($config);
 											</td>
 											<td><?php echo $follow_up->patient->address;?></td>
 											<td><?php echo $follow_up->patient->contact_number;?></td>
-											<td><?php echo date('Y-m-d',strtotime($follow_up->patient->last_visited_at));?></td>
+											<td><?php echo Patient::english_to_nepali(date('Y-m-d',strtotime($follow_up->patient->last_visited_at)));?></td>
 											<td><?php echo $follow_up->doctor;?></td>
 											<td><?php echo Patient::english_to_nepali(date('Y-m-d',strtotime($follow_up->follow_up_date)));?></td>
 											<td><?php echo $follow_up->consultation_type;?></td>
