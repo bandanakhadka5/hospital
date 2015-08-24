@@ -6,7 +6,8 @@
 
 $config = array(
     'headers' => (object) array(
-    	'Patient No.' => 'pub_id',
+    	//'Patient No.' => 'pub_id',
+    	'OPD No.' => 'opd_no',
     	'Name' => 'first_name',  
     	'Address' => 'address',
     	'Last Visited At' => 'last_visited_at',
@@ -74,7 +75,8 @@ $this->bspaginator->config($config);
 									<?php foreach ($patients_opd as $patient_opd) {
 									 ?>
 										<tr>
-											<td><?php echo $patient_opd->patient->pub_id;?></td>
+											<!-- <td><?php echo $patient_opd->patient->pub_id;?></td> -->
+											<td><?php echo $patient_opd->patient->opd_no;?></td>
 											<td><?php echo $patient_opd->patient->get_full_name();?></td>			
 											<td><?php echo $patient_opd->patient->address;?></td>			
 											<td><?php echo Patient::english_to_nepali(date('Y-m-d',strtotime($patient_opd->created_at)));?></td>
@@ -95,7 +97,7 @@ $this->bspaginator->config($config);
 
 													<?php } else { ?>
 
-														<li><a href="<?php echo base_url('diagnosis/opd_diagnosis/'.$patient_opd->patient->pub_id.'/'.$patient_opd->id);?>">Add Diagnosis</a></li>
+														<li><a href="<?php echo base_url('diagnosis/opd_diagnosis/'.$patient_opd->patient->opd_no.'/'.$patient_opd->id);?>">Add Diagnosis</a></li>
 														<li><a href="<?php echo base_url('patient_opd/delete/'.$patient_opd->id);?>" onclick="return confirm_delete();">Delete</a></li>
 
 													<?php } ?>

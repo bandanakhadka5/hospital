@@ -14,6 +14,11 @@
 
 			<div class="col-md-4 col-md-offset-2">
 
+				<div class="form-group" style="width:80%;">
+			        <label for="opdno">OPD Number</label>
+			        <input type="text" name="opd_no" value="<?php echo $patient->opd_no;?>" class="form-control" id="opdno" placeholder="Enter OPD Number" required>
+			    </div>
+
 			    <div class="form-group" style="width:80%;">
 			        <label for="FirstName">First Name</label>
 			        <input type="text" name="first_name" value="<?php echo $patient->first_name;?>" class="form-control" id="firstname" placeholder="Enter FirstName" required>

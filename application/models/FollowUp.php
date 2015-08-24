@@ -96,12 +96,12 @@ class FollowUp extends BaseModel {
 
     /*Private functions*/
 
-    private function find_patient($pub_id) {
+    private function find_patient($opd_no) {
 
-        $patient = Patient::find_by_pub_id($pub_id);
+        $patient = Patient::find_by_opd_no($opd_no);
 
         if(!$patient) {
-            throw new Exception("Patient with the provided Patient No. not found. Please enter a valid Patient No.");       
+            throw new Exception("Patient with the provided OPD No. not found.");       
         }
 
         return $patient->id;
@@ -124,8 +124,8 @@ class FollowUp extends BaseModel {
 
     	$follow_up = new FollowUp;
 
-        $pub_id = array_key_exists('pub_id', $params) ? $params['pub_id'] : NULL;
-        $patient_id = self::find_patient($pub_id);
+        $opd_no = array_key_exists('opd_no', $params) ? $params['opd_no'] : NULL;
+        $patient_id = self::find_patient($opd_no);
 
         $follow_up->patient_id = $patient_id;
         $follow_up->doctor = array_key_exists('doctor', $params) ? $params['doctor'] : NULL;

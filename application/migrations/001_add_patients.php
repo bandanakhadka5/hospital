@@ -12,6 +12,7 @@ class Migration_Add_patients extends CI_Migration {
 				'type' => 'int',
 				'auto_increment' => true,
 			),
+
 			'pub_id' => array(
 				'type' => 'varchar',
 				'constraint' => 45,
@@ -28,6 +29,7 @@ class Migration_Add_patients extends CI_Migration {
 				'constraint' => 45,
 				'null' => True,
 			),
+
 			'last_name' => array(
 				'type' => 'varchar',
 				'constraint' => 45,
@@ -39,6 +41,7 @@ class Migration_Add_patients extends CI_Migration {
 				'constraint' => 45,
 				'null' => False,
 			),
+			
 			'sex' => array(
 				'type' => 'boolean',				
 				'null' => False,

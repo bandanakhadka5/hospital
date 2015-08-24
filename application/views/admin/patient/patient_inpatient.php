@@ -6,7 +6,8 @@
 
 $config = array(
     'headers' => (object) array(
-    	'Patient No.' => 'pub_id',
+    	//'Patient No.' => 'pub_id',
+    	'OPD No.' => 'opd_no',
     	'Name' => 'first_name', 
     	'Address' => 'address',
     	'Contact Number' => 'contact_number',
@@ -75,7 +76,8 @@ $this->bspaginator->config($config);
 									<?php foreach ($patients_inpatient as $patient_inpatient) {
 									 ?>
 										<tr>
-											<td><?php echo $patient_inpatient->patient->pub_id;?></td>
+											<!-- <td><?php echo $patient_inpatient->patient->pub_id;?></td> -->
+											<td><?php echo $patient_inpatient->patient->opd_no;?></td>
 											<td><?php echo $patient_inpatient->patient->get_full_name();?></td>						
 											<td><?php echo $patient_inpatient->patient->address;?></td>
 											<td><?php echo $patient_inpatient->patient->contact_number;?></td>
@@ -90,7 +92,7 @@ $this->bspaginator->config($config);
 						    						Actions <span class="caret"></span>
 						  						</a>
 												<ul class="dropdown-menu" style="text-align:left;">													
-													<li><a href="<?php echo base_url('diagnosis/inpatient_diagnosis/'.$patient_inpatient->patient->pub_id.'/'.$patient_inpatient->id);?>">Add Diagnosis</a></li>
+													<li><a href="<?php echo base_url('diagnosis/inpatient_diagnosis/'.$patient_inpatient->patient->opd_no.'/'.$patient_inpatient->id);?>">Add Diagnosis</a></li>
 													<li><a href="<?php echo base_url('patient_inpatient/discharge_patient/'.$patient_inpatient->id);?>" onclick="return confirm_discharge();">Discharge</a></li>
 												</ul>
 											</div>

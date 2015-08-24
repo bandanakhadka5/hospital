@@ -48,8 +48,8 @@ class Patient extends BaseModel {
             
             if(self::exists(array(
                 'pub_id' => $pub_id,
-            ))){
-                throw new PatientPubIDExistsException;
+            ))) {
+                throw new Exception('Public ID already exists');
             }
 
         } elseif(!$this->is_new_record()) {
@@ -58,8 +58,31 @@ class Patient extends BaseModel {
                 'pub_id = ? and id != ?',
                 $PubID,
                 $this->id,
-            )))){
-                throw new PatientPubIDExistsException;
+            )))) {
+                throw new Exception('Public ID already exists');
+            }
+        }
+
+    }
+
+    public function is_opd_no_unique($opd_no) {
+
+        if($this->is_new_record()) {
+            
+            if(self::exists(array(
+                'opd_no' => $opd_no,
+            ))) {
+                throw new Exception('OPD Number already exists');
+            }
+
+        } elseif(!$this->is_new_record()) {
+
+            if(self::exists(array('conditions' => array(
+                'opd_no = ? and id != ?',
+                $opd_no,
+                $this->id,
+            )))) {
+                throw new Exception('OPD Number already exists');
             }
         }
 
@@ -70,12 +93,25 @@ class Patient extends BaseModel {
         $pub_id = strtolower(trim($pub_id));
 
         if(!$pub_id) {
-            throw new PatientPubIDRequiredException;
+            throw new Exception('Public ID required');;
         }
 
         $this->is_pub_id_unique($pub_id);
 
         $this->assign_attribute('pub_id', $pub_id);
+    }
+
+    public function set_opd_no($opd_no) {
+
+        $opd_no = strtolower(trim($opd_no));
+
+        if(!$opd_no) {
+            throw new Exception('OPD Number required!');;
+        }
+
+        $this->is_opd_no_unique($opd_no);
+
+        $this->assign_attribute('opd_no', $opd_no);
     }
 
     public function set_first_name($first_name)
@@ -203,6 +239,16 @@ class Patient extends BaseModel {
     	return $this->read_attribute('last_name');
     }
 
+    public function get_pub_id()
+    {
+        return $this->read_attribute('pub_id');
+    }
+
+    public function get_opd_no()
+    {
+        return $this->read_attribute('opd_no');
+    }
+
     public function get_sex()
 	{
     	return $this->read_attribute('sex');
@@ -290,6 +336,7 @@ class Patient extends BaseModel {
         $patient->last_visited_at = date('Y-m-d H:i:s');
         $patient->active = 1;
         $patient->deleted = 0;
+        $patient->opd_no = array_key_exists('opd_no', $params) ? $params['opd_no'] : '';
 
 		return $patient;
 	}

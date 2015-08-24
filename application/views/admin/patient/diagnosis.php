@@ -19,8 +19,8 @@
 			      
 		    		<div class="form-group" style="width:80%;">
 
-		    		    <label for="Public Id">Patient No.</label>
-		    		    <input type="text" name="pub_id" class="form-control" id="publicid" placeholder="Enter Patient No." <?php if(isset($pub_id)) { ?> value="<?php echo $pub_id;?>" readonly <?php } ?>>
+		    		    <label for="OPDNo">OPD No.</label>
+		    		    <input type="text" name="opd_no" class="form-control" id="opdno" placeholder="Enter OPD No." <?php if(isset($opd_no)) { ?> value="<?php echo $opd_no;?>" readonly <?php } ?>>
 		    		    <br/>
 		    		    <label for="Doctor">Doctor</label>
 		    		    <input type="text" name="doctor" class="form-control" id="doctor" placeholder="Enter Name Of Doctor" <?php if(isset($doctor)) { ?> value="<?php echo $doctor;?>" <?php } ?>>

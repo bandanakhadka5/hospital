@@ -6,7 +6,8 @@
 
 $config = array(
     'headers' => (object) array(
-    	'Patient No.' => 'pub_id',
+    	//'Patient No.' => 'pub_id',
+    	'OPD No.' => 'opd_no',
     	'Name' => 'first_name',
     	'Age' => 'age', 
     	'Sex' => 'sex',
@@ -89,7 +90,8 @@ $this->bspaginator->config($config);
 								<tbody>
 									<?php foreach ($patients as $patient){ ?>
 										<tr>
-											<td><?php echo $patient->pub_id;?></td>
+											<!-- <td><?php echo $patient->pub_id;?></td> -->
+											<td><?php echo $patient->opd_no;?></td>
 											<td><?php echo $patient->get_full_name();?></td>
 											<td><?php echo $patient->age;?></td>
 											<td>
@@ -111,7 +113,7 @@ $this->bspaginator->config($config);
 						  						</a>
 												<ul class="dropdown-menu" style="text-align:left;">	
 													<li><a href="<?php echo base_url('patients/edit/'.$patient->id);?>">Edit</a></li>
-													<li><a onclick="pass_pub_id('<?php echo $patient->pub_id;?>');" data-toggle="modal" data-target="#myModal">Add Follow Up</a></li>
+													<li><a onclick="pass_opd_no('<?php echo $patient->opd_no;?>');" data-toggle="modal" data-target="#myModal">Add Follow Up</a></li>
 													<li><a href="<?php echo base_url('patients/view_report/'.$patient->id);?>">View Report</a></li>
 												</ul>
 											</div>
@@ -133,8 +135,8 @@ $this->bspaginator->config($config);
 							      <div class="modal-body">
 							    		<div class="form-group" style="width:80%;">
 
-							    		    <label for="Public Id">Patient No.</label>
-							    		    <input type="text" class="form-control" name="pub_id" id="publicid" placeholder="Enter Patient No.">
+							    		    <label for="OPDNo">OPD No.</label>
+							    		    <input type="text" class="form-control" name="opd_no" id="opdno">
 
 							    		    <label for="Doctor">Doctor</label>
 							    		    <input type="text" class="form-control" name="doctor" id="doctor" placeholder="Enter Doctor's Name">
@@ -181,9 +183,9 @@ $this->bspaginator->config($config);
 
 <script type="text/javascript">
 
-	function pass_pub_id(pub_id) {
+	function pass_opd_no(opd_no) {
 
-		document.getElementById('publicid').value = pub_id;
-		document.getElementById('publicid').readOnly = true;
+		document.getElementById('opdno').value = opd_no;
+		document.getElementById('opdno').readOnly = true;
 	}
 </script>

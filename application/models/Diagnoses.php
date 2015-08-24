@@ -137,12 +137,12 @@ class Diagnoses extends BaseModel {
         }
     }
 
-    private function find_patient($pub_id) {
+    private function find_patient($opd_no) {
 
-        $patient = Patient::find_by_pub_id($pub_id);
+        $patient = Patient::find_by_opd_no($opd_no);
 
         if(!$patient) {
-            throw new Exception("No Patient found with the given Patient No.");            
+            throw new Exception("No Patient found with the given OPD No.");            
         }
 
         return $patient;
@@ -157,7 +157,7 @@ class Diagnoses extends BaseModel {
         $diagnosis->doctor = array_key_exists('doctor', $params) ? $params['doctor'] : '';
 		$diagnosis->consultation_type = array_key_exists('consultation_type', $params) ? $params['consultation_type'] : '';
 
-        $patient = $diagnosis->find_patient(trim($params['pub_id']));
+        $patient = $diagnosis->find_patient(trim($params['opd_no']));
 
         if($params['type_id'] == '') {
             $type_id = $diagnosis->find_type_id($params['consultation_type'],$patient);            

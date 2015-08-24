@@ -61,6 +61,13 @@
 
     		 	</div>
 
+    		 	<div class="form-group" style="width:80%;">
+    		 		
+    		 	    <label for="opdno">OPD No.</label>
+    		 	    <input type="text" name="opd_no" class="form-control" id="opdno" placeholder="Enter OPD No.">
+
+    		 	</div>
+
     		 </div>
 
     		<div class="col-md-6">
@@ -101,13 +108,13 @@
     		 	    <div class="modal-content">
     		 	      <div class="modal-header">
     		 	        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-    		 	        <h4 class="modal-title" id="myModalLabel">Enter Patient No.</h4>
+    		 	        <h4 class="modal-title" id="myModalLabel">Enter OPD No.</h4>
     		 	      </div>
     		 	      <div class="modal-body">
     		 	    		<div class="form-group" style="width:80%;">
     		 	    			
-    		 	    		    <label for="Public Id">Patient No.</label>
-    		 	    		    <input type="text" class="form-control" id="publicid" placeholder="Enter Patient No.">
+    		 	    		    <label for="OPDno">OPD No.</label>
+    		 	    		    <input type="text" class="form-control" id="opd_no" placeholder="Enter OPD No.">
     		 	    		    
     		 	    		</div>
 
@@ -142,6 +149,7 @@
 		document.getElementById('source').readOnly = false;
 		document.getElementById('informant').readOnly = false;
 		document.getElementById('sex').readOnly = false;
+		document.getElementById('opdno').readOnly = false;
 
 		//set the attribute to true for existing record
 		document.getElementById('old_record_id').value = " ";
@@ -155,23 +163,23 @@
        	document.getElementById('source').value = "";
        	document.getElementById('informant').value = "";
        	document.getElementById('sex').value = "";
-
+       	document.getElementById('opdno').value = "";
 	}
 
 	function reset() {
 	    document.getElementById('message').innerHTML = "";	    
 	}
 
-	$( "#publicid" ).focus(function() {
+	$( "#opd_no" ).focus(function() {
 	  	document.getElementById('message').innerHTML = "";
 	});
 
 	function fill_form() {
 		
-		var pubid = document.getElementById('publicid').value;
+		var opd_no = document.getElementById('opd_no').value;
 
-		if (pubid == '') {
-			document.getElementById('message').innerHTML = '<h5 style="color:red">Sorry! Please Enter Valid Patient No.</h5>';
+		if (opd_no == '') {
+			document.getElementById('message').innerHTML = '<h5 style="color:red">Sorry! Please Enter Valid OPD No.</h5>';
 		}
 		else {
 
@@ -180,7 +188,7 @@
 				$.ajax({
 					type: "GET",
 			
-					url: "<?php echo base_url('patients/ajax_return_patient')?>"+"?pubid="+pubid,
+					url: "<?php echo base_url('patients/ajax_return_patient')?>"+"?opd_no="+opd_no,
 					success: function(result){// result is in json
 
 			           var patient = JSON.parse(result);
@@ -200,6 +208,7 @@
 				           document.getElementById('source').value = patient['source_of_referal'];
 				           document.getElementById('informant').value = patient['informant'];
 				           document.getElementById('sex').value = patient['sex'];
+				           document.getElementById('opdno').value = patient['opd_no'];
 
 				           //set the oldrecord id for existing record
 				           document.getElementById('old_record_id').value = patient['old_record_id'];
@@ -217,6 +226,7 @@
 				           //document.getElementById('source').readOnly = true;
 				           document.getElementById('informant').readOnly = true;
 				           document.getElementById('sex').readOnly = true;
+				           document.getElementById('opdno').readOnly = true;
 				       }
 					},
 

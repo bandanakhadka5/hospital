@@ -67,14 +67,14 @@ class Patients extends BaseController {
 
 	public function ajax_return_patient(){
 
-		$public_id = $this->input->get('pubid');
+		$opd_no = $this->input->get('opd_no');
 
 		try {
 
-			$patient = Patient::find_by_pub_id($public_id);
+			$patient = Patient::find_by_opd_no($opd_no);
 
 			if(!$patient) {
-				throw new Exception("Data not found. Please enter correct Patient No.");
+				throw new Exception("Data not found. Please enter correct OPD No.");
 			}
 		}
 
@@ -86,6 +86,8 @@ class Patients extends BaseController {
 			return;
 		}
 
+        $date = Patient::english_to_nepali(date('Y-m-d',strtotime($patient->date_of_birth)));
+
 		$data = array(
 					'old_record_id'=> $patient->id,
 					'first_name'=>$patient->first_name,
@@ -93,7 +95,7 @@ class Patients extends BaseController {
 					'middle_name'=>$patient->middle_name,
 					'age' =>$patient->age,
 					'sex'=>$patient->sex,
-					'date_of_birth'=>$patient->date_of_birth,
+					'date_of_birth'=>$date,
 					'address'=>$patient->address,
 					'email'=>$patient->email,
 					'informant'=>$patient->informant,
@@ -101,6 +103,7 @@ class Patients extends BaseController {
 					'relation_with_patient'=>$patient->relation_with_patient,
 					'source_of_referal'=>$patient->source_of_referal,
 					'contact_number'=>$patient->contact_number,
+                    'opd_no'=>$patient->opd_no,
 					'error' => ''
 				);
 
@@ -171,6 +174,7 @@ class Patients extends BaseController {
                 return $this->load_view('admin/patient/edit',array('patient' => $patient));
             }
 
+            $patient->opd_no = $this->input->post('opd_no');
 			$patient->first_name = $this->input->post('first_name');
 			$patient->middle_name = $this->input->post('middle_name');
 			$patient->last_name = $this->input->post('last_name');
