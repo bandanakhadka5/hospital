@@ -124,7 +124,7 @@ class FollowUp extends BaseModel {
 
     	$follow_up = new FollowUp;
 
-        $opd_no = array_key_exists('pub_id', $params) ? $params['pub_id'] : NULL;
+        $pub_id = array_key_exists('pub_id', $params) ? $params['pub_id'] : NULL;
         $patient_id = self::find_patient($pub_id);
 
         $follow_up->patient_id = $patient_id;

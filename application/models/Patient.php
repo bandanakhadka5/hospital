@@ -67,7 +67,7 @@ class Patient extends BaseModel {
 
     public function is_opd_no_unique($opd_no) {
 
-        if($this->is_new_record()) {
+        if($opd_no != '' && $this->is_new_record()) {
             
             if(self::exists(array(
                 'opd_no' => $opd_no,
@@ -90,7 +90,7 @@ class Patient extends BaseModel {
 
     public function is_ipd_no_unique($ipd_no) {
 
-        if($this->is_new_record()) {
+        if($ipd_no != '' && $this->is_new_record()) {
             
             if(self::exists(array(
                 'ipd_no' => $ipd_no,

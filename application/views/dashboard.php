@@ -17,7 +17,8 @@
 							<th>Name</th>
 							<th>Address</th>
 							<th>Age</th>
-							<th>sex</th>
+							<th>Opd No</th>
+							<th>Ipd No</th>
 							<th>Doctor</th>
 						</tr>
 					</thead>
@@ -27,13 +28,8 @@
 								<td><?php echo $follow_up->patient->get_full_name();?></td>
 								<td><?php echo $follow_up->patient->address;?></td>
 								<td><?php echo $follow_up->patient->age;?></td>
-								<td>
-									<?php
-									if($follow_up->patient->sex == 0) 
-										echo "Male";
-									else echo "Female";
-									?>
-								</td>
+								<td><?php echo $follow_up->patient->opd_no;?></td>
+								<td><?php echo $follow_up->patient->ipd_no;?></td>
 								<td><?php echo $follow_up->doctor;?></td>
 							</tr>
 						<?php } ?>
@@ -52,7 +48,8 @@
 							<th>Name</th>
 							<th>Address</th>
 							<th>Age</th>
-							<th>sex</th>
+							<th>Opd No</th>
+							<th>Ipd No</th>
 							<th>Date of Admission</th>
 						</tr>
 					</thead>
@@ -62,13 +59,8 @@
 								<td><?php echo $patient_in_bed->patient->get_full_name();?></td>
 								<td><?php echo $patient_in_bed->patient->address;?></td>
 								<td><?php echo $patient_in_bed->patient->age;?></td>
-								<td>
-									<?php
-									if($patient_in_bed->patient->sex == 0) 
-										echo "Male";
-									else echo "Female";
-									?>
-								</td>
+								<td><?php echo $patient_in_bed->patient->opd_no;?></td>
+								<td><?php echo $patient_in_bed->patient->ipd_no;?></td>
 								<td>
 									<?php echo date('Y-m-d',strtotime($patient_in_bed->date_of_admission));?>
 								</td>
