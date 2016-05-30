@@ -36,7 +36,7 @@
 		</div>
 
 		<div class= "col-xs-4">
-			<p style="font-size:14px;"><b>OPD No.:</b> <?php echo $patient->opd_no;?></p>
+			<p style="font-size:14px;"><b>Patient No.:</b> <?php echo $patient->pub_id;?></p>
 			<p style="font-size:14px;"><b>Sex:</b> <?php if($patient->sex == 0) echo 'Male'; else echo 'Female';?></p>
 		</div>
 	</div>

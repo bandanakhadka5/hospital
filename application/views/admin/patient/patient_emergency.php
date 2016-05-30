@@ -6,8 +6,9 @@
 
 $config = array(
     'headers' => (object) array(
-    	//'Patient No.' => 'pub_id',
+    	'Patient No.' => 'pub_id',
     	'OPD No.' => 'opd_no',
+    	'IPD No.' => 'ipd_no',
     	'Name' => 'first_name', 
     	'Address' => 'address',
     	'Contact Number' => 'contact_number',
@@ -75,8 +76,9 @@ $this->bspaginator->config($config);
 									<?php foreach ($patients_emergency as $patient_emergency) {
 									 ?>
 										<tr>
-											<!-- <td><?php echo $patient_emergency->patient->pub_id;?></td> -->
+											<td><?php echo $patient_emergency->patient->pub_id;?></td>
 											<td><?php echo $patient_emergency->patient->opd_no;?></td>
+											<td><?php echo $patient_emergency->patient->ipd_no;?></td>
 											<td><?php echo $patient_emergency->patient->get_full_name();?></td>														
 											<td><?php echo $patient_emergency->patient->address;?></td>
 											<td><?php echo $patient_emergency->patient->contact_number;?></td>
@@ -96,7 +98,7 @@ $this->bspaginator->config($config);
 
 													<?php } else { ?>
 														
-														<li><a href="<?php echo base_url('diagnosis/emergency_diagnosis/'.$patient_emergency->patient->opd_no.'/'.$patient_emergency->id);?>">Add Diagnosis</a></li>
+														<li><a href="<?php echo base_url('diagnosis/emergency_diagnosis/'.$patient_emergency->patient->pub_id.'/'.$patient_emergency->id);?>">Add Diagnosis</a></li>
 														<li><a href="<?php echo base_url('patient_emergency/delete/'.$patient_emergency->id);?>" onclick="return confirm_delete();">Delete</a></li>
 
 													<?php } ?>

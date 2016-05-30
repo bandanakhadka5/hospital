@@ -67,14 +67,14 @@ class Patients extends BaseController {
 
 	public function ajax_return_patient(){
 
-		$opd_no = $this->input->get('opd_no');
+		$public_id = $this->input->get('pubid');
 
 		try {
 
-			$patient = Patient::find_by_opd_no($opd_no);
+			$patient = Patient::find_by_pub_id($public_id);
 
 			if(!$patient) {
-				throw new Exception("Data not found. Please enter correct OPD No.");
+				throw new Exception("Data not found. Please enter correct Patient No.");
 			}
 		}
 
@@ -175,6 +175,7 @@ class Patients extends BaseController {
             }
 
             $patient->opd_no = $this->input->post('opd_no');
+            $patient->ipd_no = $this->input->post('ipd_no');
 			$patient->first_name = $this->input->post('first_name');
 			$patient->middle_name = $this->input->post('middle_name');
 			$patient->last_name = $this->input->post('last_name');

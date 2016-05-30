@@ -19,6 +19,11 @@
 			        <input type="text" name="opd_no" value="<?php echo $patient->opd_no;?>" class="form-control" id="opdno" placeholder="Enter OPD Number" required>
 			    </div>
 
+				<div class="form-group" style="width:80%;">
+			        <label for="ipdno">IPD Number</label>
+			        <input type="text" name="ipd_no" value="<?php echo $patient->ipd_no;?>" class="form-control" id="opdno" placeholder="Enter OPD Number" required>
+			    </div>
+
 			    <div class="form-group" style="width:80%;">
 			        <label for="FirstName">First Name</label>
 			        <input type="text" name="first_name" value="<?php echo $patient->first_name;?>" class="form-control" id="firstname" placeholder="Enter FirstName" required>

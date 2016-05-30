@@ -6,8 +6,9 @@
 
 $config = array(
     'headers' => (object) array(
-    	//'Patient No.' => 'pub_id',
+    	'Patient No.' => 'pub_id',
     	'OPD No.' => 'opd_no',
+    	'IPD No.' => 'ipd_no',
     	'First Name' => 'first_name', 
     	'Last Name' => 'last_name',
     	'Age' => 'age', 
@@ -99,8 +100,9 @@ $this->bspaginator->config($config);
 								<tbody>
 									<?php foreach ($follow_ups as $follow_up){ ?>
 										<tr>
-											<!-- <td><?php echo $follow_up->patient->pub_id;?></td> -->
+											<td><?php echo $follow_up->patient->pub_id;?></td>
 											<td><?php echo $follow_up->patient->opd_no;?></td>
+											<td><?php echo $follow_up->patient->ipd_no;?></td>
 											<td><?php echo $follow_up->patient->first_name;?></td>
 											<td><?php echo $follow_up->patient->last_name;?></td>
 											<td><?php echo $follow_up->patient->age;?></td>
@@ -150,8 +152,8 @@ $this->bspaginator->config($config);
 	      <div class="modal-body">
 	    		<div class="form-group" style="width:80%;">
 
-	    		    <label for="ODPNo">OPD No.</label>
-	    		    <input type="text" class="form-control" name="opd_no" id="opdno" placeholder="Enter OPD No." autofocus>
+	    		    <label for="pub_id">Patient No.</label>
+	    		    <input type="text" class="form-control" name="pub_id" id="pub_id" placeholder="Enter Patient No." autofocus>
 
 	    		    <label for="Doctor">Doctor</label>
 	    		    <input type="text" class="form-control" name="doctor" id="doctor" placeholder="Enter Doctor's Name">

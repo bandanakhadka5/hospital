@@ -82,10 +82,10 @@ class Diagnosis extends BaseController {
 	    }
 	}
 
-	public function emergency_diagnosis($opd_no,$type_id) {
+	public function emergency_diagnosis($pub_id,$type_id) {
 
 		$data = array(
-					'opd_no' => $opd_no,
+					'pub_id' => $pub_id,
 					'type_id' => $type_id,
 					'consultation_type' => 'Emergency',
 				);
@@ -93,12 +93,12 @@ class Diagnosis extends BaseController {
 		return $this->load_view('admin/patient/diagnosis',$data);
 	}
 
-	public function opd_diagnosis($opd_no,$type_id) {
+	public function opd_diagnosis($pub_id,$type_id) {
 
 		$patient_opd = PatientOPD::find_by_id($type_id);
 
 		$data = array(
-					'opd_no' => $opd_no,
+					'pub_id' => $pub_id,
 					'type_id' => $type_id,
 					'consultation_type' => 'OPD',
 					'doctor' => $patient_opd->doctor,
@@ -107,10 +107,10 @@ class Diagnosis extends BaseController {
 		return $this->load_view('admin/patient/diagnosis',$data);
 	}
 
-	public function inpatient_diagnosis($opd_no,$type_id) {
+	public function inpatient_diagnosis($pub_id,$type_id) {
 
 		$data = array(
-					'opd_no' => $opd_no,
+					'pub_id' => $pub_id,
 					'type_id' => $type_id,
 					'consultation_type' => 'Inpatient',
 				);

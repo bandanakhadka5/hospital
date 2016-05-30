@@ -88,6 +88,29 @@ class Patient extends BaseModel {
 
     }
 
+    public function is_ipd_no_unique($ipd_no) {
+
+        if($this->is_new_record()) {
+            
+            if(self::exists(array(
+                'ipd_no' => $ipd_no,
+            ))) {
+                throw new Exception('IPD Number already exists');
+            }
+
+        } elseif(!$this->is_new_record()) {
+
+            if(self::exists(array('conditions' => array(
+                'ipd_no = ? and id != ?',
+                $ipd_no,
+                $this->id,
+            )))) {
+                throw new Exception('IPD Number already exists');
+            }
+        }
+
+    }
+
     public function set_pub_id($pub_id) {
 
         $pub_id = strtolower(trim($pub_id));
@@ -105,13 +128,26 @@ class Patient extends BaseModel {
 
         $opd_no = strtolower(trim($opd_no));
 
-        if(!$opd_no) {
+      /*  if(!$opd_no) {
             throw new Exception('OPD Number required!');;
-        }
+        }*/
 
         $this->is_opd_no_unique($opd_no);
 
         $this->assign_attribute('opd_no', $opd_no);
+    }
+
+    public function set_ipd_no($ipd_no) {
+
+        $ipd_no = strtolower(trim($ipd_no));
+
+        /*if(!$ipd_no) {
+            throw new Exception('IPD Number required!');;
+        }*/
+
+        $this->is_ipd_no_unique($ipd_no);
+
+        $this->assign_attribute('ipd_no', $ipd_no);
     }
 
     public function set_first_name($first_name)
@@ -249,6 +285,11 @@ class Patient extends BaseModel {
         return $this->read_attribute('opd_no');
     }
 
+    public function get_ipd_no()
+    {
+        return $this->read_attribute('ipd_no');
+    }
+
     public function get_sex()
 	{
     	return $this->read_attribute('sex');
@@ -337,6 +378,7 @@ class Patient extends BaseModel {
         $patient->active = 1;
         $patient->deleted = 0;
         $patient->opd_no = array_key_exists('opd_no', $params) ? $params['opd_no'] : '';
+        $patient->ipd_no = array_key_exists('ipd_no', $params) ? $params['ipd_no'] : '';
 
 		return $patient;
 	}
